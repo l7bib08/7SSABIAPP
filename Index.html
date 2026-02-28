@@ -111,6 +111,7 @@
         <section id="screen-home" class="screen" aria-label="Accueil">
           <header class="topbar">
             <h1 id="home-date">Aujourd'hui</h1>
+            <h2 id="date">21 sep 2026</h2>
           </header>
 
           <div class="cards cards-stats">
@@ -144,9 +145,10 @@
         <!-- Cash -->
         <section id="screen-cash" class="screen" aria-label="Vente cash">
           <header class="topbar">
-            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil"><img src="icons/back.svg" alt="back-icon" class="icon"></button>
             <h1>Vente Cash</h1>
             <span class="spacer"></span>
+            <button id="btn-go-credit-from-cash" class="iconbtn" type="button" aria-label="Va vers credit"><img src="icons/go.svg" alt="go-icon" class="icon"></button>
           </header>
 
           <form id="form-cash" class="form">
@@ -181,9 +183,9 @@
         <!-- Credit -->
         <section id="screen-credit" class="screen" aria-label="Vente à crédit">
           <header class="topbar">
-            <button id="btn-back-home-from-credit" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <button id="btn-back-cash-from-credit" class="iconbtn" type="button" aria-label="Retour cash"><img src="icons/back.svg" alt="back-icon" class="icon"></button>
             <h1>Vente à crédit</h1>
-            <span class="spacer"></span>
+            <button id="btn-go-expense-from-credit" class="iconbtn" type="button" aria-label="Va vers depense"><img src="icons/go.svg" alt="go-icon" class="icon"></button>
           </header>
 
           <form id="form-credit" class="form">
@@ -231,9 +233,10 @@
         <!-- Expense -->
         <section id="screen-expense" class="screen" aria-label="Dépense">
           <header class="topbar">
-            <button id="btn-back-home-from-expense" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit"><img src="icons/back.svg" alt="back-icon" class="icon"></button>
             <h1>Dépense</h1>
             <span class="spacer"></span>
+            <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn"><img src="icons/back.svg" alt="invalid-icon" class="icon"></button>
           </header>
 
           <form id="form-expense" class="form">
@@ -259,9 +262,7 @@
         <!-- Clients -->
         <section id="screen-clients" class="screen" aria-label="Clients">
           <header class="topbar">
-            <button id="btn-back-home-from-clients" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
             <h1>Clients</h1>
-            <span class="spacer"></span>
           </header>
 
           <h4 id="clients-summary">0 clients - Dette totale : 0 DH</h4>
@@ -278,9 +279,7 @@
         <!-- Add client -->
         <section id="screen-add-client" class="screen" aria-label="Ajouter client">
           <header class="topbar">
-            <button id="btn-back-clients-from-add" class="iconbtn" type="button" aria-label="Retour clients">←</button>
             <h1>Ajouter un client</h1>
-            <span class="spacer"></span>
           </header>
 
           <form id="form-add-client" class="form" enctype="multipart/form-data">
