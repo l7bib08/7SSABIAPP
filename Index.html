@@ -1,338 +1,469 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MOBILE APP JIBI</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>MOBILE APP JIBI</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div class="phone">
-        <div class="app">
-            <main class="content">
+  <div class="phone">
+    <div class="app">
+      <main class="content" id="app-content">
 
-                <section id="screen-initial">
-                    <img src="Logo/JIBI LOGO.png" alt="1-Logo App jibi">
-                    <img src="LOGO/LOGO Calcul.png" alt="2-Logo App jibi">
-                </section>
+        <!-- Splash / Initial -->
+        <section id="screen-initial" class="screen active" aria-label="Écran initial">
+          <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
+          <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+        </section>
 
-                <section id="screen-login">
-                    <div class="Logo">
-                        <img src="Logo/JIBI LOGO.png" alt="1-Logo App jibi">
-                        <img src="LOGO/LOGO Calcul.png" alt="2-Logo App jibi">
-                    </div>
+        <!-- Login -->
+        <section id="screen-login" class="screen" aria-label="Connexion">
+          <div class="logo">
+            <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
+            <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+          </div>
 
-                    <h1>Login</h1>
+          <h1>Login</h1>
 
-                    <div class="Login-Sign up informations">
-                        <div class="Login information email">
-                            <div class="label">Email</div>
-                            <input type="email" placeholder="Enter your email">
-                        </div>
-
-                        <div class="Login information password">
-                            <div class="label">Password</div>
-                            <input type="password" placeholder="Enter your password">
-                        </div>
-
-                        <h3>Remember me</h3>
-                        <button type="button">Next</button>
-                        <h4>Or</h4>
-
-                        <div class="Login other way">
-                            <img src="Icons/google.png" alt="Google icon">
-                            <button type="button">Login with Google</button>
-                        </div>
-
-                        <div class="Login other way">
-                            <img src="Icons/facebook.png" alt="Facebook icon">
-                            <button type="button">Login with Facebook</button>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="screen-signup">
-                    <div class="Logo">
-                        <img src="Logo/JIBI LOGO.png" alt="1-Logo App jibi">
-                        <img src="LOGO/LOGO Calcul.png" alt="2-Logo App jibi">
-                    </div>
-
-                    <h1>Sign up</h1>
-
-                    <div class="Login-Sign up informations">
-                        <div class="Sign up information Full name">
-                            <div class="label">Full Name</div>
-                            <input type="text" placeholder="Enter your full name">
-                        </div>
-
-                        <div class="Sign up information Full name">
-                            <div class="label">Email</div>
-                            <input type="email" placeholder="Enter your email">
-                        </div>
-
-                        <div class="Sign up information Full name">
-                            <div class="label">Password</div>
-                            <input type="password" placeholder="Enter your password">
-                        </div>
-
-                        <div class="Sign up information Full name">
-                            <div class="label">Confirm password</div>
-                            <input type="password" placeholder="Confirm your password">
-                        </div>
-
-                        <button class="Login-Sign up informations" type="button">Create Account</button>
-                    </div>
-                </section>
-
-                <section id="screen-home">
-                    <h1>Aujourd'hui - 09 JAN</h1>
-
-                    <div class="Cards 1">
-                        <div class="card">
-                            <h2>Ventes aujourd'hui</h2>
-                            <h3>1,850 DH</h3>
-                        </div>
-                        <div class="card">
-                            <h2>Depenses aujourd'hui</h2>
-                            <h3>750 DH</h3>
-                        </div>
-                        <div class="card">
-                            <h2>Profit aujourd'hui</h2>
-                            <h3>1,150 DH</h3>
-                        </div>
-                    </div>
-
-                    <div class="Cards 2">
-                        <div class="card 1">
-                            <h2>Vente Cash</h2>
-                        </div>
-                        <div class="card 1">
-                            <h2>Vente a credit</h2>
-                        </div>
-                        <div class="card 1">
-                            <h2>Depense</h2>
-                        </div>
-                    </div>
-
-                    <nav class="nav barre">
-                        <a href="#"><img src="Icons/home click.png" alt="Home icon"></a>
-                        <a href="#"><img src="Icons/block note no click.png" alt="block note icon"></a>
-                        <a href="#"><img src="Icons/customer no click.png" alt="customer icon"></a>
-                        <a href="#"><img src="Icons/rapport no click.png" alt="rapport icon"></a>
-                        <a href="#"><img src="Icons/user no click.png" alt="user icon"></a>
-                    </nav>
-                </section>
-
-                <section id="screen-cash">
-                    <div class="nav block note">
-                        <h1>Vente Cach</h1>
-                        <img src="#" alt="icon nav left">
-                        <img src="#" alt="icon nav right">
-                    </div>
-
-                    <div class="Articles">
-                        <div class="Articles input">
-                            <div class="label">Articles :</div>
-                            <input type="search" placeholder="Entrer le nom de l'artcle">
-                            <input type="number" placeholder="Prix">
-                            <button class="add" type="button">Ajouter un article</button>
-                        </div>
-
-                        <button class="ArticleClient add" type="button">Ajouter un article</button>
-                        <button class="save" type="button">Enregistrer</button>
-                    </div>
-
-                    <nav class="nav barre">
-                        <a href="#"><img src="Icons/home click.png" alt="Home icon"></a>
-                        <a href="#"><img src="Icons/block note no click.png" alt="block note icon"></a>
-                        <a href="#"><img src="Icons/customer no click.png" alt="customer icon"></a>
-                        <a href="#"><img src="Icons/rapport no click.png" alt="rapport icon"></a>
-                        <a href="#"><img src="Icons/user no click.png" alt="user icon"></a>
-                    </nav>
-                </section>
-
-                <section id="screen-credit" class="Vente a crédit page">
-                    <div class="nav block note">
-                        <h1>Vente a crédit</h1>
-                        <img src="#" alt="icon nav left">
-                        <img src="#" alt="icon nav right">
-                    </div>
-
-                    <div class="Client input">
-                        <div class="label">Client :</div>
-                        <input type="search" placeholder="Entrer le nom du client">
-                        <button class="add" type="button">Ajouter un client</button>
-                    </div>
-
-                    <div class="Articles">
-                        <div class="Articles input">
-                            <div class="label">Articles :</div>
-                            <input type="search" placeholder="Entrer le nom de l'artcle">
-                            <input type="number" placeholder="Prix">
-                            <button class="add" type="button">Ajouter un article</button>
-                        </div>
-
-                        <button class="ArticleClient add" type="button">Ajouter un article</button>
-                        <button class="save" type="button">Enregistrer</button>
-                    </div>
-
-                    <nav class="nav barre">
-                        <a href="#"><img src="Icons/home click.png" alt="Home icon"></a>
-                        <a href="#"><img src="Icons/block note no click.png" alt="block note icon"></a>
-                        <a href="#"><img src="Icons/customer no click.png" alt="customer icon"></a>
-                        <a href="#"><img src="Icons/rapport no click.png" alt="rapport icon"></a>
-                        <a href="#"><img src="Icons/user no click.png" alt="user icon"></a>
-                    </nav>
-                </section>
-
-                <section id="screen-expense" class="Depense page">
-                    <div class="nav block note">
-                        <h1>Depense</h1>
-                        <img src="#" alt="icon nav left">
-                        <img src="#" alt="icon nav right">
-                    </div>
-
-                    <div class="Depenses input">
-                        <div class="label">Depense :</div>
-                        <input type="search" placeholder="Entrer le type de depense">
-                        <input type="number" placeholder="Prix">
-
-                        <div class="note">
-                            <input type="text" placeholder="Entrer vos notes :....">
-                        </div>
-
-                        <button class="add" type="button">Ajouter un autre type de depense</button>
-                        <button class="save" type="button">Enregistrer</button>
-                    </div>
-
-                    <nav class="nav barre">
-                        <a href="#"><img src="Icons/home click.png" alt="Home icon"></a>
-                        <a href="#"><img src="Icons/block note no click.png" alt="block note icon"></a>
-                        <a href="#"><img src="Icons/customer no click.png" alt="customer icon"></a>
-                        <a href="#"><img src="Icons/rapport no click.png" alt="rapport icon"></a>
-                        <a href="#"><img src="Icons/user no click.png" alt="user icon"></a>
-                    </nav>
-                </section>
-
-                <section id="screen-clients" class="Clients page">
-                    <h4>32 clients - Dette totale : 4 850 Dh</h4>
-
-                    <div class="search bar">
-                        <input type="text" placeholder="Entrer le nom du client que vous chercher :....">
-                        <img src="#" alt="search icon">
-                    </div>
-
-                    <div class="cards clients">
-                        <div class="card">
-                            <button class="showclientinfo" type="button">LHAJ THAMI - 0609763680</button>
-                            <button class="showclientdebt" type="button">1,240 DH</button>
-                            <button class="more" type="button">---</button>
-                        </div>
-
-                        <div class="card">
-                            <button class="showclientinfo" type="button">L3SKRI - 0673138637</button>
-                            <button class="showclientdebt" type="button">0 DH</button>
-                            <button class="more" type="button">---</button>
-                        </div>
-
-                        <div class="card">
-                            <button class="showclientinfo" type="button">AMINOR - 0605959424</button>
-                            <button class="showclientdebt" type="button">723 DH</button>
-                            <button class="more" type="button">---</button>
-                        </div>
-
-                        <button class="addclient" type="button">+ Ajouter un client</button>
-
-                        <nav class="nav barre">
-                            <a href="#"><img src="Icons/home click.png" alt="Home icon"></a>
-                            <a href="#"><img src="Icons/block note no click.png" alt="block note icon"></a>
-                            <a href="#"><img src="Icons/customer no click.png" alt="customer icon"></a>
-                            <a href="#"><img src="Icons/rapport no click.png" alt="rapport icon"></a>
-                            <a href="#"><img src="Icons/user no click.png" alt="user icon"></a>
-                        </nav>
-                    </div>
-                </section>
-
-                <section id="screen-add-client" class="Add client page">
-                    <div class="information client">
-                        <div class="information client Full name">
-                            <div class="label">Full Name</div>
-                            <input type="text" placeholder="Enter the client full name">
-                        </div>
-
-                        <div class="information client numberphone">
-                            <div class="label">Number phone</div>
-                            <input type="text" placeholder="Enter le numero de telephone du client">
-                        </div>
-
-                        <div class="information client creditlimit">
-                            <div class="label">Credit limit</div>
-                            <input type="text" placeholder="Enter the client credit limit">
-                        </div>
-
-                        <div class="information client imgclient">
-                            <div class="label">Image du client</div>
-                            <input type="file" id="imageInput" accept="image/*">
-                        </div>
-                    </div>
-                </section>
-            </main>
-            <div id="overlay" class="overlay">
-                <div class="client info card">
-                    <img src="#" alt="client image">
-                    <h3>LHAJ THAMI</h3>
-                    <div class="info type">
-                        <h4>ID</h4>
-                        <h4>Phone Number</h4>
-                        <h4>Credit Limit</h4>
-                        <h4>Consumed this mounth</h4>
-                        <h4>Paid</h4>
-                        <h4>Remaining</h4>
-                    </div>
-                    <div class="info value">
-                        <h4>:Aa-00074</h4>
-                        <h4>:+212609763680</h4>
-                        <h4>:2,000 MAD</h4>
-                        <h4>:1,350 MAD</h4>
-                        <h4>:900 MAD</h4>
-                        <h4>:450 MAD</h4>
-                    </div>
-                </div>
-                <button class="Card" type="button">LHAJ THAMI veut payer</button>
-                <div class="client payement card">
-                    <img src="#" alt="client image">
-                    <h3>LHAJ THAMI</h3>
-                    <h4>Reste a payer :</h4>
-                    <h5>1,385 DH</h5>
-                    <div class="label">Montant :</div>
-                    <input type="text" placeholder="Entrer le montant que veut le client payer : ">
-                </div>
-                <div class="client report">
-                    <img src="#" alt="client image">
-                    <h3>LHAJ THAMI</h3>
-                    <h3>20-JAN</h3>
-                    <div class="name articls bought">
-                        <h4>Articles achetes : (13:27)</h4>
-                        <div class="articls name">
-                            <h5>Lait 1/2L</h5>
-                            <h5>Indomi x2</h5>
-                            <h5>Farine 1Kg</h5>
-                            <h5>Huile 1L</h5>
-                            <h5>TOTAL</h5>
-                        </div>
-                        <div class="articls name">
-                            <h5>:4,00 DH</h5>
-                            <h5>:5,00 DH</h5>
-                            <h5>:6,00 DH</h5>
-                            <h5>:20,00 DH</h5>
-                            <h5>:35,00 DH</h5>
-                        </div>
-                        <h4>Total a payer:</h4>
-                        <h5>1385 MAD</h5>
-                    </div>
-                </div>
+          <form id="form-login" class="form auth-form" autocomplete="on">
+            <div class="field">
+              <label class="label" for="login-email">Email</label>
+              <input id="login-email" name="email" type="email" placeholder="Enter your email" required />
             </div>
+
+            <div class="field">
+              <label class="label" for="login-password">Password</label>
+              <input id="login-password" name="password" type="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="row">
+              <label class="checkbox">
+                <input id="login-remember" type="checkbox" />
+                <span>Remember me</span>
+              </label>
+            </div>
+
+            <button id="btn-login-next" type="button">Next</button>
+
+            <div class="divider">
+              <span>Or</span>
+            </div>
+
+            <div class="other-way">
+              <img src="Icons/google.png" alt="Google icon" />
+              <button id="btn-login-google" type="button">Login with Google</button>
+            </div>
+
+            <div class="other-way">
+              <img src="Icons/facebook.png" alt="Facebook icon" />
+              <button id="btn-login-facebook" type="button">Login with Facebook</button>
+            </div>
+
+            <p class="hint">
+              Pas de compte ?
+              <button id="btn-go-signup" class="linklike" type="button">Créer un compte</button>
+            </p>
+          </form>
+        </section>
+
+        <!-- Signup -->
+        <section id="screen-signup" class="screen" aria-label="Inscription">
+          <div class="logo">
+            <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
+            <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+          </div>
+
+          <h1>Sign up</h1>
+
+          <form id="form-signup" class="form auth-form" autocomplete="on">
+            <div class="field">
+              <label class="label" for="signup-name">Full Name</label>
+              <input id="signup-name" name="name" type="text" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="signup-email">Email</label>
+              <input id="signup-email" name="email" type="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="signup-password">Password</label>
+              <input id="signup-password" name="password" type="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="signup-password2">Confirm password</label>
+              <input id="signup-password2" name="password2" type="password" placeholder="Confirm your password" required />
+            </div>
+
+            <button id="btn-create-account" type="button">Create Account</button>
+
+            <p class="hint">
+              Déjà un compte ?
+              <button id="btn-back-login" class="linklike" type="button">Retour Login</button>
+            </p>
+          </form>
+        </section>
+
+        <!-- Home -->
+        <section id="screen-home" class="screen" aria-label="Accueil">
+          <header class="topbar">
+            <h1 id="home-date">Aujourd'hui</h1>
+          </header>
+
+          <div class="cards cards-stats">
+            <div class="card">
+              <h2>Ventes aujourd'hui</h2>
+              <h3 id="stat-sales-today">0 DH</h3>
+            </div>
+            <div class="card">
+              <h2>Dépenses aujourd'hui</h2>
+              <h3 id="stat-expenses-today">0 DH</h3>
+            </div>
+            <div class="card">
+              <h2>Profit aujourd'hui</h2>
+              <h3 id="stat-profit-today">0 DH</h3>
+            </div>
+          </div>
+
+          <div class="cards cards-actions">
+            <button class="card action" id="go-cash" type="button">
+              <h2>Vente Cash</h2>
+            </button>
+            <button class="card action" id="go-credit" type="button">
+              <h2>Vente à crédit</h2>
+            </button>
+            <button class="card action" id="go-expense" type="button">
+              <h2>Dépense</h2>
+            </button>
+          </div>
+        </section>
+
+        <!-- Cash -->
+        <section id="screen-cash" class="screen" aria-label="Vente cash">
+          <header class="topbar">
+            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Vente Cash</h1>
+            <span class="spacer"></span>
+          </header>
+
+          <form id="form-cash" class="form">
+            <div class="field">
+              <label class="label" for="cash-article-name">Article</label>
+              <input id="cash-article-name" type="text" placeholder="Nom de l'article" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="cash-article-price">Prix</label>
+              <input id="cash-article-price" type="number" inputmode="decimal" placeholder="Prix" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="cash-article-qty">Quantité</label>
+              <input id="cash-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="1" />
+            </div>
+
+            <button id="btn-cash-add-item" class="add" type="button">Ajouter l'article</button>
+
+            <div id="cash-items" class="items-list" aria-label="Articles ajoutés"></div>
+
+            <div class="summary">
+              <div>Total :</div>
+              <div id="cash-total">0 DH</div>
+            </div>
+
+            <button id="btn-cash-save" class="save" type="button">Enregistrer</button>
+          </form>
+        </section>
+
+        <!-- Credit -->
+        <section id="screen-credit" class="screen" aria-label="Vente à crédit">
+          <header class="topbar">
+            <button id="btn-back-home-from-credit" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Vente à crédit</h1>
+            <span class="spacer"></span>
+          </header>
+
+          <form id="form-credit" class="form">
+            <div class="field">
+              <label class="label" for="credit-client-search">Client</label>
+              <input id="credit-client-search" type="search" placeholder="Entrer le nom du client" />
+              <button id="btn-credit-add-client" class="add" type="button">Ajouter un client</button>
+            </div>
+
+            <div class="field">
+              <label class="label" for="credit-due-date">Échéance</label>
+              <input id="credit-due-date" type="date" />
+            </div>
+
+            <hr />
+
+            <div class="field">
+              <label class="label" for="credit-article-name">Article</label>
+              <input id="credit-article-name" type="text" placeholder="Nom de l'article" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="credit-article-price">Prix</label>
+              <input id="credit-article-price" type="number" inputmode="decimal" placeholder="Prix" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="credit-article-qty">Quantité</label>
+              <input id="credit-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="1" />
+            </div>
+
+            <button id="btn-credit-add-item" class="add" type="button">Ajouter l'article</button>
+
+            <div id="credit-items" class="items-list" aria-label="Articles ajoutés"></div>
+
+            <div class="summary">
+              <div>Total :</div>
+              <div id="credit-total">0 DH</div>
+            </div>
+
+            <button id="btn-credit-save" class="save" type="button">Enregistrer</button>
+          </form>
+        </section>
+
+        <!-- Expense -->
+        <section id="screen-expense" class="screen" aria-label="Dépense">
+          <header class="topbar">
+            <button id="btn-back-home-from-expense" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Dépense</h1>
+            <span class="spacer"></span>
+          </header>
+
+          <form id="form-expense" class="form">
+            <div class="field">
+              <label class="label" for="expense-type">Type de dépense</label>
+              <input id="expense-type" type="text" placeholder="Entrer le type de dépense" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="expense-amount">Prix</label>
+              <input id="expense-amount" type="number" inputmode="decimal" placeholder="Prix" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="expense-notes">Notes</label>
+              <input id="expense-notes" type="text" placeholder="Entrer vos notes..." />
+            </div>
+
+            <button id="btn-expense-save" class="save" type="button">Enregistrer</button>
+          </form>
+        </section>
+
+        <!-- Clients -->
+        <section id="screen-clients" class="screen" aria-label="Clients">
+          <header class="topbar">
+            <button id="btn-back-home-from-clients" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Clients</h1>
+            <span class="spacer"></span>
+          </header>
+
+          <h4 id="clients-summary">0 clients - Dette totale : 0 DH</h4>
+
+          <div class="searchbar">
+            <input id="clients-search" type="text" placeholder="Entrer le nom du client..." />
+          </div>
+
+          <div id="clients-list" class="clients-list" aria-label="Liste des clients"></div>
+
+          <button id="go-add-client" class="addclient" type="button">+ Ajouter un client</button>
+        </section>
+
+        <!-- Add client -->
+        <section id="screen-add-client" class="screen" aria-label="Ajouter client">
+          <header class="topbar">
+            <button id="btn-back-clients-from-add" class="iconbtn" type="button" aria-label="Retour clients">←</button>
+            <h1>Ajouter un client</h1>
+            <span class="spacer"></span>
+          </header>
+
+          <form id="form-add-client" class="form" enctype="multipart/form-data">
+            <div class="field">
+              <label class="label" for="client-name">Full Name</label>
+              <input id="client-name" type="text" placeholder="Enter the client full name" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="client-phone">Number phone</label>
+              <input id="client-phone" type="tel" placeholder="Enter le numero de telephone du client" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="client-limit">Credit limit</label>
+              <input id="client-limit" type="number" inputmode="decimal" placeholder="Enter the client credit limit" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="client-image">Image du client</label>
+              <input type="file" id="client-image" accept="image/*" />
+            </div>
+
+            <button id="btn-save-client" class="save" type="button">Enregistrer le client</button>
+          </form>
+        </section>
+
+        <!-- Reports (placeholder) -->
+        <section id="screen-reports" class="screen" aria-label="Rapports">
+          <header class="topbar">
+            <button id="btn-back-home-from-reports" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Rapports</h1>
+            <span class="spacer"></span>
+          </header>
+          <p>À faire : analyses, graphiques, export…</p>
+        </section>
+
+        <!-- Profile (placeholder) -->
+        <section id="screen-profile" class="screen" aria-label="Profil">
+          <header class="topbar">
+            <button id="btn-back-home-from-profile" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
+            <h1>Utilisateur</h1>
+            <span class="spacer"></span>
+          </header>
+          <p>À faire : paramètres, sécurité, sauvegarde…</p>
+        </section>
+
+      </main>
+
+      <!-- NAVBAR -->
+      <nav class="nav-bar" aria-label="Navigation principale">
+        <button id="nav-home" type="button" aria-label="Accueil">
+          <img src="Icons/home click.png" alt="Home" />
+        </button>
+        <button id="nav-notes" type="button" aria-label="Notes">
+          <img src="Icons/block note no click.png" alt="Notes" />
+        </button>
+        <button id="nav-clients" type="button" aria-label="Clients">
+          <img src="Icons/customer no click.png" alt="Clients" />
+        </button>
+        <button id="nav-reports" type="button" aria-label="Rapport">
+          <img src="Icons/rapport no click.png" alt="Rapport" />
+        </button>
+        <button id="nav-profile" type="button" aria-label="User">
+          <img src="Icons/user no click.png" alt="User" />
+        </button>
+      </nav>
+
+      <!-- OVERLAY GLOBAL (Info client / Paiement / Rapport) -->
+      <div id="overlay" class="overlay hidden" aria-hidden="true">
+
+        <div class="overlay-backdrop" id="overlay-close-area" aria-label="Fermer overlay"></div>
+
+        <div class="overlay-content" role="dialog" aria-modal="true">
+
+          <!-- PANEL 1 : INFO CLIENT -->
+          <div id="overlay-client-info" class="overlay-panel">
+            <div class="card-ui">
+
+              <div class="card-header">
+                <div class="header-top"></div>
+                <img id="overlay-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+              </div>
+
+              <h2 id="overlay-client-name" class="title">CLIENT</h2>
+
+              <div class="grid">
+                <div class="labels">
+                  <p>ID</p>
+                  <p>Phone number</p>
+                  <p>Credit Limit</p>
+                  <p>Consumed this month</p>
+                  <p>Paid</p>
+                  <p>Remaining</p>
+                </div>
+
+                <div class="values">
+                  <p id="overlay-client-id">: --</p>
+                  <p id="overlay-client-phone">: --</p>
+                  <p id="overlay-client-limit">: --</p>
+                  <p id="overlay-client-consumed">: --</p>
+                  <p id="overlay-client-paid">: --</p>
+                  <p id="overlay-client-remaining">: --</p>
+                </div>
+              </div>
+
+              <button id="btn-open-payment" class="btn-primary" type="button">Le client veut payer</button>
+              <button id="btn-open-report" class="btn-secondary" type="button">Voir rapport du jour</button>
+              <button id="btn-overlay-close-1" class="btn-ghost" type="button">Fermer</button>
+
+            </div>
+          </div>
+
+          <!-- PANEL 2 : PAIEMENT -->
+          <div id="overlay-payment" class="overlay-panel hidden">
+            <div class="card-ui">
+
+              <div class="card-header">
+                <div class="header-top"></div>
+                <img id="payment-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+              </div>
+
+              <h2 id="payment-client-name" class="title">CLIENT</h2>
+
+              <p class="center">Reste à payer :</p>
+              <h3 id="payment-remaining" class="big">0 DH</h3>
+
+              <label class="label" for="payment-amount">Montant</label>
+              <input id="payment-amount" class="input" type="number" inputmode="decimal" placeholder="Montant payé" />
+
+              <button id="btn-payment-save" class="btn-primary" type="button">Enregistrer paiement</button>
+              <button id="btn-overlay-close-2" class="btn-ghost" type="button">Fermer</button>
+
+            </div>
+          </div>
+
+          <!-- PANEL 3 : RAPPORT -->
+          <div id="overlay-report" class="overlay-panel hidden">
+            <div class="card-ui">
+
+              <div class="card-header">
+                <div class="header-top"></div>
+                <img id="report-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+              </div>
+
+              <h2 class="title">
+                Rapport de <span id="report-client-name">CLIENT</span><br />
+                <span id="report-date" class="small">-- ---</span>
+              </h2>
+
+              <p class="center small">
+                Articles achetés : (<span id="report-time">--:--</span>)
+              </p>
+
+              <div class="report-box">
+                <div class="row head">
+                  <span>Article</span>
+                  <span>Prix</span>
+                </div>
+
+                <div id="report-items-list"></div>
+
+                <div class="row total">
+                  <strong>TOTAL</strong>
+                  <strong id="report-total">0.00 MAD</strong>
+                </div>
+              </div>
+
+              <p class="center">Total à payer :</p>
+              <h3 id="report-to-pay" class="big">0 MAD</h3>
+
+              <button id="btn-overlay-close-3" class="btn-ghost" type="button">Fermer</button>
+
+            </div>
+          </div>
+
         </div>
+      </div>
+
     </div>
+  </div>
+
+  <!-- JS -->
+  <script src="app.js"></script>
 </body>
 </html>
