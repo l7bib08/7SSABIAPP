@@ -3,15 +3,17 @@
   margin: 0;
   padding: 0;
 }
-
 html, body {
   height: 100%;
 }
 
+
 body {
-  font-family: system-ui;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: #F9FAFB;
+  color: #111827;
 }
+
 
 .phone {
   width: min(420px, 100vw);
@@ -21,36 +23,23 @@ body {
   border-radius: 28px;
   padding: 10px;
 }
-
 .app {
   height: 100%;
-  background: #f6f6f6;
+  background: #F9FAFB;
   border-radius: 22px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
-
 .content {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 16px;
-  padding-bottom: 90px;
+  padding-bottom: 90px; 
 }
+.hidden { display: none; }
 
-section {
-  display: none;
-}
 
-section.active {
-  display: block;
-}
-
-:root {
-  --main-font: 'Poppins', sans-serif;
-}
-
-@font-face {
-  font-family: 'PoppinsBold';
-  src: url('Fonts/Poppins-Bold.ttf') format('truetype');
-}
+.screen { display: none; }
+.screen.active { display: block; }
