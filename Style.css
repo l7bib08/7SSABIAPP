@@ -7,11 +7,101 @@ html, body {
   height: 100%;
 }
 
+:root {
+
+  --font-primary: 'Manrope', sans-serif;
+
+  /* App surfaces */
+
+  --c-app: #F9FAFB;                     /* App background */
+  --c-frame: #111111;                   /* Device/mock frame color */
+
+  --c-primary-title: #1E293B;           /* Screen titles */
+  --c-secondary-title: #1E293B;         /* Section titles */
+  --c-first-body-text: #111827;         /* Primary body text */
+  --c-secondary-body-text: #6B7280;     /* Secondary body text */
+
+  --c-cards: #F9FAFB;                   /* Text on colored cards */
+  --c-button: #FFFFFF;                  /* Text on colored buttons */
+
+  /* Font sizes */
+
+  --fs-title-1: 24px;                   /* Screen title */
+  --fs-title-2: 18px;                   /* Secondary or section title */
+
+  --fs-body: 14px;                      /* Primary body text */
+  --fs-small: 13px;                     /* Secondary body text */
+
+  --fs-stat-lg: 24px;                   /* Large stats number (Profit) */
+  --fs-stat-md: 20px;                   /* Medium stats number (Sales or Expenses) */
+
+  --fs-button-lg: 16px;                 /* Primary button text */
+  --fs-button-md: 15px;                 /* Secondary buttons + card labels */
+
+  /* Font weights */
+
+  --fw-title-1: 700;                    /* Screen title weight */
+  --fw-title-2: 600;                    /* Secondary title weight */
+
+  --fw-body: 400;                       /* Body text weight */
+  --fw-small: 400;                      /* Secondary body text weight */
+
+  --fw-stat-lg: 700;                    /* Large stats number weight */
+  --fw-stat-md: 700;                    /* Medium stats number weight */
+
+  --fw-button-lg: 600;                  /* Primary button weight */
+  --fw-button-md: 600;                  /* Secondary button + card label weight */
+
+  /* Line heights */
+
+  --lh-compact: 1.10;                   /* Numbers */
+  --lh-tight: 1.15;                     /* Big titles (screen titles) */
+  --lh-normal: 1.25;                    /* Labels & buttons */
+  --lh-body: 1.45;                      /* Body text & inputs */
+
+
+  /* Spacing scale */
+
+  --sp-1: 4px; 
+  --sp-2: 8px;
+  --sp-3: 12px; 
+  --sp-4: 16px;  
+  --sp-5: 20px; 
+  --sp-6: 24px; 
+  --sp-8: 32px; 
+
+  /* Screen padding */
+
+  --screen-padding-x: 16px;             /* Left/right padding */
+  --screen-padding-top: 32px;           /* Top padding (below safe area) */
+  --screen-padding-bottom: 32px;        /* Bottom padding (above bottom nav) */
+
+  /* Vertical rhythm (Home screen structure) */
+
+  --gap-title-to-card: var(--sp-6);         /* Title to first summary card */
+  --gap-card: var(--sp-4);                  /* Between summary cards */
+  --gap-profit: var(--sp-6);                /* Expenses to Profit */
+  --gap-summary-to-actions: var(--sp-8);    /* Profit card to primary action button */
+  --gap-buttons: var(--sp-4);               /* Primary button to secondary buttons row */
+
+  /* Card internal spacing (summary cards) */
+
+  --card-padding: var(--sp-4);              /* Card padding (all sides) */
+  --card-label-gap: var(--sp-2);            /* Label to number spacing (inside card) */
+
+  /* Navigation Bar */
+
+  --navbar-height: 90px;
+}
+
 
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #F9FAFB;
-  color: #111827;
+  font-family: "Manrope",system-ui, Arial, sans-serif;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  background: var(--c-app);
 }
 
 
@@ -19,13 +109,13 @@ body {
   width: min(420px, 100vw);
   height: min(820px, 100vh);
   margin: auto;
-  background: #111;
+  background: var(--c-frame);
   border-radius: 28px;
   padding: 10px;
 }
 .app {
   height: 100%;
-  background: #F9FAFB;
+  background: var(--c-app);
   border-radius: 22px;
   overflow: hidden;
   display: flex;
@@ -36,10 +126,19 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 16px;
-  padding-bottom: 90px; 
+  padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
+  padding-top: var(--screen-padding-top);
 }
 .hidden { display: none; }
 
 
 .screen { display: none; }
 .screen.active { display: block; }
+
+.screen h1{
+  font-family: var(--font-primary);
+  font-size: var(--fs-title-1);
+  font-weight: var(--fw-title-1);
+  line-height: var(--lh-tight);
+  color: var(--c-primary-title);
+}

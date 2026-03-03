@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>MOBILE APP JIBI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,7 +14,7 @@
       <main class="content" id="app-content">
 
         <!-- Splash / Initial -->
-        <section id="screen-initial" class="screen active" aria-label="Écran initial">
+        <section id="screen-initial" class="screen" aria-label="Écran initial">
           <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
           <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
         </section>
@@ -110,8 +111,8 @@
         <!-- Home -->
         <section id="screen-home" class="screen" aria-label="Accueil">
           <header class="topbar">
-            <h1 id="home-date">Aujourd'hui</h1>
-            <h2 id="date">21 sep 2026</h2>
+            <h1 id="home-title">Aujourd'hui</h1>
+            <h2 id="home-date">21 sep 2026</h2>
           </header>
 
           <div class="cards cards-stats">
@@ -153,17 +154,18 @@
 
           <form id="form-cash" class="form">
             <div class="field">
-              <label class="label" for="cash-article-name">Article</label>
+              <h2>Articles :</h2>
+              <label class="label" for="cash-article-name"></label>
               <input id="cash-article-name" type="text" placeholder="Nom de l'article" />
             </div>
 
             <div class="field">
-              <label class="label" for="cash-article-price">Prix</label>
+              <label class="label" for="cash-article-price"></label>
               <input id="cash-article-price" type="number" inputmode="decimal" placeholder="Prix" />
             </div>
 
             <div class="field">
-              <label class="label" for="cash-article-qty">Quantité</label>
+              <label class="label" for="cash-article-qty"></label>
               <input id="cash-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="1" />
             </div>
 
@@ -190,30 +192,32 @@
 
           <form id="form-credit" class="form">
             <div class="field">
-              <label class="label" for="credit-client-search">Client</label>
+              <h2>Client :</h2>
+              <label class="label" for="credit-client-search"></label>
               <input id="credit-client-search" type="search" placeholder="Entrer le nom du client" />
               <button id="btn-credit-add-client" class="add" type="button">Ajouter un client</button>
             </div>
 
-            <div class="field">
+            <!-- <div class="field">
               <label class="label" for="credit-due-date">Échéance</label>
               <input id="credit-due-date" type="date" />
-            </div>
+            </div> -->
 
             <hr />
 
             <div class="field">
-              <label class="label" for="credit-article-name">Article</label>
+              <h2>Articles :</h2>
+              <label class="label" for="credit-article-name"></label>
               <input id="credit-article-name" type="text" placeholder="Nom de l'article" />
             </div>
 
             <div class="field">
-              <label class="label" for="credit-article-price">Prix</label>
+              <label class="label" for="credit-article-price"></label>
               <input id="credit-article-price" type="number" inputmode="decimal" placeholder="Prix" />
             </div>
 
             <div class="field">
-              <label class="label" for="credit-article-qty">Quantité</label>
+              <label class="label" for="credit-article-qty"></label>
               <input id="credit-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="1" />
             </div>
 
@@ -241,20 +245,22 @@
 
           <form id="form-expense" class="form">
             <div class="field">
-              <label class="label" for="expense-type">Type de dépense</label>
+              <h2>Dépenses :</h2>
+              <label class="label" for="expense-type"></label>
               <input id="expense-type" type="text" placeholder="Entrer le type de dépense" />
             </div>
 
             <div class="field">
-              <label class="label" for="expense-amount">Prix</label>
+              <label class="label" for="expense-amount"></label>
               <input id="expense-amount" type="number" inputmode="decimal" placeholder="Prix" />
             </div>
 
             <div class="field">
-              <label class="label" for="expense-notes">Notes</label>
+              <label class="label" for="expense-notes"></label>
               <input id="expense-notes" type="text" placeholder="Entrer vos notes..." />
             </div>
 
+            <button id="go-add-expense" class="addexpense" type="button">+ Ajouter un autre type de dépense</button>
             <button id="btn-expense-save" class="save" type="button">Enregistrer</button>
           </form>
         </section>
@@ -265,19 +271,69 @@
             <h1>Clients</h1>
           </header>
 
-          <h4 id="clients-summary">0 clients - Dette totale : 0 DH</h4>
+          <h4 id="clients-summary">32 clients • Dette totale : 4 850 Dh</h4>
 
           <div class="searchbar">
-            <input id="clients-search" type="text" placeholder="Entrer le nom du client..." />
+            <input id="clients-search" type="text" placeholder="Entrer le nom du client que vous chercher :" />
           </div>
 
-          <div id="clients-list" class="clients-list" aria-label="Liste des clients"></div>
+          <div id="clients-list" class="clients-list" aria-label="Liste des clients">
+
+            <!-- Client card 1 -->
+            <div class="client-card">
+              <div class="client-left">
+                <img class="client-avatar" src="Icons/user.png" alt="client avatar" />
+              </div>
+
+              <div class="client-center">
+                <div class="client-name">LHAJ THAMI - 0609763680</div>
+                <div class="client-amount danger">1,240 DH</div>
+              </div>
+
+              <div class="client-right" aria-label="menu">
+                <span class="client-menu">≡</span>
+              </div>
+            </div>
+
+            <!-- Client card 2 -->
+            <div class="client-card">
+              <div class="client-left">
+                <img class="client-avatar" src="Icons/user.png" alt="client avatar" />
+              </div>
+
+              <div class="client-center">
+                <div class="client-name">L3SKRI - 0673138637</div>
+                <div class="client-amount success">0 DH</div>
+              </div>
+
+              <div class="client-right" aria-label="menu">
+                <span class="client-menu">≡</span>
+              </div>
+            </div>
+
+            <!-- Client card 3 -->
+            <div class="client-card">
+              <div class="client-left">
+                <img class="client-avatar" src="Icons/user.png" alt="client avatar" />
+              </div>
+
+              <div class="client-center">
+                <div class="client-name">AMINOR - 0605959424</div>
+                <div class="client-amount danger">723 DH</div>
+              </div>
+
+              <div class="client-right" aria-label="menu">
+                <span class="client-menu">≡</span>
+              </div>
+            </div>
+
+          </div>
 
           <button id="go-add-client" class="addclient" type="button">+ Ajouter un client</button>
         </section>
 
         <!-- Add client -->
-        <section id="screen-add-client" class="screen" aria-label="Ajouter client">
+        <section id="screen-add-client" class="screen active" aria-label="Ajouter client">
           <header class="topbar">
             <h1>Ajouter un client</h1>
           </header>
