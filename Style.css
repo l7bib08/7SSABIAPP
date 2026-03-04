@@ -1,3 +1,17 @@
+section.screen {
+  display: none !important;
+}
+
+section.screen.active {
+  display: block !important;
+}
+
+.nav-bar {
+  display: none;
+}
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,7 +43,7 @@ html, body {
 
   /* Font sizes */
 
-  --fs-title-1: 24px;                   /* Screen title */
+  --fs-title-1: 30px;                   /* Screen title */
   --fs-title-2: 18px;                   /* Secondary or section title */
 
   --fs-body: 14px;                      /* Primary body text */
@@ -43,7 +57,7 @@ html, body {
 
   /* Font weights */
 
-  --fw-title-1: 700;                    /* Screen title weight */
+  --fw-title-1: 1000;                    /* Screen title weight */
   --fw-title-2: 600;                    /* Secondary title weight */
 
   --fw-body: 400;                       /* Body text weight */
@@ -58,7 +72,7 @@ html, body {
   /* Line heights */
 
   --lh-compact: 1.10;                   /* Numbers */
-  --lh-tight: 1.15;                     /* Big titles (screen titles) */
+  --lh-tight: 4.15;                     /* Big titles (screen titles) */
   --lh-normal: 1.25;                    /* Labels & buttons */
   --lh-body: 1.45;                      /* Body text & inputs */
 
@@ -135,10 +149,6 @@ body {
 .hidden { display: none; }
 
 
-.screen { display: none; }
-.screen.active { display: block; }
-
-
 /* SCREEN TITLES */
 
 .screen h1{
@@ -159,9 +169,93 @@ body {
   color: var(--c-secondary-title);
 }
 
-/* LOGIN AND SINGUP */
+/* SPLASH SCREEN */
+
+#screen-initial.active{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#screen-initial img:first-child{
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+}
+
+#screen-initial img:last-child{
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  margin-top: -100px;
+}
+
+/* LOGIN AND SINGUP SCREEN*/
+
+/* LOGO LOGIN */
+
+#screen-login.active {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+#screen-login .logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+#screen-login .logo img:first-child{
+  width: 120px;
+  height: auto;
+}
+
+#screen-login .logo img:last-child{
+  width: 80px;
+  height: auto;
+  margin-top: -50px;
+}
+
+/* LOGO SIGNUP */
+
+#screen-signup.active {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+#screen-signup .logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+#screen-signup .logo img:first-child{
+  width: 120px;
+  height: auto;
+}
+
+#screen-signup .logo img:last-child{
+  width: 80px;
+  height: auto;
+  margin-top: -50px;
+}
+
+/* LABELS */
 
 .screen .form.auth-form .field .label{
+  margin-left: 10px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-button-md);   
@@ -169,13 +263,27 @@ body {
   color: var(--c-first-body-text);
 }
 
+/* INPUTS */
+
 .screen .form.auth-form .field input{
+  display: block;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  width: 320px;
+  padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
   color: var(--c-first-body-text);
+
+  border: 3px solid black;
+  border-radius: 40px;
+
+  background-color: var(--c-app);
 }
+
+/* LOGIN ADDED ITEMS */
 
 .screen .form.auth-form .field input::placeholder{
   font-family: var(--font-primary);
@@ -185,12 +293,34 @@ body {
   color: var(--c-secondary-body-text);
 }
 
-.screen .form.auth-form .row span{
+.screen .form.auth-form .row{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-bottom: 100px;
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
   line-height: var(--lh-body);
   color: var(--c-first-body-text);
+}
+
+.screen .form.auth-form .checkbox{
+  display: flex;
+  align-items: center;
+  gap: 6px;        
+}
+
+#btn-login-next {
+  display: block;
+  margin: 20px auto;
+  margin-top: -70px;
+  width: 80px;
+  height: 30px;
+
+  border: 3px solid black;
+  border-radius: 20px;
+
+  background-color: var(--c-app);
 }
 
 .screen .form.auth-form button{
@@ -201,12 +331,32 @@ body {
   color: var(--c-first-body-text); 
 }
 
-.screen .form.auth-form .divider span{
+.divider{
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
   line-height: var(--lh-body);
   color: var(--c-secondary-body-text);
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.divider::before,
+.divider::after{
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid black;
+}
+
+.divider span{
+  margin: 0 10px;
+
 }
 
 .screen .form.auth-form .other-way button{
@@ -215,9 +365,31 @@ body {
   font-weight: var(--fw-button-md);
   line-height: var(--lh-normal);
   color: var(--c-first-body-text);
+
+  border: 3px solid black;
+  border-radius: 40px;
+
+  width: 300px;
+  height: 50px;
+  margin-bottom: 10px;
+
+  background-color: var(--c-app);
 }
 
-.screen .form.auth-form .hint p{
+.other-way{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.other-way button{
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  padding: 10px 20px;
+}
+
+.screen .form.auth-form .hint{
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
@@ -301,35 +473,4 @@ body {
   font-weight: var(--fw-button-lg);
   line-height: var(--lh-normal);
   color: red;
-}
-
-
-/* SPLASH SCREEN */
-
-
-body:has(#screen-initial.active) .nav-bar {
-  display: none;
-}
-
-#screen-initial {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0px;
-  padding: 0;
-}
-
-#screen-initial img:first-child {
-  max-width: 260px;
-  width: 100%;
-  height: auto;
-}
-
-#screen-initial img:last-child {
-  max-width: 180px;
-  width: 100%;
-  height: auto;
-  margin-top: -100px;
 }

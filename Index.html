@@ -14,13 +14,13 @@
       <main class="content" id="app-content">
 
         <!-- Splash / Initial -->
-        <section id="screen-initial" class="screen active" aria-label="Écran initial">
+        <section id="screen-initial" class="screen" aria-label="Écran initial">
           <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
           <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
         </section>
 
         <!-- Login -->
-        <section id="screen-login" class="screen" aria-label="Connexion">
+        <section id="screen-login" class="screen active" aria-label="Connexion">
           <div class="logo">
             <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
             <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
@@ -30,12 +30,12 @@
 
           <form id="form-login" class="form auth-form" autocomplete="on">
             <div class="field">
-              <label class="label" for="login-email">Email</label>
+              <label class="label" for="login-email">Email :</label>
               <input id="login-email" name="email" type="email" placeholder="Enter your email" required />
             </div>
 
             <div class="field">
-              <label class="label" for="login-password">Password</label>
+              <label class="label" for="login-password">Password :</label>
               <input id="login-password" name="password" type="password" placeholder="Enter your password" required />
             </div>
 
@@ -53,13 +53,11 @@
             </div>
 
             <div class="other-way">
-              <img src="Icons/google.png" alt="Google icon" />
-              <button id="btn-login-google" type="button">Login with Google</button>
+              <button id="btn-login-google" type="button"><img src="Icons/google.png" alt="Google icon" width="30"/>Login with Google</button>
             </div>
 
             <div class="other-way">
-              <img src="Icons/facebook.png" alt="Facebook icon" />
-              <button id="btn-login-facebook" type="button">Login with Facebook</button>
+              <button id="btn-login-facebook" type="button"><img src="Icons/facebook.png" alt="Facebook icon" width="30"/>Login with Facebook</button>
             </div>
 
             <p class="hint">
@@ -80,22 +78,22 @@
 
           <form id="form-signup" class="form auth-form" autocomplete="on">
             <div class="field">
-              <label class="label" for="signup-name">Full Name</label>
+              <label class="label" for="signup-name">Full Name :</label>
               <input id="signup-name" name="name" type="text" placeholder="Enter your full name" required />
             </div>
 
             <div class="field">
-              <label class="label" for="signup-email">Email</label>
+              <label class="label" for="signup-email">Email :</label>
               <input id="signup-email" name="email" type="email" placeholder="Enter your email" required />
             </div>
 
             <div class="field">
-              <label class="label" for="signup-password">Password</label>
+              <label class="label" for="signup-password">Password :</label>
               <input id="signup-password" name="password" type="password" placeholder="Enter your password" required />
             </div>
 
             <div class="field">
-              <label class="label" for="signup-password2">Confirm password</label>
+              <label class="label" for="signup-password2">Confirm password :</label>
               <input id="signup-password2" name="password2" type="password" placeholder="Confirm your password" required />
             </div>
 
