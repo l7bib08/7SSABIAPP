@@ -24,6 +24,9 @@ html, body {
   --c-cards: #F9FAFB;                   /* Text on colored cards */
   --c-button: #FFFFFF;                  /* Text on colored buttons */
 
+  --c-success: #15803D;
+  --c-danger: #B91C1C;
+
   /* Font sizes */
 
   --fs-title-1: 24px;                   /* Screen title */
@@ -135,10 +138,167 @@ body {
 .screen { display: none; }
 .screen.active { display: block; }
 
+
+/* SCREEN TITLES */
+
 .screen h1{
   font-family: var(--font-primary);
   font-size: var(--fs-title-1);
   font-weight: var(--fw-title-1);
   line-height: var(--lh-tight);
   color: var(--c-primary-title);
+}
+
+/* LABELS OF FIELDS */
+
+.screen h2{
+  font-family: var(--font-primary);
+  font-size: var(--fs-title-2);
+  font-weight: var(--fw-title-2);
+  line-height: var(--lh-normal);
+  color: var(--c-secondary-title);
+}
+
+/* LOGIN AND SINGUP */
+
+.screen .form.auth-form .field .label{
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-button-md);   
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text);
+}
+
+.screen .form.auth-form .field input{
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+}
+
+.screen .form.auth-form .field input::placeholder{
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+.screen .form.auth-form .row span{
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+}
+
+.screen .form.auth-form button{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text); 
+}
+
+.screen .form.auth-form .divider span{
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+.screen .form.auth-form .other-way button{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-md);
+  font-weight: var(--fw-button-md);
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text);
+}
+
+.screen .form.auth-form .hint p{
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+/* HOME */
+
+.screen .cards.cards-stats .card h2{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-md);      
+  font-weight: var(--fw-button-md);    
+  line-height: var(--lh-normal);
+  color: red;               /* #F9FAFB */
+}
+
+.screen .cards.cards-stats .card h3{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-md);
+  font-weight: var(--fw-button-md);
+  line-height: var(--lh-compact);
+  color: red;
+}
+
+.screen .cards.cards-stats .card #stat-profit-today{
+  font-family: var(--font-primary);
+  font-size: var(--fs-stat-lg);        
+  font-weight: var(--fw-stat-lg);      
+  line-height: var(--lh-compact);
+  color: red;
+}
+
+.cards-actions #go-cash h2{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);    
+  font-weight: var(--fw-button-lg);    
+  line-height: var(--lh-normal);
+  color: blue;              /* #FFFFFF */
+}
+
+.cards-actions h2{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-md);      
+  font-weight: var(--fw-button-md);    
+  line-height: var(--lh-normal);
+  color: red;              /* #FFFFFF */
+}
+
+/* CASH SCREEN */
+
+.screen .form input{
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+.screen .form #btn-cash-add-item{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);     
+  font-weight: var(--fw-button-lg);  
+  line-height: var(--lh-normal);
+  color: red;
+}
+
+.screen .form #btn-cash-save{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: red;
+}
+
+/* CREDIT SCREEN */
+
+.screen button{
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: red;
 }
