@@ -14,7 +14,7 @@
       <main class="content" id="app-content">
 
         <!-- Splash / Initial -->
-        <section id="screen-initial" class="screen" aria-label="Écran initial">
+        <section id="screen-initial" class="screen active" aria-label="Écran initial">
           <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
           <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
         </section>
@@ -107,7 +107,7 @@
         </section>
 
         <!-- Home -->
-        <section id="screen-home" class="screen active" aria-label="Accueil">
+        <section id="screen-home" class="screen" aria-label="Accueil">
           <header class="topbar">
             <h1 id="home-title">Aujourd'hui</h1>
             <h2 id="home-date">21 sep 2026</h2>
@@ -384,7 +384,7 @@
       </main>
 
       <!-- NAVBAR -->
-      <nav class="nav-bar" aria-label="Navigation principale">
+      <!--<nav class="nav-bar" aria-label="Navigation principale">
         <button id="nav-home" type="button" aria-label="Accueil">
           <img src="Icons/home click.png" width="30" alt="Home" />
         </button>
@@ -399,6 +399,28 @@
         </button>
         <button id="nav-profile" type="button" aria-label="User">
           <img src="Icons/user no click.png" width="30" alt="User" />
+        </button>
+      </nav>-->
+
+      <nav class="nav-bar notch" aria-label="Navigation principale">
+        <button class="nav-item active" type="button" aria-label="Home">
+          <span class="icon"><img src="Icons/home click.png" alt=""></span>
+        </button>
+
+        <button class="nav-item" type="button" aria-label="History">
+          <span class="icon"><img src="Icons/block note no click.png" alt=""></span>
+        </button>
+
+        <button class="nav-item" type="button" aria-label="Scan">
+          <span class="icon"><img src="Icons/customer no click.png" alt=""></span>
+        </button>
+
+        <button class="nav-item" type="button" aria-label="Card">
+          <span class="icon"><img src="Icons/rapport no click.png" alt=""></span>
+        </button>
+
+        <button class="nav-item" type="button" aria-label="Profile">
+          <span class="icon"><img src="Icons/user no click.png" alt=""></span>
         </button>
       </nav>
 

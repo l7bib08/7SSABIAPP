@@ -1,3 +1,6 @@
+/* =========================================================
+   SCREENS VISIBILITY (ROUTING)
+   ========================================================= */
 section.screen {
   display: none !important;
 }
@@ -6,12 +9,24 @@ section.screen.active {
   display: block !important;
 }
 
-.nav-bar {
-  display: none;
+
+/* =========================================================
+   NAV VISIBILITY (OLD RULES YOU ADDED)
+   ========================================================= */
+/* NAV: visible by default (override old rules) */
+.nav-bar{
+  display: flex !important;
+}
+
+/* Hide nav only when .app has hide-nav */
+.app.hide-nav .nav-bar{
+  display: none !important;
 }
 
 
-
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,12 +36,15 @@ html, body {
   height: 100%;
 }
 
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 :root {
 
   --font-primary: 'Manrope', sans-serif;
 
   /* App surfaces */
-
   --c-app: #F9FAFB;                     /* App background */
   --c-frame: #111111;                   /* Device/mock frame color */
 
@@ -42,7 +60,6 @@ html, body {
   --c-danger: #B91C1C;
 
   /* Font sizes */
-
   --fs-title-1: 30px;                   /* Screen title */
   --fs-title-2: 18px;                   /* Secondary or section title */
 
@@ -56,8 +73,7 @@ html, body {
   --fs-button-md: 15px;                 /* Secondary buttons + card labels */
 
   /* Font weights */
-
-  --fw-title-1: 1000;                    /* Screen title weight */
+  --fw-title-1: 1000;                   /* Screen title weight */
   --fw-title-2: 600;                    /* Secondary title weight */
 
   --fw-body: 400;                       /* Body text weight */
@@ -70,15 +86,12 @@ html, body {
   --fw-button-md: 600;                  /* Secondary button + card label weight */
 
   /* Line heights */
-
   --lh-compact: 1.10;                   /* Numbers */
   --lh-tight: 4.15;                     /* Big titles (screen titles) */
   --lh-normal: 1.25;                    /* Labels & buttons */
   --lh-body: 1.45;                      /* Body text & inputs */
 
-
   /* Spacing scale */
-
   --sp-1: 4px; 
   --sp-2: 8px;
   --sp-3: 12px; 
@@ -88,13 +101,11 @@ html, body {
   --sp-8: 32px; 
 
   /* Screen padding */
-
   --screen-padding-x: 16px;             /* Left/right padding */
   --screen-padding-top: 32px;           /* Top padding (below safe area) */
   --screen-padding-bottom: 32px;        /* Bottom padding (above bottom nav) */
 
   /* Vertical rhythm (Home screen structure) */
-
   --gap-title-to-card: var(--sp-6);         /* Title to first summary card */
   --gap-card: var(--sp-4);                  /* Between summary cards */
   --gap-profit: var(--sp-6);                /* Expenses to Profit */
@@ -102,16 +113,17 @@ html, body {
   --gap-buttons: var(--sp-4);               /* Primary button to secondary buttons row */
 
   /* Card internal spacing (summary cards) */
-
   --card-padding: var(--sp-4);              /* Card padding (all sides) */
   --card-label-gap: var(--sp-2);            /* Label to number spacing (inside card) */
 
   /* Navigation Bar */
-
   --navbar-height: 90px;
 }
 
 
+/* =========================================================
+   BODY / APP LAYOUT
+   ========================================================= */
 body {
   font-family: "Manrope",system-ui, Arial, sans-serif;
   font-size: var(--fs-body);
@@ -121,7 +133,6 @@ body {
   background: var(--c-app);
 }
 
-
 .phone {
   width: min(420px, 100vw);
   height: min(820px, 100vh);
@@ -130,6 +141,7 @@ body {
   border-radius: 28px;
   padding: 10px;
 }
+
 .app {
   height: 100%;
   background: var(--c-app);
@@ -138,6 +150,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .content {
   flex: 1;
   overflow-y: auto;
@@ -146,11 +159,13 @@ body {
   padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
   padding-top: var(--screen-padding-top);
 }
+
 .hidden { display: none; }
 
 
-/* SCREEN TITLES */
-
+/* =========================================================
+   TYPOGRAPHY: SCREEN TITLES / SECTION TITLES
+   ========================================================= */
 .screen h1{
   font-family: var(--font-primary);
   font-size: var(--fs-title-1);
@@ -162,8 +177,6 @@ body {
   margin-top: -30px;
 }
 
-/* LABELS OF FIELDS */
-
 .screen h2{
   font-family: var(--font-primary);
   font-size: var(--fs-title-2);
@@ -172,8 +185,10 @@ body {
   color: var(--c-secondary-title);
 }
 
-/* SPLASH SCREEN */
 
+/* =========================================================
+   SPLASH SCREEN
+   ========================================================= */
 #screen-initial.active{
   display: flex !important;
   flex-direction: column;
@@ -195,10 +210,10 @@ body {
   margin-top: -100px;
 }
 
-/* LOGIN AND SINGUP SCREEN*/
 
-/* LOGO LOGIN */
-
+/* =========================================================
+   LOGIN SCREEN
+   ========================================================= */
 #screen-login.active{
   display: flex !important;
   flex-direction: column;
@@ -226,8 +241,10 @@ body {
   margin-top: -50px;
 }
 
-/* LOGO SIGNUP */
 
+/* =========================================================
+   SIGNUP SCREEN
+   ========================================================= */
 #screen-signup.active {
   display: flex !important;
   flex-direction: column;
@@ -255,8 +272,11 @@ body {
   margin-top: -50px;
 }
 
-/* LABELS */
 
+/* =========================================================
+   AUTH FORMS (LOGIN / SIGNUP) — LABELS / INPUTS / BUTTONS
+   ========================================================= */
+/* Labels */
 .screen .form.auth-form .field .label{
   margin-left: 10px;
   font-family: var(--font-primary);
@@ -266,8 +286,7 @@ body {
   color: var(--c-first-body-text);
 }
 
-/* INPUTS */
-
+/* Inputs */
 .screen .form.auth-form .field input{
   display: block;
   margin: 10px auto;
@@ -294,8 +313,7 @@ body {
   color: var(--c-secondary-body-text);
 }
 
-/* LOGIN ITEMS */
-
+/* Remember me row */
 .screen .form.auth-form .row{
   margin-top: 30px;
   margin-left: 10px;
@@ -313,6 +331,7 @@ body {
   gap: 6px;        
 }
 
+/* Next button */
 #btn-login-next{
   display: block;
   margin: 20px auto;
@@ -326,6 +345,7 @@ body {
   background-color: var(--c-app);
 }
 
+/* Generic auth buttons */
 .screen .form.auth-form button{
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
@@ -334,6 +354,7 @@ body {
   color: var(--c-first-body-text); 
 }
 
+/* Divider */
 .divider{
   font-family: var(--font-primary);
   font-size: var(--fs-small);
@@ -359,9 +380,9 @@ body {
 
 .divider span{
   margin: 0 10px;
-
 }
 
+/* Google / Facebook buttons */
 .screen .form.auth-form .other-way button{
   font-family: var(--font-primary);
   font-size: var(--fs-button-md);
@@ -386,6 +407,7 @@ body {
   background-color: var(--c-app);
 }
 
+/* Hint block (signup/login link) */
 .screen .form.auth-form .hint{
   font-family: var(--font-primary);
   font-size: var(--fs-small);
@@ -413,17 +435,15 @@ body {
   background-color: var(--c-app);
 }
 
-.screen .form.auth-form button:hover {
-  background: #f3f4f6;
-}
-
+/* Auth button press effect */
 .screen .form.auth-form button:active {
-  transform: scale(0.95);
-  background: #e5e7eb;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 0 #000;
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000;   
 }
 
-/* SIGNUP ITEMS */
-
+/* Signup submit button (kept exactly as you wrote it) */
 .screen .form.auth-form button{
   display: block;
   margin: 20px auto;
@@ -438,14 +458,16 @@ body {
 }
 
 
-/* HOME */
-
+/* =========================================================
+   HOME SCREEN
+   ========================================================= */
 #screen-home .topbar h2{
   text-align: center;
   margin-top: -30px;
   margin-bottom: 40px; 
 }
 
+/* Stats cards text */
 .screen .cards.cards-stats .card-sell-expense h2,
 .screen .cards.cards-stats .card-profit h2{
   font-family: var(--font-primary);
@@ -454,7 +476,6 @@ body {
   line-height: var(--lh-normal);
   color: #F9FAFB;               /* #F9FAFB */
 }
-
 
 .screen .cards.cards-stats .card-sell-expense h3,
 .screen .cards.cards-stats .card-profit h3{
@@ -465,6 +486,7 @@ body {
   color: #F9FAFB;
 }
 
+/* Stats cards blocks */
 .cards-stats{
   display: flex;
   flex-direction: column;
@@ -503,6 +525,7 @@ body {
   background: #15803D;
 }
 
+/* Action buttons blocks */
 .cards-actions #go-cash{
   display: flex;
   flex-direction: column;
@@ -549,8 +572,20 @@ body {
   background-color: #B91C1C;
 }
 
+/* Action buttons interactions */
+.cards-actions button{
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
 
+.cards-actions button:active{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
+/* Action buttons text */
 .screen .cards.cards-stats .card #stat-profit-today{
   font-family: var(--font-primary);
   font-size: var(--fs-stat-lg);        
@@ -575,8 +610,10 @@ body {
   color: white;              /* #FFFFFF */
 }
 
-/* CASH SCREEN */
 
+/* =========================================================
+   CASH SCREEN (FORM INPUTS / BUTTONS)
+   ========================================================= */
 .screen .form input{
   font-family: var(--font-primary);
   font-size: var(--fs-small);
@@ -601,12 +638,98 @@ body {
   color: red;
 }
 
-/* CREDIT SCREEN */
 
+/* =========================================================
+   CREDIT SCREEN (GENERIC BUTTON TYPO)
+   ========================================================= */
 .screen button{
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
   line-height: var(--lh-normal);
   color: red;
+}
+
+
+/* =========================================================
+   NAV BAR 
+   ========================================================= */
+.app{
+  position: relative;
+}
+
+.content{
+  padding-bottom: 95px; 
+}
+
+.nav-bar{
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+
+  height: 62px;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255,255,255,0.92);
+  border-radius: 32px;
+
+  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+  border: 1px solid rgba(0,0,0,0.05);
+
+  z-index: 50;
+}
+
+.nav-bar button{
+  flex: 1;
+  height: 46px;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-bar button img{
+  width: 22px;
+  height: 22px;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.nav-bar button:hover img{
+  opacity: 0.85;
+}
+
+.nav-bar button:active{
+  transform: scale(0.95);
+}
+
+.nav-bar button.active{
+  flex: 0 0 46px;          
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+}
+
+.nav-bar button.active img{
+  opacity: 1;
+}
+
+body:has(#screen-initial.active) .nav-bar,
+body:has(#screen-login.active) .nav-bar,
+body:has(#screen-signup.active) .nav-bar{
+  display: none !important;
 }
