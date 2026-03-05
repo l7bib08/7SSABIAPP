@@ -157,6 +157,9 @@ body {
   font-weight: var(--fw-title-1);
   line-height: var(--lh-tight);
   color: var(--c-primary-title);
+
+  text-align: center;
+  margin-top: -30px;
 }
 
 /* LABELS OF FIELDS */
@@ -196,7 +199,7 @@ body {
 
 /* LOGO LOGIN */
 
-#screen-login.active {
+#screen-login.active{
   display: flex !important;
   flex-direction: column;
   justify-content: center;
@@ -310,7 +313,7 @@ body {
   gap: 6px;        
 }
 
-#btn-login-next {
+#btn-login-next{
   display: block;
   margin: 20px auto;
   margin-top: -70px;
@@ -373,20 +376,14 @@ body {
   height: 50px;
   margin-bottom: 10px;
 
-  background-color: var(--c-app);
-}
-
-.other-way{
-  display: flex;
-  justify-content: center;
-  margin: 10px 0;
-}
-
-.other-way button{
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 10px 0;
   gap: 10px; 
   padding: 10px 20px;
+
+  background-color: var(--c-app);
 }
 
 .screen .form.auth-form .hint{
@@ -443,20 +440,73 @@ body {
 
 /* HOME */
 
-.screen .cards.cards-stats .card h2{
+#screen-home .topbar h2{
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 40px; 
+}
+
+.screen .cards.cards-stats .card-sell-expense h2,
+.screen .cards.cards-stats .card-profit h2{
   font-family: var(--font-primary);
   font-size: var(--fs-button-md);      
   font-weight: var(--fw-button-md);    
   line-height: var(--lh-normal);
-  color: red;               /* #F9FAFB */
+  color: #F9FAFB;               /* #F9FAFB */
 }
 
-.screen .cards.cards-stats .card h3{
+
+.screen .cards.cards-stats .card-sell-expense h3,
+.screen .cards.cards-stats .card-profit h3{
   font-family: var(--font-primary);
   font-size: var(--fs-button-md);
   font-weight: var(--fw-button-md);
   line-height: var(--lh-compact);
-  color: red;
+  color: #F9FAFB;
+}
+
+.cards-stats{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards-stats .card-sell-expense{
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  margin-top: -10px;
+}
+
+.card-sell-expense:first-child{
+  background: #1fa34a;
+}
+
+.card-sell-expense:nth-child(2){
+  background: #c61b1b;
+}
+
+.cards-stats .card-profit{
+  width: 300px;
+  padding: 35px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  margin-top: 10px;
+
+  background: #15803D;
+}
+
+.cards-actions{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .screen .cards.cards-stats .card #stat-profit-today{
