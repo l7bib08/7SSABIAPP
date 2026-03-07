@@ -552,6 +552,7 @@ body {
 .cards-actions #go-credit{
   width: 150px;
   margin-top: 10px;
+  margin-left: 10px;
   padding: 20px;
   border: 0px;
   border-radius: 20px;
@@ -563,7 +564,7 @@ body {
 .cards-actions #go-expense{
   width: 150px;
   margin-top: 10px;
-  margin-left: 49px;
+  margin-left: 46px;
   padding: 20px;
   border: 0px;
   border-radius: 20px;
@@ -627,7 +628,7 @@ body {
   font-size: var(--fs-button-lg);     
   font-weight: var(--fw-button-lg);  
   line-height: var(--lh-normal);
-  color: red;
+  color: white;
 }
 
 .screen .form #btn-cash-save{
@@ -635,9 +636,169 @@ body {
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
   line-height: var(--lh-normal);
-  color: red;
+  color: white;
 }
 
+#screen-cash .topbar h1{
+  font-family: var(--font-primary);
+  font-size: var(--fs-title-1);
+  font-weight: var(--fw-title-1);
+  line-height: var(--lh-tight);
+  color: var(--c-primary-title);
+
+  text-align: center;
+  margin: 0;
+}
+
+#screen-cash .topbar{
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Back button */
+#btn-back-home-from-cash{
+  position: absolute;
+  left: var(--sp-4);
+}
+
+/* Next button */
+#btn-go-credit-from-cash{
+  position: absolute;
+  right: var(--sp-4);
+}
+
+/* Button container */
+.iconbtn{
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* Icon */
+.icon{
+  width: 44px;
+  height: 44px;
+}
+
+/* Press effect */
+.iconbtn:active{
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+/* Spacer not needed anymore */
+.spacer{
+  display: none;
+}
+
+.screen #form-cash {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-left: 0px;
+}
+
+.article-row .field {
+  margin-left: 0;
+}
+
+.screen .form #cash-article-name {
+  display: flex;
+  margin: 10px 0;
+  width: 180px;
+  padding: 12px 20px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
+
+.screen .form #cash-article-price {
+  display: flex;
+  margin: 10px 0;
+  width: 90px;
+  padding: 12px 20px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+
+  margin-top: -59px;
+  margin-left: 183px;
+}
+
+.screen .form #cash-article-qty {
+  display: flex;
+  margin: 10px 0;
+  width: 90px;
+  padding: 12px 20px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+
+  margin-top: -59px;
+  margin-left: 275px;
+}
+
+.screen .form .add,
+.screen .form .save {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  width: 365px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background-color: #15803D;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  margin: 0 auto;
+
+  border: 0px;
+}
+
+.screen .form .summary{
+  margin: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.screen .form button{
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.screen .form button:active{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
 /* =========================================================
    CREDIT SCREEN (GENERIC BUTTON TYPO)
