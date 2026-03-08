@@ -13,13 +13,17 @@
     <div class="app">
       <main class="content" id="app-content">
 
-        <!-- Splash / Initial -->
+        <!-- ========================================
+             SPLASH / INITIAL SCREEN
+        ========================================= -->
         <section id="screen-initial" class="screen" aria-label="Écran initial">
           <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
           <img src="LOGO/LOGO Calcul.png" alt="Logo Calcul" />
         </section>
 
-        <!-- Login -->
+        <!-- ========================================
+             LOGIN SCREEN
+        ========================================= -->
         <section id="screen-login" class="screen" aria-label="Connexion">
           <div class="logo">
             <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
@@ -53,11 +57,17 @@
             </div>
 
             <div class="other-way">
-              <button id="btn-login-google" type="button"><img src="Icons/google.png" alt="Google icon" width="30"/>Login with Google</button>
+              <button id="btn-login-google" type="button">
+                <img src="Icons/google.png" alt="Google icon" width="30" />
+                Login with Google
+              </button>
             </div>
 
             <div class="other-way">
-              <button id="btn-login-facebook" type="button"><img src="Icons/facebook.png" alt="Facebook icon" width="30"/>Login with Facebook</button>
+              <button id="btn-login-facebook" type="button">
+                <img src="Icons/facebook.png" alt="Facebook icon" width="30" />
+                Login with Facebook
+              </button>
             </div>
 
             <p class="hint">
@@ -67,7 +77,9 @@
           </form>
         </section>
 
-        <!-- Signup -->
+        <!-- ========================================
+             SIGNUP SCREEN
+        ========================================= -->
         <section id="screen-signup" class="screen" aria-label="Inscription">
           <div class="logo">
             <img src="Logo/JIBI LOGO.png" alt="Logo App JIBI" />
@@ -106,7 +118,9 @@
           </form>
         </section>
 
-        <!-- Home -->
+        <!-- ========================================
+             HOME SCREEN
+        ========================================= -->
         <section id="screen-home" class="screen" aria-label="Accueil">
           <header class="topbar">
             <h1 id="home-title">Aujourd'hui</h1>
@@ -118,10 +132,12 @@
               <h2>Ventes aujourd'hui</h2>
               <h3 id="stat-sales-today">0 DH</h3>
             </div>
+
             <div class="card-sell-expense">
               <h2>Dépenses aujourd'hui</h2>
               <h3 id="stat-expenses-today">0 DH</h3>
             </div>
+
             <div class="card-profit">
               <h2>Profit aujourd'hui</h2>
               <h3 id="stat-profit-today">0 DH</h3>
@@ -132,22 +148,35 @@
             <button class="card action" id="go-cash" type="button">
               <h2>Vente Cash</h2>
             </button>
-            <button class="card action" id="go-credit" type="button">
-              <h2>Vente à crédit</h2>
-            </button>
-            <button class="card action" id="go-expense" type="button">
-              <h2>Dépense</h2>
-            </button>
+
+            <div class="actions-row">
+              <button class="card action" id="go-credit" type="button">
+                <h2>Vente à crédit</h2>
+              </button>
+
+              <button class="card action" id="go-expense" type="button">
+                <h2>Dépense</h2>
+              </button>
+            </div>
           </div>
         </section>
 
-        <!-- Cash -->
+        <!-- ========================================
+             CASH SCREEN
+        ========================================= -->
         <section id="screen-cash" class="screen" aria-label="Vente cash">
           <header class="topbar">
-            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil"><img src="icons/back no click.png" alt="back-icon" class="icon"></button>
+            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil">
+              <img src="icons/back no click.png" alt="back-icon" class="icon">
+            </button>
+
             <h1>Vente Cash</h1>
+
             <span class="spacer"></span>
-            <button id="btn-go-credit-from-cash" class="iconbtn" type="button" aria-label="Va vers credit"><img src="icons/next click.png" alt="go-icon" class="icon"></button>
+
+            <button id="btn-go-credit-from-cash" class="iconbtn" type="button" aria-label="Va vers credit">
+              <img src="icons/next click.png" alt="go-icon" class="icon">
+            </button>
           </header>
 
           <form id="form-cash" class="form">
@@ -180,12 +209,20 @@
           </form>
         </section>
 
-        <!-- Credit -->
+        <!-- ========================================
+             CREDIT SCREEN
+        ========================================= -->
         <section id="screen-credit" class="screen" aria-label="Vente à crédit">
           <header class="topbar">
-            <button id="btn-back-cash-from-credit" class="iconbtn" type="button" aria-label="Retour cash"><img src="icons/back click.png" alt="back-icon" class="icon"></button>
+            <button id="btn-back-cash-from-credit" class="iconbtn" type="button" aria-label="Retour cash">
+              <img src="icons/back click.png" alt="back-icon" class="icon">
+            </button>
+
             <h1>Vente à crédit</h1>
-            <button id="btn-go-expense-from-credit" class="iconbtn" type="button" aria-label="Va vers depense"><img src="icons/next click.png" alt="go-icon" class="icon"></button>
+
+            <button id="btn-go-expense-from-credit" class="iconbtn" type="button" aria-label="Va vers depense">
+              <img src="icons/next click.png" alt="go-icon" class="icon">
+            </button>
           </header>
 
           <form id="form-credit" class="form">
@@ -196,10 +233,12 @@
               <button id="btn-credit-add-client" class="add" type="button">Ajouter un client</button>
             </div>
 
-            <!-- <div class="field">
+            <!--
+            <div class="field">
               <label class="label" for="credit-due-date">Échéance</label>
               <input id="credit-due-date" type="date" />
-            </div> -->
+            </div>
+            -->
 
             <hr />
 
@@ -232,13 +271,22 @@
           </form>
         </section>
 
-        <!-- Expense -->
-        <section id="screen-expense" class="screen active" aria-label="Dépense">
+        <!-- ========================================
+             EXPENSE SCREEN
+        ========================================= -->
+        <section id="screen-expense" class="screen" aria-label="Dépense">
           <header class="topbar">
-            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit"><img src="icons/back click.png" alt="back-icon" class="icon"></button>
+            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit">
+              <img src="icons/back click.png" alt="back-icon" class="icon">
+            </button>
+
             <h1>Dépense</h1>
+
             <span class="spacer"></span>
-            <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn"><img src="icons/next no click.png" alt="invalid-icon" class="icon"></button>
+
+            <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn">
+              <img src="icons/next no click.png" alt="invalid-icon" class="icon">
+            </button>
           </header>
 
           <form id="form-expense" class="form">
@@ -263,7 +311,9 @@
           </form>
         </section>
 
-        <!-- Clients -->
+        <!-- ========================================
+             CLIENTS SCREEN
+        ========================================= -->
         <section id="screen-clients" class="screen" aria-label="Clients">
           <header class="topbar">
             <h1>Clients</h1>
@@ -273,10 +323,10 @@
 
           <div class="searchbar">
             <input id="clients-search" type="text" placeholder="Entrer le nom du client que vous chercher :" />
+            <img src="Icons/search.png" alt="search icon" width="20px">
           </div>
 
           <div id="clients-list" class="clients-list" aria-label="Liste des clients">
-
             <!-- Client card 1 -->
             <div class="client-card">
               <div class="client-left">
@@ -289,7 +339,7 @@
               </div>
 
               <div class="client-right" aria-label="menu">
-                <span class="client-menu">≡</span>
+                <span class="client-menu">&#9776;</span>
               </div>
             </div>
 
@@ -305,7 +355,7 @@
               </div>
 
               <div class="client-right" aria-label="menu">
-                <span class="client-menu">≡</span>
+                <span class="client-menu">&#9776;</span>
               </div>
             </div>
 
@@ -321,17 +371,18 @@
               </div>
 
               <div class="client-right" aria-label="menu">
-                <span class="client-menu">≡</span>
+                <span class="client-menu">&#9776;</span>
               </div>
             </div>
-
           </div>
 
           <button id="go-add-client" class="addclient" type="button">+ Ajouter un client</button>
         </section>
 
-        <!-- Add client -->
-        <section id="screen-add-client" class="screen" aria-label="Ajouter client">
+        <!-- ========================================
+             ADD CLIENT SCREEN
+        ========================================= -->
+        <section id="screen-add-client" class="screen active" aria-label="Ajouter client">
           <header class="topbar">
             <h1>Ajouter un client</h1>
           </header>
@@ -361,7 +412,9 @@
           </form>
         </section>
 
-        <!-- Reports (placeholder) -->
+        <!-- ========================================
+             REPORTS SCREEN (PLACEHOLDER)
+        ========================================= -->
         <section id="screen-reports" class="screen" aria-label="Rapports">
           <header class="topbar">
             <button id="btn-back-home-from-reports" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
@@ -371,7 +424,9 @@
           <p>À faire : analyses, graphiques, export…</p>
         </section>
 
-        <!-- Profile (placeholder) -->
+        <!-- ========================================
+             PROFILE SCREEN (PLACEHOLDER)
+        ========================================= -->
         <section id="screen-profile" class="screen" aria-label="Profil">
           <header class="topbar">
             <button id="btn-back-home-from-profile" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
@@ -380,28 +435,11 @@
           </header>
           <p>À faire : paramètres, sécurité, sauvegarde…</p>
         </section>
-
       </main>
 
-      <!-- NAVBAR -->
-      <!--<nav class="nav-bar" aria-label="Navigation principale">
-        <button id="nav-home" type="button" aria-label="Accueil">
-          <img src="Icons/home click.png" width="30" alt="Home" />
-        </button>
-        <button id="nav-notes" type="button" aria-label="Notes">
-          <img src="Icons/block note no click.png" width="30" alt="Notes" />
-        </button>
-        <button id="nav-clients" type="button" aria-label="Clients">
-          <img src="Icons/customer no click.png" width="30" alt="Clients" />
-        </button>
-        <button id="nav-reports" type="button" aria-label="Rapport">
-          <img src="Icons/rapport no click.png" width="30" alt="Rapport" />
-        </button>
-        <button id="nav-profile" type="button" aria-label="User">
-          <img src="Icons/user no click.png" width="30" alt="User" />
-        </button>
-      </nav>-->
-
+      <!-- ========================================
+           BOTTOM NAVBAR
+      ========================================= -->
       <nav class="nav-bar notch" aria-label="Navigation principale">
         <button class="nav-item active" type="button" aria-label="Home">
           <span class="icon"><img src="Icons/home click.png" alt=""></span>
@@ -424,17 +462,19 @@
         </button>
       </nav>
 
-      <!-- OVERLAY GLOBAL (Info client / Paiement / Rapport) -->
+      <!-- ========================================
+           GLOBAL OVERLAY
+           - Client info
+           - Payment
+           - Daily report
+      ========================================= -->
       <div id="overlay" class="overlay hidden" aria-hidden="true">
-
         <div class="overlay-backdrop" id="overlay-close-area" aria-label="Fermer overlay"></div>
 
         <div class="overlay-content" role="dialog" aria-modal="true">
-
-          <!-- PANEL 1 : INFO CLIENT -->
+          <!-- PANEL 1 : CLIENT INFO -->
           <div id="overlay-client-info" class="overlay-panel">
             <div class="card-ui">
-
               <div class="card-header">
                 <div class="header-top"></div>
                 <img id="overlay-client-img" class="avatar" src="Icons/user.png" alt="client image" />
@@ -465,14 +505,12 @@
               <button id="btn-open-payment" class="btn-primary" type="button">Le client veut payer</button>
               <button id="btn-open-report" class="btn-secondary" type="button">Voir rapport du jour</button>
               <button id="btn-overlay-close-1" class="btn-ghost" type="button">Fermer</button>
-
             </div>
           </div>
 
-          <!-- PANEL 2 : PAIEMENT -->
+          <!-- PANEL 2 : PAYMENT -->
           <div id="overlay-payment" class="overlay-panel hidden">
             <div class="card-ui">
-
               <div class="card-header">
                 <div class="header-top"></div>
                 <img id="payment-client-img" class="avatar" src="Icons/user.png" alt="client image" />
@@ -488,14 +526,12 @@
 
               <button id="btn-payment-save" class="btn-primary" type="button">Enregistrer paiement</button>
               <button id="btn-overlay-close-2" class="btn-ghost" type="button">Fermer</button>
-
             </div>
           </div>
 
-          <!-- PANEL 3 : RAPPORT -->
+          <!-- PANEL 3 : REPORT -->
           <div id="overlay-report" class="overlay-panel hidden">
             <div class="card-ui">
-
               <div class="card-header">
                 <div class="header-top"></div>
                 <img id="report-client-img" class="avatar" src="Icons/user.png" alt="client image" />
@@ -528,13 +564,10 @@
               <h3 id="report-to-pay" class="big">0 MAD</h3>
 
               <button id="btn-overlay-close-3" class="btn-ghost" type="button">Fermer</button>
-
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 

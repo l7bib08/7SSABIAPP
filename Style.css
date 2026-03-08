@@ -1,5 +1,5 @@
 /* =========================================================
-   SCREENS VISIBILITY (ROUTING)
+   1. SCREEN VISIBILITY / ROUTING
    ========================================================= */
 section.screen {
   display: none !important;
@@ -9,123 +9,130 @@ section.screen.active {
   display: block !important;
 }
 
+.hidden {
+  display: none;
+}
+
+.content {
+  padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
+}
+
 
 /* =========================================================
-   NAV VISIBILITY (OLD RULES YOU ADDED)
+   2. NAV VISIBILITY
    ========================================================= */
-/* NAV: visible by default (override old rules) */
-.nav-bar{
+.nav-bar {
   display: flex !important;
 }
 
-/* Hide nav only when .app has hide-nav */
-.app.hide-nav .nav-bar{
+.app.hide-nav .nav-bar {
+  display: none !important;
+}
+
+body:has(#screen-initial.active) .nav-bar,
+body:has(#screen-login.active) .nav-bar,
+body:has(#screen-signup.active) .nav-bar {
   display: none !important;
 }
 
 
 /* =========================================================
-   RESET / BASE
+   3. RESET / BASE
    ========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html, body {
+
+html,
+body {
   height: 100%;
 }
 
 
 /* =========================================================
-   VARIABLES
+   4. VARIABLES
    ========================================================= */
 :root {
-
   --font-primary: 'Manrope', sans-serif;
 
   /* App surfaces */
-  --c-app: #F9FAFB;                     /* App background */
-  --c-frame: #111111;                   /* Device/mock frame color */
+  --c-app: #F9FAFB;
+  --c-frame: #111111;
 
-  --c-primary-title: #1E293B;           /* Screen titles */
-  --c-secondary-title: #1E293B;         /* Section titles */
-  --c-first-body-text: #111827;         /* Primary body text */
-  --c-secondary-body-text: #6B7280;     /* Secondary body text */
+  --c-primary-title: #1E293B;
+  --c-secondary-title: #1E293B;
+  --c-first-body-text: #111827;
+  --c-secondary-body-text: #6B7280;
 
-  --c-cards: #F9FAFB;                   /* Text on colored cards */
-  --c-button: #FFFFFF;                  /* Text on colored buttons */
+  --c-cards: #F9FAFB;
+  --c-button: #FFFFFF;
 
   --c-success: #15803D;
   --c-danger: #B91C1C;
 
   /* Font sizes */
-  --fs-title-1: 30px;                   /* Screen title */
-  --fs-title-2: 18px;                   /* Secondary or section title */
-
-  --fs-body: 14px;                      /* Primary body text */
-  --fs-small: 13px;                     /* Secondary body text */
-
-  --fs-stat-lg: 24px;                   /* Large stats number (Profit) */
-  --fs-stat-md: 20px;                   /* Medium stats number (Sales or Expenses) */
-
-  --fs-button-lg: 16px;                 /* Primary button text */
-  --fs-button-md: 15px;                 /* Secondary buttons + card labels */
+  --fs-title-1: 30px;
+  --fs-title-2: 18px;
+  --fs-body: 14px;
+  --fs-small: 13px;
+  --fs-stat-lg: 24px;
+  --fs-stat-md: 20px;
+  --fs-button-lg: 16px;
+  --fs-button-md: 15px;
 
   /* Font weights */
-  --fw-title-1: 1000;                   /* Screen title weight */
-  --fw-title-2: 600;                    /* Secondary title weight */
-
-  --fw-body: 400;                       /* Body text weight */
-  --fw-small: 400;                      /* Secondary body text weight */
-
-  --fw-stat-lg: 700;                    /* Large stats number weight */
-  --fw-stat-md: 700;                    /* Medium stats number weight */
-
-  --fw-button-lg: 600;                  /* Primary button weight */
-  --fw-button-md: 600;                  /* Secondary button + card label weight */
+  --fw-title-1: 1000;
+  --fw-title-2: 600;
+  --fw-body: 400;
+  --fw-small: 400;
+  --fw-stat-lg: 700;
+  --fw-stat-md: 700;
+  --fw-button-lg: 600;
+  --fw-button-md: 600;
 
   /* Line heights */
-  --lh-compact: 1.10;                   /* Numbers */
-  --lh-tight: 4.15;                     /* Big titles (screen titles) */
-  --lh-normal: 1.25;                    /* Labels & buttons */
-  --lh-body: 1.45;                      /* Body text & inputs */
+  --lh-compact: 1.10;
+  --lh-tight: 4.15;
+  --lh-normal: 1.25;
+  --lh-body: 1.45;
 
   /* Spacing scale */
-  --sp-1: 4px; 
+  --sp-1: 4px;
   --sp-2: 8px;
-  --sp-3: 12px; 
-  --sp-4: 16px;  
-  --sp-5: 20px; 
-  --sp-6: 24px; 
-  --sp-8: 32px; 
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
 
   /* Screen padding */
-  --screen-padding-x: 16px;             /* Left/right padding */
-  --screen-padding-top: 32px;           /* Top padding (below safe area) */
-  --screen-padding-bottom: 32px;        /* Bottom padding (above bottom nav) */
+  --screen-padding-x: 16px;
+  --screen-padding-top: 32px;
+  --screen-padding-bottom: 32px;
 
-  /* Vertical rhythm (Home screen structure) */
-  --gap-title-to-card: var(--sp-6);         /* Title to first summary card */
-  --gap-card: var(--sp-4);                  /* Between summary cards */
-  --gap-profit: var(--sp-6);                /* Expenses to Profit */
-  --gap-summary-to-actions: var(--sp-8);    /* Profit card to primary action button */
-  --gap-buttons: var(--sp-4);               /* Primary button to secondary buttons row */
+  /* Vertical rhythm */
+  --gap-title-to-card: var(--sp-6);
+  --gap-card: var(--sp-4);
+  --gap-profit: var(--sp-6);
+  --gap-summary-to-actions: var(--sp-8);
+  --gap-buttons: var(--sp-4);
 
-  /* Card internal spacing (summary cards) */
-  --card-padding: var(--sp-4);              /* Card padding (all sides) */
-  --card-label-gap: var(--sp-2);            /* Label to number spacing (inside card) */
+  /* Card spacing */
+  --card-padding: var(--sp-4);
+  --card-label-gap: var(--sp-2);
 
-  /* Navigation Bar */
+  /* Navigation bar */
   --navbar-height: 90px;
 }
 
 
 /* =========================================================
-   BODY / APP LAYOUT
+   5. BODY / APP LAYOUT
    ========================================================= */
 body {
-  font-family: "Manrope",system-ui, Arial, sans-serif;
+  font-family: "Manrope", system-ui, Arial, sans-serif;
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
@@ -143,6 +150,7 @@ body {
 }
 
 .app {
+  position: relative;
   height: 100%;
   background: var(--c-app);
   border-radius: 22px;
@@ -156,28 +164,25 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 16px;
-  padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
   padding-top: var(--screen-padding-top);
+  padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
 }
-
-.hidden { display: none; }
 
 
 /* =========================================================
-   TYPOGRAPHY: SCREEN TITLES / SECTION TITLES
+   6. GLOBAL TYPOGRAPHY
    ========================================================= */
-.screen h1{
+.screen h1 {
   font-family: var(--font-primary);
   font-size: var(--fs-title-1);
   font-weight: var(--fw-title-1);
   line-height: var(--lh-tight);
   color: var(--c-primary-title);
-
   text-align: center;
   margin-top: -30px;
 }
 
-.screen h2{
+.screen h2 {
   font-family: var(--font-primary);
   font-size: var(--fs-title-2);
   font-weight: var(--fw-title-2);
@@ -185,11 +190,89 @@ body {
   color: var(--c-secondary-title);
 }
 
+.screen button {
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: white;
+}
+
 
 /* =========================================================
-   SPLASH SCREEN
+   7. REUSABLE HEADER / ICON BUTTONS
    ========================================================= */
-#screen-initial.active{
+.iconbtn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+}
+
+.iconbtn:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+.spacer {
+  display: none;
+}
+
+#screen-cash .topbar,
+#screen-credit .topbar,
+#screen-expense .topbar,
+#screen-clients .topbar {
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#screen-cash .topbar h1,
+#screen-credit .topbar h1,
+#screen-expense .topbar h1,
+#screen-clients .topbar h1 {
+  font-family: var(--font-primary);
+  font-size: var(--fs-title-1);
+  font-weight: var(--fw-title-1);
+  line-height: var(--lh-tight);
+  color: var(--c-primary-title);
+  text-align: center;
+  margin: 0;
+}
+
+#btn-back-home-from-cash,
+#btn-back-cash-from-credit,
+#btn-back-credit-from-expense {
+  position: absolute;
+  left: var(--sp-4);
+  margin-left: -5px;
+}
+
+#btn-go-credit-from-cash,
+#btn-go-expense-from-credit,
+#btn-invalide {
+  position: absolute;
+  right: var(--sp-4);
+  margin-right: -5px;
+}
+
+
+/* =========================================================
+   8. SPLASH SCREEN
+   ========================================================= */
+#screen-initial.active {
   display: flex !important;
   flex-direction: column;
   align-items: center;
@@ -197,13 +280,13 @@ body {
   height: 100%;
 }
 
-#screen-initial img:first-child{
+#screen-initial img:first-child {
   max-width: 260px;
   width: 100%;
   height: auto;
 }
 
-#screen-initial img:last-child{
+#screen-initial img:last-child {
   max-width: 180px;
   width: 100%;
   height: auto;
@@ -212,39 +295,9 @@ body {
 
 
 /* =========================================================
-   LOGIN SCREEN
+   9. LOGIN / SIGNUP SHARED LAYOUT
    ========================================================= */
-#screen-login.active{
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0px;
-}
-
-#screen-login .logo{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0px;
-}
-
-#screen-login .logo img:first-child{
-  width: 120px;
-  height: auto;
-}
-
-#screen-login .logo img:last-child{
-  width: 80px;
-  height: auto;
-  margin-top: -50px;
-}
-
-
-/* =========================================================
-   SIGNUP SCREEN
-   ========================================================= */
+#screen-login.active,
 #screen-signup.active {
   display: flex !important;
   flex-direction: column;
@@ -253,7 +306,8 @@ body {
   gap: 0px;
 }
 
-#screen-signup .logo{
+#screen-login .logo,
+#screen-signup .logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,12 +315,14 @@ body {
   gap: 0px;
 }
 
-#screen-signup .logo img:first-child{
+#screen-login .logo img:first-child,
+#screen-signup .logo img:first-child {
   width: 120px;
   height: auto;
 }
 
-#screen-signup .logo img:last-child{
+#screen-login .logo img:last-child,
+#screen-signup .logo img:last-child {
   width: 80px;
   height: auto;
   margin-top: -50px;
@@ -274,20 +330,18 @@ body {
 
 
 /* =========================================================
-   AUTH FORMS (LOGIN / SIGNUP) — LABELS / INPUTS / BUTTONS
+   10. AUTH FORMS
    ========================================================= */
-/* Labels */
-.screen .form.auth-form .field .label{
+.screen .form.auth-form .field .label {
   margin-left: 10px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
-  font-weight: var(--fw-button-md);   
+  font-weight: var(--fw-button-md);
   line-height: var(--lh-normal);
   color: var(--c-first-body-text);
 }
 
-/* Inputs */
-.screen .form.auth-form .field input{
+.screen .form.auth-form .field input {
   display: block;
   margin: 10px auto;
   margin-bottom: 30px;
@@ -298,14 +352,12 @@ body {
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
   color: var(--c-first-body-text);
-
   border: 3px solid black;
   border-radius: 40px;
-
   background-color: var(--c-app);
 }
 
-.screen .form.auth-form .field input::placeholder{
+.screen .form.auth-form .field input::placeholder {
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
@@ -313,8 +365,7 @@ body {
   color: var(--c-secondary-body-text);
 }
 
-/* Remember me row */
-.screen .form.auth-form .row{
+.screen .form.auth-form .row {
   margin-top: 30px;
   margin-left: 10px;
   margin-bottom: 100px;
@@ -325,160 +376,134 @@ body {
   color: var(--c-first-body-text);
 }
 
-.screen .form.auth-form .checkbox{
+.screen .form.auth-form .checkbox {
   display: flex;
   align-items: center;
-  gap: 6px;        
+  gap: 6px;
 }
 
-/* Next button */
-#btn-login-next{
-  display: block;
-  margin: 20px auto;
-  margin-top: -70px;
-  width: 80px;
-  height: 30px;
-
-  border: 3px solid black;
-  border-radius: 20px;
-
-  background-color: var(--c-app);
-}
-
-/* Generic auth buttons */
-.screen .form.auth-form button{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-lg);
-  font-weight: var(--fw-button-lg);
-  line-height: var(--lh-normal);
-  color: var(--c-first-body-text); 
-}
-
-/* Divider */
-.divider{
-  font-family: var(--font-primary);
-  font-size: var(--fs-small);
-  font-weight: var(--fw-small);
-  line-height: var(--lh-body);
-  color: var(--c-secondary-body-text);
-
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-
-  margin-bottom: 50px;
-  margin-top: 50px;
-}
-
-.divider::before,
-.divider::after{
-  content: "";
-  flex: 1;
-  border-bottom: 2px solid black;
-}
-
-.divider span{
-  margin: 0 10px;
-}
-
-/* Google / Facebook buttons */
-.screen .form.auth-form .other-way button{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-md);
-  font-weight: var(--fw-button-md);
-  line-height: var(--lh-normal);
-  color: var(--c-first-body-text);
-
-  border: 3px solid black;
-  border-radius: 40px;
-
-  width: 300px;
-  height: 50px;
-  margin-bottom: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 0;
-  gap: 10px; 
-  padding: 10px 20px;
-
-  background-color: var(--c-app);
-}
-
-/* Hint block (signup/login link) */
-.screen .form.auth-form .hint{
-  font-family: var(--font-primary);
-  font-size: var(--fs-small);
-  font-weight: var(--fw-small);
-  line-height: var(--lh-body);
-  color: var(--c-secondary-body-text);
-
-  margin-top: 40px;
-  text-align: center;
-}
-
-.screen .form.auth-form .hint button{
-  display: block;
-  text-align: center;
-  margin: auto;
-  margin-top: 20px;
-
-  border: 3px solid black;
-  border-radius: 40px;
-
-  width: 300px;
-  height: 50px;
-  margin-bottom: 10px;
-
-  background-color: var(--c-app);
-}
-
-/* Auth button press effect */
-.screen .form.auth-form button:active {
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  box-shadow: 0 4px 0 #000;
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #000;   
-}
-
-/* Signup submit button (kept exactly as you wrote it) */
-.screen .form.auth-form button{
+.screen .form.auth-form button {
   display: block;
   margin: 20px auto;
   margin-top: 40px;
   width: 150px;
   height: 40px;
-
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text);
   border: 3px solid black;
   border-radius: 20px;
-
   background-color: var(--c-app);
+}
+
+#btn-login-next {
+  display: block;
+  margin: 20px auto;
+  margin-top: -70px;
+  width: 80px;
+  height: 30px;
+  border: 3px solid black;
+  border-radius: 20px;
+  background-color: var(--c-app);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid black;
+}
+
+.divider span {
+  margin: 0 10px;
+}
+
+.screen .form.auth-form .other-way button {
+  width: 300px;
+  height: 50px;
+  margin: 10px 0;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-md);
+  font-weight: var(--fw-button-md);
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
+
+.screen .form.auth-form .hint {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+.screen .form.auth-form .hint button {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 50px;
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
+
+.screen .form.auth-form button:active {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000;
 }
 
 
 /* =========================================================
-   HOME SCREEN
+   11. HOME SCREEN
    ========================================================= */
-#screen-home .topbar h2{
+#screen-home .topbar h2 {
   text-align: center;
   margin-top: -30px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 
-/* Stats cards text */
 .screen .cards.cards-stats .card-sell-expense h2,
-.screen .cards.cards-stats .card-profit h2{
+.screen .cards.cards-stats .card-profit h2 {
   font-family: var(--font-primary);
-  font-size: var(--fs-button-md);      
-  font-weight: var(--fw-button-md);    
+  font-size: var(--fs-button-md);
+  font-weight: var(--fw-button-md);
   line-height: var(--lh-normal);
-  color: #F9FAFB;               /* #F9FAFB */
+  color: #F9FAFB;
 }
 
 .screen .cards.cards-stats .card-sell-expense h3,
-.screen .cards.cards-stats .card-profit h3{
+.screen .cards.cards-stats .card-profit h3 {
   font-family: var(--font-primary);
   font-size: var(--fs-button-md);
   font-weight: var(--fw-button-md);
@@ -486,14 +511,13 @@ body {
   color: #F9FAFB;
 }
 
-/* Stats cards blocks */
-.cards-stats{
+.cards-stats {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.cards-stats .card-sell-expense{
+.cards-stats .card-sell-expense {
   width: 300px;
   padding: 20px;
   border-radius: 20px;
@@ -504,15 +528,15 @@ body {
   margin-top: -10px;
 }
 
-.card-sell-expense:first-child{
+.card-sell-expense:first-child {
   background: #1fa34a;
 }
 
-.card-sell-expense:nth-child(2){
+.card-sell-expense:nth-child(2) {
   background: #c61b1b;
 }
 
-.cards-stats .card-profit{
+.cards-stats .card-profit {
   width: 300px;
   padding: 35px;
   border-radius: 20px;
@@ -521,22 +545,14 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   margin: 0 auto;
   margin-top: 10px;
-
   background: #15803D;
 }
 
-/* Action buttons blocks */
-.cards-actions #go-cash{
+.cards-actions #go-cash {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.cards-actions #go-cash{
-  display: flex;
   justify-content: center;
-  margin-top: 50px;
-
+  gap: 20px;
   width: 350px;
   padding: 20px;
   border-radius: 20px;
@@ -545,94 +561,56 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   margin: 0 auto;
   margin-top: 50px;
-
   border: 0px;
+}
+
+.cards-actions .actions-row{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
 }
 
 .cards-actions #go-credit{
   width: 150px;
-  margin-top: 10px;
-  margin-left: 10px;
   padding: 20px;
   border: 0px;
   border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-
   background-color: #0F172A;
+  margin: 0;
 }
 
 .cards-actions #go-expense{
   width: 150px;
-  margin-top: 10px;
-  margin-left: 46px;
   padding: 20px;
   border: 0px;
   border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-
   background-color: #B91C1C;
+  margin: 0;
 }
 
-/* Action buttons interactions */
-.cards-actions button{
+.cards-actions button {
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
-.cards-actions button:active{
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.cards-actions button:active {
   filter: brightness(1.1);
   transform: scale(0.96);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Action buttons text */
-.screen .cards.cards-stats .card #stat-profit-today{
+.screen .cards.cards-stats .card #stat-profit-today {
   font-family: var(--font-primary);
-  font-size: var(--fs-stat-lg);        
-  font-weight: var(--fw-stat-lg);      
+  font-size: var(--fs-stat-lg);
+  font-weight: var(--fw-stat-lg);
   line-height: var(--lh-compact);
   color: red;
 }
 
-.cards-actions #go-cash h2{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-lg);    
-  font-weight: var(--fw-button-lg);    
-  line-height: var(--lh-normal);
-  color: white;              /* #FFFFFF */
-}
-
-.cards-actions h2{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-md);      
-  font-weight: var(--fw-button-md);    
-  line-height: var(--lh-normal);
-  color: white;              /* #FFFFFF */
-}
-
-
-/* =========================================================
-   CASH SCREEN (FORM INPUTS / BUTTONS)
-   ========================================================= */
-
-.screen .form input{
-  font-family: var(--font-primary);
-  font-size: var(--fs-small);
-  font-weight: var(--fw-small);
-  line-height: var(--lh-body);
-  color: var(--c-secondary-body-text);
-}
-
-.screen .form #btn-cash-add-item{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-lg);     
-  font-weight: var(--fw-button-lg);  
-  line-height: var(--lh-normal);
-  color: white;
-}
-
-.screen .form #btn-cash-save{
+.cards-actions #go-cash h2 {
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
@@ -640,71 +618,69 @@ body {
   color: white;
 }
 
-#screen-cash .topbar h1{
+.cards-actions h2 {
   font-family: var(--font-primary);
-  font-size: var(--fs-title-1);
-  font-weight: var(--fw-title-1);
-  line-height: var(--lh-tight);
-  color: var(--c-primary-title);
-
-  text-align: center;
-  margin: 0;
+  font-size: var(--fs-button-md);
+  font-weight: var(--fw-button-md);
+  line-height: var(--lh-normal);
+  color: white;
 }
 
-#screen-cash .topbar{
-  position: relative;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+/* =========================================================
+   12. GENERIC FORM ELEMENTS
+   ========================================================= */
+.screen .form input {
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
 }
 
-/* Back button */
-#btn-back-home-from-cash{
-  position: absolute;
-  left: var(--sp-4);
-
-  margin-left: -5px;
-}
-
-/* Next button */
-#btn-go-credit-from-cash{
-  position: absolute;
-  right: var(--sp-4);
-
-  margin-right: -5px;
-}
-
-/* Button container */
-.iconbtn{
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: transparent;
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+.screen .form button {
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
-/* Icon */
-.icon{
-  width: 44px;
-  height: 44px;
+.screen .form button:active {
+  filter: brightness(1.1);
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Press effect */
-.iconbtn:active{
-  transform: scale(0.95);
-  opacity: 0.85;
+.screen .form .summary {
+  margin: 60px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Spacer not needed anymore */
-.spacer{
-  display: none;
+.screen .form .add,
+.screen .form .save,
+.screen .form .addexpense {
+  display: flex;
+  justify-content: center;
+  width: 365px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background-color: #15803D;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  border: 0px;
+}
+
+
+/* =========================================================
+   13. CASH SCREEN
+   ========================================================= */
+.screen .form #btn-cash-add-item,
+.screen .form #btn-cash-save {
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: white;
 }
 
 .screen #form-cash {
@@ -747,7 +723,6 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   margin-top: -59px;
   margin-left: 183px;
 }
@@ -765,127 +740,20 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   margin-top: -59px;
   margin-left: 275px;
 }
 
-.screen .form .add,
-.screen .form .save {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-
-  width: 365px;
-  padding: 12px 20px;
-  border-radius: 20px;
-  background-color: #15803D;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-
-  border: 0px;
-}
-
-.screen .form .summary{
-  margin: 60px;
-  display: flex;
-  justify-content: center;
-}
-
-.screen .form button{
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-}
-
-.screen .form button:active{
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  filter: brightness(1.1);
-  transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
 
 /* =========================================================
-   CREDIT SCREEN (GENERIC BUTTON TYPO)
-   ========================================================= */  
-
-#screen-credit .topbar h1{
-  font-family: var(--font-primary);
-  font-size: var(--fs-title-1);
-  font-weight: var(--fw-title-1);
-  line-height: var(--lh-tight);
-  color: var(--c-primary-title);
-
-  text-align: center;
-  margin: 0;
-}
-
-#screen-credit .topbar{
-  position: relative;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Back button */
-#btn-back-cash-from-credit{
-  position: absolute;
-  left: var(--sp-4);
-
-  margin-left: -5px;
-}
-
-/* Next button */
-#btn-go-expense-from-credit{
-  position: absolute;
-  right: var(--sp-4);
-
-  margin-right: -5px;
-}
-
-/* Button container */
-.iconbtn{
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: transparent;
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-}
-
-/* Icon */
-.icon{
-  width: 44px;
-  height: 44px;
-}
-
-/* Press effect */
-.iconbtn:active{
-  transform: scale(0.95);
-  opacity: 0.85;
-}
-
-/* Spacer not needed anymore */
-.spacer{
-  display: none;
-}
-
+   14. CREDIT SCREEN
+   ========================================================= */
 .screen #form-credit {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 45px;
   margin-left: 0px;
-}
-
-.article-row .field {
-  margin-left: 0;
 }
 
 .screen .form #credit-client-search {
@@ -903,20 +771,8 @@ body {
   background-color: var(--c-app);
 }
 
-.screen .form hr{
+.screen .form hr {
   margin: 20px;
-}
-
-.screen #form-credit {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 45px;
-  margin-left: 0px;
-}
-
-.article-row .field {
-  margin-left: 0;
 }
 
 .screen .form #credit-article-name {
@@ -947,7 +803,6 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   margin-top: -59px;
   margin-left: 183px;
 }
@@ -965,133 +820,14 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   margin-top: -59px;
   margin-left: 275px;
 }
 
-.screen .form .add,
-.screen .form .save {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-
-  width: 365px;
-  padding: 12px 20px;
-  border-radius: 20px;
-  background-color: #15803D;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-
-  border: 0px;
-}
-
-.screen .form .summary{
-  margin: 60px;
-  display: flex;
-  justify-content: center;
-}
-
-.screen .form button{
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-}
-
-.screen .form button:active{
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  filter: brightness(1.1);
-  transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.screen button{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-lg);
-  font-weight: var(--fw-button-lg);
-  line-height: var(--lh-normal);
-  color: white;
-}
 
 /* =========================================================
-   EXPENSE SCREEN 
-   ========================================================= */  
-
-#screen-expense .topbar h1{
-  font-family: var(--font-primary);
-  font-size: var(--fs-title-1);
-  font-weight: var(--fw-title-1);
-  line-height: var(--lh-tight);
-  color: var(--c-primary-title);
-
-  text-align: center;
-  margin: 0;
-}
-
-#screen-expense .topbar{
-  position: relative;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Back button */
-#btn-back-credit-from-expense{
-  position: absolute;
-  left: var(--sp-4);
-
-  margin-left: -5px;
-}
-
-/* Next button */
-#btn-invalide{
-  position: absolute;
-  right: var(--sp-4);
-
-  margin-right: -5px;
-}
-
-/* Button container */
-.iconbtn{
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: transparent;
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-}
-
-/* Icon */
-.icon{
-  width: 44px;
-  height: 44px;
-}
-
-/* Press effect */
-.iconbtn:active{
-  transform: scale(0.95);
-  opacity: 0.85;
-}
-
-/* Spacer not needed anymore */
-.spacer{
-  display: none;
-}
-
-.screen #form-expense {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 150px;
-  margin-left: 0px;
-}
-
+   15. EXPENSE SCREEN
+   ========================================================= */
 .screen #form-expense {
   display: flex;
   justify-content: center;
@@ -1128,7 +864,6 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   margin-top: -59px;
   margin-left: 276px;
 }
@@ -1139,35 +874,137 @@ body {
   height: 120px;
   margin: 10px 0;
   margin-top: -5px;
-
   padding: 12px 20px;
-
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: 1.4;
   color: var(--c-first-body-text);
-
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-
   resize: none;
   overflow: auto;
 }
 
-#expense-notes::placeholder{
+#expense-notes::placeholder {
   position: absolute;
   top: 12px;
   left: 20px;
 }
 
-.screen .form .addexpense,
 .screen .form .save {
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   16. CLIENTS SCREEN
+   ========================================================= */
+#screen-clients #clients-summary {
+  font-size: 10px;
+  margin-top: 35px;
+  margin-bottom: 5px;
+}
+
+.searchbar {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+#clients-search {
+  display: flex;
+  margin: 10px 0;
+  width: 370px;
+  padding: 5px 20px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
+
+.searchbar img {
+  width: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.clients-list {
+  margin-top: 20px;
+}
+
+.client-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+}
+
+.client-left {
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.client-center {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.client-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.client-amount {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.danger {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.client-right {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.client-menu {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#screen-clients button {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
-
   width: 365px;
   padding: 12px 20px;
   border-radius: 20px;
@@ -1175,120 +1012,74 @@ body {
   text-align: center;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   margin: 0 auto;
-
   border: 0px;
-}
-
-.screen .form .save{
-  margin-top: 10px;
-}
-
-.screen .form .summary{
-  margin: 60px;
-  display: flex;
-  justify-content: center;
-}
-
-.screen .form button{
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
-.screen .form button:active{
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+#screen-clients button:active {
   filter: brightness(1.1);
   transform: scale(0.96);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.screen button{
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-lg);
-  font-weight: var(--fw-button-lg);
-  line-height: var(--lh-normal);
-  color: white;
-}
-
 
 /* =========================================================
-   NAV BAR 
+   17. NAV BAR
    ========================================================= */
-.app{
-  position: relative;
-}
-
-.content{
-  padding-bottom: 95px; 
-}
-
-.nav-bar{
+.nav-bar {
   position: absolute;
   left: 18px;
   right: 18px;
   bottom: 14px;
-
   height: 62px;
   padding: 0 10px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: rgba(255,255,255,0.92);
   border-radius: 32px;
-
   box-shadow: 0 10px 28px rgba(0,0,0,0.14);
   border: 1px solid rgba(0,0,0,0.05);
-
   z-index: 50;
 }
 
-.nav-bar button{
+.nav-bar button {
   flex: 1;
   height: 46px;
-
   border: 0;
   background: transparent;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-
   transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
 }
 
-.nav-bar button img{
+.nav-bar button img {
   width: 22px;
   height: 22px;
   opacity: 0.55;
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.nav-bar button:hover img{
+.nav-bar button:hover img {
   opacity: 0.85;
 }
 
-.nav-bar button:active{
+.nav-bar button:active {
   transform: scale(0.95);
 }
 
-.nav-bar button.active{
-  flex: 0 0 46px;          
+.nav-bar button.active {
+  flex: 0 0 46px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
   background: rgba(0,0,0,0.08);
 }
 
-.nav-bar button.active img{
+.nav-bar button.active img {
   opacity: 1;
-}
-
-body:has(#screen-initial.active) .nav-bar,
-body:has(#screen-login.active) .nav-bar,
-body:has(#screen-signup.active) .nav-bar{
-  display: none !important;
 }
