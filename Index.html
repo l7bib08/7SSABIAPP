@@ -233,12 +233,12 @@
         </section>
 
         <!-- Expense -->
-        <section id="screen-expense" class="screen" aria-label="Dépense">
+        <section id="screen-expense" class="screen active" aria-label="Dépense">
           <header class="topbar">
-            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit"><img src="icons/back.svg" alt="back-icon" class="icon"></button>
+            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit"><img src="icons/back click.png" alt="back-icon" class="icon"></button>
             <h1>Dépense</h1>
             <span class="spacer"></span>
-            <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn"><img src="icons/back.svg" alt="invalid-icon" class="icon"></button>
+            <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn"><img src="icons/next no click.png" alt="invalid-icon" class="icon"></button>
           </header>
 
           <form id="form-expense" class="form">
@@ -255,7 +255,7 @@
 
             <div class="field">
               <label class="label" for="expense-notes"></label>
-              <input id="expense-notes" type="text" placeholder="Entrer vos notes..." />
+              <textarea id="expense-notes" placeholder="Entrer vos notes..."></textarea>
             </div>
 
             <button id="go-add-expense" class="addexpense" type="button">+ Ajouter un autre type de dépense</button>
