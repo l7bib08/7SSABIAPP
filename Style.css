@@ -1023,67 +1023,6 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-
-/* =========================================================
-   17. NAV BAR
-   ========================================================= */
-.nav-bar {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 14px;
-  height: 62px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255,255,255,0.92);
-  border-radius: 32px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
-  border: 1px solid rgba(0,0,0,0.05);
-  z-index: 50;
-}
-
-.nav-bar button {
-  flex: 1;
-  height: 46px;
-  border: 0;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
-}
-
-.nav-bar button img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.55;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.nav-bar button:hover img {
-  opacity: 0.85;
-}
-
-.nav-bar button:active {
-  transform: scale(0.95);
-}
-
-.nav-bar button.active {
-  flex: 0 0 46px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.08);
-}
-
-.nav-bar button.active img {
-  opacity: 1;
-}
-
 /* =========================================================
    ADD CLIENT SCREEN
    ========================================================= */
@@ -1592,4 +1531,110 @@ body {
 #screen-profile .danger-item span,
 #screen-profile .danger-item div {
   color: #B91C1C;
+}
+
+/* =========================================
+   FLOATING PILL NAVBAR - FIXED
+========================================= */
+
+.bottom-nav {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+
+  height: 74px;
+  padding: 10px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+/* each nav button */
+.bottom-nav .nav-item {
+  flex: 1 1 0;
+  min-width: 44px;
+  height: 52px;
+  padding: 0 10px;
+
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* active item pill */
+.bottom-nav .nav-item.is-active {
+  flex: 0 0 auto;
+  min-width: 104px; /* important: prevents text clipping */
+  padding: 0 16px;
+  background: #000000;
+}
+
+/* icon sizes */
+.bottom-nav .nav-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* active/inactive icon visibility */
+.bottom-nav .nav-item .icon-active {
+  display: none;
+}
+
+.bottom-nav .nav-item.is-active .icon-default {
+  display: none;
+}
+
+.bottom-nav .nav-item.is-active .icon-active {
+  display: block;
+}
+
+/* label hidden by default */
+.bottom-nav .nav-label {
+  display: none;
+  white-space: nowrap;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+}
+
+/* label visible only on active item */
+.bottom-nav .nav-item.is-active .nav-label {
+  display: inline-block;
+}
+
+/* inactive icons */
+.bottom-nav .nav-item:not(.is-active) .icon-default {
+  opacity: 0.78;
+}
+
+/* interactions */
+.bottom-nav .nav-item:active {
+  transform: scale(0.96);
+}
+
+.bottom-nav .nav-item:hover:not(.is-active) .icon-default {
+  opacity: 1;
 }
