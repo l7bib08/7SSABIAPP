@@ -416,7 +416,7 @@
              REPORTS SCREEN (PLACEHOLDER)
         ========================================= -->
         <!-- Reports -->
-        <section id="screen-reports" class="screen active" aria-label="Rapports">
+        <section id="screen-reports" class="screen" aria-label="Rapports">
           <header class="topbar">
             <h1 id="reports-title">Rapports</h1>
             <span class="spacer"></span>
@@ -542,13 +542,123 @@
         <!-- ========================================
              PROFILE SCREEN (PLACEHOLDER)
         ========================================= -->
-        <section id="screen-profile" class="screen" aria-label="Profil">
+        <section id="screen-profile" class="screen active" aria-label="Profil">
           <header class="topbar">
-            <button id="btn-back-home-from-profile" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
-            <h1>Utilisateur</h1>
+            <h1>Profil</h1>
             <span class="spacer"></span>
           </header>
-          <p>À faire : paramètres, sécurité, sauvegarde…</p>
+
+          <div id="profile-container" class="profile-container">
+
+            <!-- Profile header card -->
+            <div class="profile-header-card">
+              <div class="profile-image-wrap">
+                <img id="profile-avatar" src="Icons/user.png" alt="Photo utilisateur" class="profile-avatar">
+              </div>
+
+              <h2 id="profile-display-name">Omar</h2>
+              <p id="profile-role">Gérant • JIBI Store</p>
+            </div>
+
+            <!-- Status card -->
+            <div class="profile-group">
+              <button id="btn-profile-status" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">●</span>
+                  <span>Statut d'activité</span>
+                </div>
+                <div class="profile-item-right">
+                  <span id="profile-status-text" class="status-active">Actif</span>
+                  <span class="profile-arrow">›</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Personalize -->
+            <div class="profile-section-title">PERSONNALISER</div>
+            <div class="profile-group">
+              <button id="btn-profile-personal-details" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">👤</span>
+                  <span>Détails personnels</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-store-details" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">🏪</span>
+                  <span>Détails du commerce</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-settings" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">⚙</span>
+                  <span>Paramètres</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+            </div>
+
+            <!-- Help -->
+            <div class="profile-section-title">BESOIN D’AIDE ?</div>
+            <div class="profile-group">
+              <button id="btn-profile-tips" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">✦</span>
+                  <span>Conseils et astuces</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-faq" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">?</span>
+                  <span>Questions fréquentes</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-contact" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">✉</span>
+                  <span>Contact</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+            </div>
+
+            <!-- Data -->
+            <div class="profile-section-title">DONNÉES</div>
+            <div class="profile-group">
+              <button id="btn-profile-backup" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">⬆</span>
+                  <span>Sauvegarder les données</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-export" class="profile-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">⤓</span>
+                  <span>Exporter les rapports</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+
+              <button id="btn-profile-logout" class="profile-item danger-item" type="button">
+                <div class="profile-item-left">
+                  <span class="profile-item-icon">⎋</span>
+                  <span>Déconnexion</span>
+                </div>
+                <span class="profile-arrow">›</span>
+              </button>
+            </div>
+
+          </div>
         </section>
       </main>
 
