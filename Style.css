@@ -347,7 +347,7 @@ body {
   margin-bottom: 30px;
   width: 320px;
   padding: 12px 20px;
-  font-family: var(--font-primary);
+  font-family: var(--font-primary); 
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
@@ -1082,4 +1082,137 @@ body {
 
 .nav-bar button.active img {
   opacity: 1;
+}
+
+/* =========================================================
+   ADD CLIENT SCREEN
+   ========================================================= */
+
+#screen-add-client .topbar {
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#screen-add-client .topbar h1 {
+  font-family: var(--font-primary);
+  font-size: var(--fs-title-1);
+  font-weight: var(--fw-title-1);
+  line-height: var(--lh-tight);
+  color: var(--c-primary-title);
+  text-align: center;
+  margin: 0;
+}
+
+#form-add-client {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+#screen-add-client .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+#screen-add-client .label {
+  margin-bottom: 8px;
+  margin-left: 10px;
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-button-md);
+  line-height: var(--lh-normal);
+  color: var(--c-first-body-text);
+}
+
+#screen-add-client input[type="text"],
+#screen-add-client input[type="tel"],
+#screen-add-client input[type="number"] {
+  display: block;
+  width: 365px;
+  margin: 0 auto;
+  padding: 12px 20px;
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
+
+#screen-add-client input[type="text"]::placeholder,
+#screen-add-client input[type="tel"]::placeholder,
+#screen-add-client input[type="number"]::placeholder {
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-body);
+  color: var(--c-secondary-body-text);
+}
+
+#screen-add-client input[type="file"] {
+  display: block;
+  width: 365px;
+  margin: 0 auto;
+  padding: 10px 14px;
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  color: var(--c-first-body-text);
+
+  border: 3px solid black;
+  border-radius: 20px;
+  background-color: var(--c-app);
+}
+
+#screen-add-client input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 14px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: white;
+  cursor: pointer;
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+#screen-add-client .save {
+  display: flex;
+  justify-content: center;
+  width: 365px;
+  padding: 12px 20px;
+  margin: 20px auto 0;
+
+  border: 0;
+  border-radius: 20px;
+  background-color: #15803D;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-button-lg);
+  font-weight: var(--fw-button-lg);
+  line-height: var(--lh-normal);
+  color: white;
+
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+#screen-add-client .save:active {
+  filter: brightness(1.1);
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
