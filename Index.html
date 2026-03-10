@@ -415,13 +415,128 @@
         <!-- ========================================
              REPORTS SCREEN (PLACEHOLDER)
         ========================================= -->
+        <!-- Reports -->
         <section id="screen-reports" class="screen active" aria-label="Rapports">
           <header class="topbar">
-            <button id="btn-back-home-from-reports" class="iconbtn" type="button" aria-label="Retour accueil">←</button>
-            <h1>Rapports</h1>
+            <h1 id="reports-title">Rapports</h1>
             <span class="spacer"></span>
           </header>
-          <p>Soon : analyses, graphiques, export…</p>
+
+          <div id="reports-container" class="reports-container">
+
+            <!-- Period -->
+            <div id="report-period-card" class="report-card report-period">
+              <h2 id="report-period-title">Date</h2>
+              <p id="report-date">Aujourd'hui - 21 sep 2026</p>
+            </div>
+
+            <!-- Summary -->
+            <div id="report-summary-card" class="report-card report-summary">
+              <h2 id="report-summary-title">Résumé du jour</h2>
+
+              <div id="report-stats" class="report-stats">
+                <div id="report-cash-card" class="mini-stat cash">
+                  <span id="report-cash-label">Ventes cash</span>
+                  <strong id="report-cash-value">1 250 DH</strong>
+                </div>
+
+                <div id="report-credit-card" class="mini-stat credit">
+                  <span id="report-credit-label">Ventes crédit</span>
+                  <strong id="report-credit-value">830 DH</strong>
+                </div>
+
+                <div id="report-expense-card" class="mini-stat expense">
+                  <span id="report-expense-label">Dépenses</span>
+                  <strong id="report-expense-value">420 DH</strong>
+                </div>
+
+                <div id="report-profit-card" class="mini-stat profit">
+                  <span id="report-profit-label">Profit net</span>
+                  <strong id="report-profit-value">1 660 DH</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transactions -->
+            <div id="report-transactions-card" class="report-card report-transactions">
+              <h2 id="report-transactions-title">Transactions du jour</h2>
+
+              <div id="report-transactions-list" class="report-list">
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">Vente Cash</p>
+                    <small>09:10</small>
+                  </div>
+                  <strong>250 DH</strong>
+                </div>
+
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">Vente Crédit - LHAJ THAMI</p>
+                    <small>11:45</small>
+                  </div>
+                  <strong>430 DH</strong>
+                </div>
+
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">Dépense - Transport</p>
+                    <small>13:20</small>
+                  </div>
+                  <strong>60 DH</strong>
+                </div>
+
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">Vente Cash</p>
+                    <small>16:05</small>
+                  </div>
+                  <strong>500 DH</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Credit clients -->
+            <div id="report-clients-card" class="report-card report-clients-credit">
+              <h2 id="report-clients-title">Clients à crédit</h2>
+
+              <div id="report-clients-list" class="report-list">
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">LHAJ THAMI</p>
+                    <small>Reste à payer</small>
+                  </div>
+                  <strong>1 240 DH</strong>
+                </div>
+
+                <div class="report-row">
+                  <div>
+                    <p class="report-title">AMINOR</p>
+                    <small>Reste à payer</small>
+                  </div>
+                  <strong>723 DH</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Final balance -->
+            <div id="report-balance-card" class="report-card report-balance">
+              <h2 id="report-balance-title">Bilan final</h2>
+
+              <div class="balance-line">
+                <span id="report-total-cash-label">Total encaissé aujourd'hui</span>
+                <strong id="report-total-cash-value">2 080 DH</strong>
+              </div>
+
+              <div class="balance-line">
+                <span id="report-total-debt-label">Dette totale active</span>
+                <strong id="report-total-debt-value">4 850 DH</strong>
+              </div>
+
+              <button id="btn-export-report" type="button">Exporter le rapport</button>
+            </div>
+
+          </div>
         </section>
 
         <!-- ========================================
