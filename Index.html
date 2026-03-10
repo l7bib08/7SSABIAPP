@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- ========================================
+       META / HEAD
+  ========================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <title>MOBILE APP JIBI</title>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="phone">
     <div class="app">
+      <!-- ========================================
+           MAIN APP CONTENT
+      ========================================= -->
       <main class="content" id="app-content">
 
         <!-- ========================================
@@ -35,12 +49,24 @@
           <form id="form-login" class="form auth-form" autocomplete="on">
             <div class="field">
               <label class="label" for="login-email">Email :</label>
-              <input id="login-email" name="email" type="email" placeholder="Enter your email" required />
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="login-password">Password :</label>
-              <input id="login-password" name="password" type="password" placeholder="Enter your password" required />
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+              />
             </div>
 
             <div class="row">
@@ -72,7 +98,9 @@
 
             <p class="hint">
               Pas de compte ?
-              <button id="btn-go-signup" class="linklike" type="button">Créer un compte</button>
+              <button id="btn-go-signup" class="linklike" type="button">
+                Créer un compte
+              </button>
             </p>
           </form>
         </section>
@@ -91,29 +119,55 @@
           <form id="form-signup" class="form auth-form" autocomplete="on">
             <div class="field">
               <label class="label" for="signup-name">Full Name :</label>
-              <input id="signup-name" name="name" type="text" placeholder="Enter your full name" required />
+              <input
+                id="signup-name"
+                name="name"
+                type="text"
+                placeholder="Enter your full name"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="signup-email">Email :</label>
-              <input id="signup-email" name="email" type="email" placeholder="Enter your email" required />
+              <input
+                id="signup-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="signup-password">Password :</label>
-              <input id="signup-password" name="password" type="password" placeholder="Enter your password" required />
+              <input
+                id="signup-password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="signup-password2">Confirm password :</label>
-              <input id="signup-password2" name="password2" type="password" placeholder="Confirm your password" required />
+              <input
+                id="signup-password2"
+                name="password2"
+                type="password"
+                placeholder="Confirm your password"
+                required
+              />
             </div>
 
             <button id="btn-create-account" type="button">Create Account</button>
 
             <p class="hint">
               Déjà un compte ?
-              <button id="btn-back-login" class="linklike" type="button">Retour Login</button>
+              <button id="btn-back-login" class="linklike" type="button">
+                Retour Login
+              </button>
             </p>
           </form>
         </section>
@@ -166,16 +220,26 @@
         ========================================= -->
         <section id="screen-cash" class="screen" aria-label="Vente cash">
           <header class="topbar">
-            <button id="btn-back-home-from-cash" class="iconbtn" type="button" aria-label="Retour accueil">
-              <img src="icons/back no click.png" alt="back-icon" class="icon">
+            <button
+              id="btn-back-home-from-cash"
+              class="iconbtn"
+              type="button"
+              aria-label="Retour accueil"
+            >
+              <img src="icons/back no click.png" alt="back-icon" class="icon" />
             </button>
 
             <h1>Vente Cash</h1>
 
             <span class="spacer"></span>
 
-            <button id="btn-go-credit-from-cash" class="iconbtn" type="button" aria-label="Va vers credit">
-              <img src="icons/next click.png" alt="go-icon" class="icon">
+            <button
+              id="btn-go-credit-from-cash"
+              class="iconbtn"
+              type="button"
+              aria-label="Va vers credit"
+            >
+              <img src="icons/next click.png" alt="go-icon" class="icon" />
             </button>
           </header>
 
@@ -188,15 +252,28 @@
 
             <div class="field">
               <label class="label" for="cash-article-price"></label>
-              <input id="cash-article-price" type="number" inputmode="decimal" placeholder="Prix" />
+              <input
+                id="cash-article-price"
+                type="number"
+                inputmode="decimal"
+                placeholder="Prix"
+              />
             </div>
 
             <div class="field">
               <label class="label" for="cash-article-qty"></label>
-              <input id="cash-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="" />
+              <input
+                id="cash-article-qty"
+                type="number"
+                inputmode="numeric"
+                placeholder="Qté"
+                value=""
+              />
             </div>
 
-            <button id="btn-cash-add-item" class="add" type="button">+ Ajouter un article</button>
+            <button id="btn-cash-add-item" class="add" type="button">
+              + Ajouter un article
+            </button>
 
             <div id="cash-items" class="items-list" aria-label="Articles ajoutés"></div>
 
@@ -214,14 +291,24 @@
         ========================================= -->
         <section id="screen-credit" class="screen" aria-label="Vente à crédit">
           <header class="topbar">
-            <button id="btn-back-cash-from-credit" class="iconbtn" type="button" aria-label="Retour cash">
-              <img src="icons/back click.png" alt="back-icon" class="icon">
+            <button
+              id="btn-back-cash-from-credit"
+              class="iconbtn"
+              type="button"
+              aria-label="Retour cash"
+            >
+              <img src="icons/back click.png" alt="back-icon" class="icon" />
             </button>
 
             <h1>Vente à crédit</h1>
 
-            <button id="btn-go-expense-from-credit" class="iconbtn" type="button" aria-label="Va vers depense">
-              <img src="icons/next click.png" alt="go-icon" class="icon">
+            <button
+              id="btn-go-expense-from-credit"
+              class="iconbtn"
+              type="button"
+              aria-label="Va vers depense"
+            >
+              <img src="icons/next click.png" alt="go-icon" class="icon" />
             </button>
           </header>
 
@@ -229,16 +316,15 @@
             <div class="field">
               <h2>Client :</h2>
               <label class="label" for="credit-client-search"></label>
-              <input id="credit-client-search" type="search" placeholder="Entrer le nom du client" />
-              <button id="btn-credit-add-client" class="add" type="button">Ajouter un client</button>
+              <input
+                id="credit-client-search"
+                type="search"
+                placeholder="Entrer le nom du client"
+              />
+              <button id="btn-credit-add-client" class="add" type="button">
+                Ajouter un client
+              </button>
             </div>
-
-            <!--
-            <div class="field">
-              <label class="label" for="credit-due-date">Échéance</label>
-              <input id="credit-due-date" type="date" />
-            </div>
-            -->
 
             <hr />
 
@@ -250,15 +336,28 @@
 
             <div class="field">
               <label class="label" for="credit-article-price"></label>
-              <input id="credit-article-price" type="number" inputmode="decimal" placeholder="Prix" />
+              <input
+                id="credit-article-price"
+                type="number"
+                inputmode="decimal"
+                placeholder="Prix"
+              />
             </div>
 
             <div class="field">
               <label class="label" for="credit-article-qty"></label>
-              <input id="credit-article-qty" type="number" inputmode="numeric" placeholder="Qté" value="1" />
+              <input
+                id="credit-article-qty"
+                type="number"
+                inputmode="numeric"
+                placeholder="Qté"
+                value="1"
+              />
             </div>
 
-            <button id="btn-credit-add-item" class="add" type="button">Ajouter l'article</button>
+            <button id="btn-credit-add-item" class="add" type="button">
+              Ajouter l'article
+            </button>
 
             <div id="credit-items" class="items-list" aria-label="Articles ajoutés"></div>
 
@@ -276,8 +375,13 @@
         ========================================= -->
         <section id="screen-expense" class="screen" aria-label="Dépense">
           <header class="topbar">
-            <button id="btn-back-credit-from-expense" class="iconbtn" type="button" aria-label="Retour credit">
-              <img src="icons/back click.png" alt="back-icon" class="icon">
+            <button
+              id="btn-back-credit-from-expense"
+              class="iconbtn"
+              type="button"
+              aria-label="Retour credit"
+            >
+              <img src="icons/back click.png" alt="back-icon" class="icon" />
             </button>
 
             <h1>Dépense</h1>
@@ -285,7 +389,7 @@
             <span class="spacer"></span>
 
             <button id="btn-invalide" class="iconbtn" type="button" aria-label="invalid btn">
-              <img src="icons/next no click.png" alt="invalid-icon" class="icon">
+              <img src="icons/next no click.png" alt="invalid-icon" class="icon" />
             </button>
           </header>
 
@@ -293,12 +397,21 @@
             <div class="field">
               <h2>Dépenses :</h2>
               <label class="label" for="expense-type"></label>
-              <input id="expense-type" type="text" placeholder="Entrer le type de dépense" />
+              <input
+                id="expense-type"
+                type="text"
+                placeholder="Entrer le type de dépense"
+              />
             </div>
 
             <div class="field">
               <label class="label" for="expense-amount"></label>
-              <input id="expense-amount" type="number" inputmode="decimal" placeholder="Prix" />
+              <input
+                id="expense-amount"
+                type="number"
+                inputmode="decimal"
+                placeholder="Prix"
+              />
             </div>
 
             <div class="field">
@@ -306,7 +419,10 @@
               <textarea id="expense-notes" placeholder="Entrer vos notes..."></textarea>
             </div>
 
-            <button id="go-add-expense" class="addexpense" type="button">+ Ajouter un autre type de dépense</button>
+            <button id="go-add-expense" class="addexpense" type="button">
+              + Ajouter un autre type de dépense
+            </button>
+
             <button id="btn-expense-save" class="save" type="button">Enregistrer</button>
           </form>
         </section>
@@ -322,8 +438,12 @@
           <h4 id="clients-summary">32 clients • Dette totale : 4 850 Dh</h4>
 
           <div class="searchbar">
-            <input id="clients-search" type="text" placeholder="Entrer le nom du client que vous chercher :" />
-            <img src="Icons/search.png" alt="search icon" width="20px">
+            <input
+              id="clients-search"
+              type="text"
+              placeholder="Entrer le nom du client que vous chercher :"
+            />
+            <img src="Icons/search.png" alt="search icon" width="20px" />
           </div>
 
           <div id="clients-list" class="clients-list" aria-label="Liste des clients">
@@ -376,7 +496,9 @@
             </div>
           </div>
 
-          <button id="go-add-client" class="addclient" type="button">+ Ajouter un client</button>
+          <button id="go-add-client" class="addclient" type="button">
+            + Ajouter un client
+          </button>
         </section>
 
         <!-- ========================================
@@ -390,17 +512,32 @@
           <form id="form-add-client" class="form" enctype="multipart/form-data">
             <div class="field">
               <label class="label" for="client-name">Full Name</label>
-              <input id="client-name" type="text" placeholder="Enter the client full name" required />
+              <input
+                id="client-name"
+                type="text"
+                placeholder="Enter the client full name"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="client-phone">Number phone</label>
-              <input id="client-phone" type="tel" placeholder="Enter le numero de telephone du client" required />
+              <input
+                id="client-phone"
+                type="tel"
+                placeholder="Enter le numero de telephone du client"
+                required
+              />
             </div>
 
             <div class="field">
               <label class="label" for="client-limit">Credit limit</label>
-              <input id="client-limit" type="number" inputmode="decimal" placeholder="Enter the client credit limit" />
+              <input
+                id="client-limit"
+                type="number"
+                inputmode="decimal"
+                placeholder="Enter the client credit limit"
+              />
             </div>
 
             <div class="field">
@@ -408,14 +545,15 @@
               <input type="file" id="client-image" accept="image/*" />
             </div>
 
-            <button id="btn-save-client" class="save" type="button">Enregistrer le client</button>
+            <button id="btn-save-client" class="save" type="button">
+              Enregistrer le client
+            </button>
           </form>
         </section>
 
         <!-- ========================================
-             REPORTS SCREEN (PLACEHOLDER)
+             REPORTS SCREEN
         ========================================= -->
-        <!-- Reports -->
         <section id="screen-reports" class="screen" aria-label="Rapports">
           <header class="topbar">
             <h1 id="reports-title">Rapports</h1>
@@ -423,7 +561,6 @@
           </header>
 
           <div id="reports-container" class="reports-container">
-
             <!-- Period -->
             <div id="report-period-card" class="report-card report-period">
               <h2 id="report-period-title">Date</h2>
@@ -535,12 +672,11 @@
 
               <button id="btn-export-report" type="button">Exporter le rapport</button>
             </div>
-
           </div>
         </section>
 
         <!-- ========================================
-             PROFILE SCREEN (PLACEHOLDER)
+             PROFILE SCREEN
         ========================================= -->
         <section id="screen-profile" class="screen active" aria-label="Profil">
           <header class="topbar">
@@ -549,18 +685,22 @@
           </header>
 
           <div id="profile-container" class="profile-container">
-
-            <!-- Profile header card -->
+            <!-- Profile header -->
             <div class="profile-header-card">
               <div class="profile-image-wrap">
-                <img id="profile-avatar" src="Icons/user.png" alt="Photo utilisateur" class="profile-avatar">
+                <img
+                  id="profile-avatar"
+                  src="Icons/user.png"
+                  alt="Photo utilisateur"
+                  class="profile-avatar"
+                />
               </div>
 
               <h2 id="profile-display-name">Omar</h2>
               <p id="profile-role">Gérant • JIBI Store</p>
             </div>
 
-            <!-- Status card -->
+            <!-- Status -->
             <div class="profile-group">
               <button id="btn-profile-status" class="profile-item" type="button">
                 <div class="profile-item-left">
@@ -657,7 +797,6 @@
                 <span class="profile-arrow">›</span>
               </button>
             </div>
-
           </div>
         </section>
       </main>
@@ -667,32 +806,32 @@
       ========================================= -->
       <nav class="bottom-nav" aria-label="Navigation principale">
         <button class="nav-item is-active" type="button" aria-label="Home">
-          <img class="nav-icon icon-default" src="Icons/home no click.png" alt="Home icon inactive">
-          <img class="nav-icon icon-active" src="Icons/home click.png" alt="Home icon active">
+          <img class="nav-icon icon-default" src="Icons/home no click.png" alt="Home icon inactive" />
+          <img class="nav-icon icon-active" src="Icons/home click.png" alt="Home icon active" />
           <span class="nav-label">Home</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Search">
-          <img class="nav-icon icon-default" src="Icons/block note no click.png" alt="Search icon inactive">
-          <img class="nav-icon icon-active" src="Icons/block note click.png" alt="Search icon active">
+          <img class="nav-icon icon-default" src="Icons/block note no click.png" alt="Search icon inactive" />
+          <img class="nav-icon icon-active" src="Icons/block note click.png" alt="Search icon active" />
           <span class="nav-label">Notes</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Offers">
-          <img class="nav-icon icon-default" src="Icons/customer no click.png" alt="Offers icon inactive">
-          <img class="nav-icon icon-active" src="Icons/customer click.png" alt="Offers icon active">
+          <img class="nav-icon icon-default" src="Icons/customer no click.png" alt="Offers icon inactive" />
+          <img class="nav-icon icon-active" src="Icons/customer click.png" alt="Offers icon active" />
           <span class="nav-label">Clients</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Cart">
-          <img class="nav-icon icon-default" src="Icons/rapport no click.png" alt="Cart icon inactive">
-          <img class="nav-icon icon-active" src="Icons/rapport click.png" alt="Cart icon active">
+          <img class="nav-icon icon-default" src="Icons/rapport no click.png" alt="Cart icon inactive" />
+          <img class="nav-icon icon-active" src="Icons/rapport click.png" alt="Cart icon active" />
           <span class="nav-label">Repports</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Profile">
-          <img class="nav-icon icon-default" src="Icons/user no click.png" alt="Profile icon inactive">
-          <img class="nav-icon icon-active" src="Icons/user click.png" alt="Profile icon active">
+          <img class="nav-icon icon-default" src="Icons/user no click.png" alt="Profile icon inactive" />
+          <img class="nav-icon icon-active" src="Icons/user click.png" alt="Profile icon active" />
           <span class="nav-label">Profile</span>
         </button>
       </nav>
@@ -704,101 +843,190 @@
            - Daily report
       ========================================= -->
       <div id="overlay" class="overlay hidden" aria-hidden="true">
-        <div class="overlay-backdrop" id="overlay-close-area" aria-label="Fermer overlay"></div>
+        <div
+          class="overlay-backdrop"
+          id="overlay-close-area"
+          aria-label="Fermer overlay"
+        ></div>
 
         <div class="overlay-content" role="dialog" aria-modal="true">
-          <!-- PANEL 1 : CLIENT INFO -->
-          <div id="overlay-client-info" class="overlay-panel">
-            <div class="card-ui">
+          <!-- ========================================
+               PANEL 1 : CLIENT INFO
+          ========================================= -->
+          <div id="overlay-client-info" class="overlay-panel hidden">
+            <div class="card-ui client-info-card">
               <div class="card-header">
                 <div class="header-top"></div>
-                <img id="overlay-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+                <div class="header-accent"></div>
+                <img
+                  id="overlay-client-img"
+                  class="avatar"
+                  src="Icons/user.png"
+                  alt="client image"
+                />
               </div>
 
               <h2 id="overlay-client-name" class="title">CLIENT</h2>
 
-              <div class="grid">
-                <div class="labels">
-                  <p>ID</p>
-                  <p>Phone number</p>
-                  <p>Credit Limit</p>
-                  <p>Consumed this month</p>
-                  <p>Paid</p>
-                  <p>Remaining</p>
+              <div class="client-info-list">
+                <div class="client-info-row">
+                  <p class="info-label">ID</p>
+                  <p id="overlay-client-id" class="info-value">: --</p>
                 </div>
 
-                <div class="values">
-                  <p id="overlay-client-id">: --</p>
-                  <p id="overlay-client-phone">: --</p>
-                  <p id="overlay-client-limit">: --</p>
-                  <p id="overlay-client-consumed">: --</p>
-                  <p id="overlay-client-paid">: --</p>
-                  <p id="overlay-client-remaining">: --</p>
+                <div class="client-info-row">
+                  <p class="info-label">Phone number</p>
+                  <p id="overlay-client-phone" class="info-value">: --</p>
+                </div>
+
+                <div class="client-info-row">
+                  <p class="info-label">Credit Limit</p>
+                  <p id="overlay-client-limit" class="info-value">: --</p>
+                </div>
+
+                <div class="client-info-row">
+                  <p class="info-label">Consumed this month</p>
+                  <p id="overlay-client-consumed" class="info-value">: --</p>
+                </div>
+
+                <div class="client-info-row">
+                  <p class="info-label">Paid</p>
+                  <p id="overlay-client-paid" class="info-value">: --</p>
+                </div>
+
+                <div class="client-info-row">
+                  <p class="info-label">Remaining</p>
+                  <p id="overlay-client-remaining" class="info-value">: --</p>
                 </div>
               </div>
 
-              <button id="btn-open-payment" class="btn-primary" type="button">Le client veut payer</button>
-              <button id="btn-open-report" class="btn-secondary" type="button">Voir rapport du jour</button>
-              <button id="btn-overlay-close-1" class="btn-ghost" type="button">Fermer</button>
+              <div class="client-actions">
+                <button id="btn-open-payment" class="btn-primary" type="button">
+                  Le client veut payer
+                </button>
+                <button id="btn-open-report" class="btn-secondary" type="button">
+                  Voir rapport du jour
+                </button>
+                <button id="btn-overlay-close-1" class="btn-ghost" type="button">
+                  Fermer
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- PANEL 2 : PAYMENT -->
+          <!-- ========================================
+               PANEL 2 : PAYMENT
+          ========================================= -->
           <div id="overlay-payment" class="overlay-panel hidden">
-            <div class="card-ui">
+            <div class="card-ui payment-card">
               <div class="card-header">
                 <div class="header-top"></div>
-                <img id="payment-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+                <div class="header-accent"></div>
+                <img
+                  id="payment-client-img"
+                  class="avatar"
+                  src="Icons/user.png"
+                  alt="client image"
+                />
               </div>
 
               <h2 id="payment-client-name" class="title">CLIENT</h2>
 
-              <p class="center">Reste à payer :</p>
-              <h3 id="payment-remaining" class="big">0 DH</h3>
+              <div class="payment-summary">
+                <p class="payment-caption">Reste à payer :</p>
+                <h3 id="payment-remaining" class="payment-amount">0 MAD</h3>
+              </div>
 
-              <label class="label" for="payment-amount">Montant</label>
-              <input id="payment-amount" class="input" type="number" inputmode="decimal" placeholder="Montant payé" />
+              <div class="payment-form-block">
+                <label class="payment-label" for="payment-amount">Montant</label>
+                <input
+                  id="payment-amount"
+                  class="payment-input"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="Entrer le montant que veut le client payer :"
+                />
+              </div>
 
-              <button id="btn-payment-save" class="btn-primary" type="button">Enregistrer paiement</button>
-              <button id="btn-overlay-close-2" class="btn-ghost" type="button">Fermer</button>
+              <div class="payment-actions">
+                <button id="btn-payment-save" class="btn-primary" type="button">
+                  Enregistrer paiement
+                </button>
+                <button id="btn-overlay-close-2" class="btn-ghost" type="button">
+                  Fermer
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- PANEL 3 : REPORT -->
+          <!-- ========================================
+               PANEL 3 : REPORT
+          ========================================= -->
           <div id="overlay-report" class="overlay-panel hidden">
-            <div class="card-ui">
-              <div class="card-header">
-                <div class="header-top"></div>
-                <img id="report-client-img" class="avatar" src="Icons/user.png" alt="client image" />
+            <div class="card-ui report-card">
+              <div class="report-header">
+                <div class="report-header-top"></div>
+                <div class="report-header-accent"></div>
+                <img
+                  id="report-client-img"
+                  class="report-avatar"
+                  src="Icons/user.png"
+                  alt=""
+                />
               </div>
 
-              <h2 class="title">
-                Rapport de <span id="report-client-name">CLIENT</span><br />
-                <span id="report-date" class="small">-- ---</span>
-              </h2>
+              <div class="report-heading">
+                <h2 class="report-title">
+                  Rapport de Mr. <span id="report-client-name">LHAJ THAMI</span>
+                </h2>
 
-              <p class="center small">
-                Articles achetés : (<span id="report-time">--:--</span>)
+                <p id="report-date" class="report-date">20-JAN</p>
+              </div>
+
+              <p class="report-time">
+                Articles achetes (<span id="report-time">13:27</span>)
               </p>
 
-              <div class="report-box">
-                <div class="row head">
-                  <span>Article</span>
-                  <span>Prix</span>
+              <div class="report-items-wrap">
+                <div id="report-items-list">
+                  <div class="report-item-row">
+                    <p class="report-item-name">Lait 1/2 L</p>
+                    <p class="report-item-price">: 4,00 MAD</p>
+                  </div>
+
+                  <div class="report-item-row">
+                    <p class="report-item-name">Indomi x2</p>
+                    <p class="report-item-price">: 5,00 MAD</p>
+                  </div>
+
+                  <div class="report-item-row">
+                    <p class="report-item-name">Farine 1Kg</p>
+                    <p class="report-item-price">: 6,00 MAD</p>
+                  </div>
+
+                  <div class="report-item-row">
+                    <p class="report-item-name">Huile 1L</p>
+                    <p class="report-item-price">: 20,00 MAD</p>
+                  </div>
                 </div>
 
-                <div id="report-items-list"></div>
-
-                <div class="row total">
+                <div class="report-total-row">
                   <strong>TOTAL</strong>
-                  <strong id="report-total">0.00 MAD</strong>
+                  <strong id="report-total">35,00 MAD</strong>
                 </div>
               </div>
 
-              <p class="center">Total à payer :</p>
-              <h3 id="report-to-pay" class="big">0 MAD</h3>
+              <div class="report-pay">
+                <p>Total a payer :</p>
+                <h3 id="report-to-pay">1385 MAD</h3>
+              </div>
 
-              <button id="btn-overlay-close-3" class="btn-ghost" type="button">Fermer</button>
+              <button id="btn-overlay-close-3" class="report-close-btn" type="button">
+                Fermer
+              </button>
+
+              <div class="report-footer-shape report-footer-dark"></div>
+              <div class="report-footer-shape report-footer-light"></div>
             </div>
           </div>
         </div>
@@ -806,7 +1034,9 @@
     </div>
   </div>
 
-  <!-- JS -->
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
   <script src="app.js"></script>
 </body>
 </html>

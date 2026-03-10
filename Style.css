@@ -1,43 +1,5 @@
 /* =========================================================
-   1. SCREEN VISIBILITY / ROUTING
-   ========================================================= */
-section.screen {
-  display: none !important;
-}
-
-section.screen.active {
-  display: block !important;
-}
-
-.hidden {
-  display: none;
-}
-
-.content {
-  padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
-}
-
-
-/* =========================================================
-   2. NAV VISIBILITY
-   ========================================================= */
-.nav-bar {
-  display: flex !important;
-}
-
-.app.hide-nav .nav-bar {
-  display: none !important;
-}
-
-body:has(#screen-initial.active) .nav-bar,
-body:has(#screen-login.active) .nav-bar,
-body:has(#screen-signup.active) .nav-bar {
-  display: none !important;
-}
-
-
-/* =========================================================
-   3. RESET / BASE
+   1. RESET / BASE
    ========================================================= */
 * {
   box-sizing: border-box;
@@ -50,12 +12,11 @@ body {
   height: 100%;
 }
 
-
 /* =========================================================
-   4. VARIABLES
+   2. VARIABLES
    ========================================================= */
 :root {
-  --font-primary: 'Manrope', sans-serif;
+  --font-primary: "Manrope", sans-serif;
 
   /* App surfaces */
   --c-app: #F9FAFB;
@@ -93,7 +54,7 @@ body {
   --fw-button-md: 600;
 
   /* Line heights */
-  --lh-compact: 1.10;
+  --lh-compact: 1.1;
   --lh-tight: 4.15;
   --lh-normal: 1.25;
   --lh-body: 1.45;
@@ -127,9 +88,8 @@ body {
   --navbar-height: 90px;
 }
 
-
 /* =========================================================
-   5. BODY / APP LAYOUT
+   3. BODY / APP LAYOUT
    ========================================================= */
 body {
   font-family: "Manrope", system-ui, Arial, sans-serif;
@@ -168,6 +128,40 @@ body {
   padding-bottom: calc(var(--screen-padding-bottom) + var(--navbar-height));
 }
 
+/* =========================================================
+   4. SCREEN VISIBILITY / ROUTING
+   ========================================================= */
+section.screen {
+  display: none !important;
+}
+
+section.screen.active {
+  display: block !important;
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================================================
+   5. NAV VISIBILITY
+   NOTE:
+   Your HTML uses .bottom-nav, not .nav-bar.
+   I kept your original logic untouched below.
+   ========================================================= */
+.nav-bar {
+  display: flex !important;
+}
+
+.app.hide-nav .nav-bar {
+  display: none !important;
+}
+
+body:has(#screen-initial.active) .nav-bar,
+body:has(#screen-login.active) .nav-bar,
+body:has(#screen-signup.active) .nav-bar {
+  display: none !important;
+}
 
 /* =========================================================
    6. GLOBAL TYPOGRAPHY
@@ -198,9 +192,8 @@ body {
   color: white;
 }
 
-
 /* =========================================================
-   7. REUSABLE HEADER / ICON BUTTONS
+   7. REUSABLE BUTTON / HEADER UTILITIES
    ========================================================= */
 .iconbtn {
   width: 44px;
@@ -268,7 +261,6 @@ body {
   margin-right: -5px;
 }
 
-
 /* =========================================================
    8. SPLASH SCREEN
    ========================================================= */
@@ -293,7 +285,6 @@ body {
   margin-top: -100px;
 }
 
-
 /* =========================================================
    9. LOGIN / SIGNUP SHARED LAYOUT
    ========================================================= */
@@ -303,7 +294,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0px;
+  gap: 0;
 }
 
 #screen-login .logo,
@@ -312,7 +303,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0px;
+  gap: 0;
 }
 
 #screen-login .logo img:first-child,
@@ -328,7 +319,6 @@ body {
   margin-top: -50px;
 }
 
-
 /* =========================================================
    10. AUTH FORMS
    ========================================================= */
@@ -343,11 +333,10 @@ body {
 
 .screen .form.auth-form .field input {
   display: block;
-  margin: 10px auto;
-  margin-bottom: 30px;
   width: 320px;
+  margin: 10px auto 30px;
   padding: 12px 20px;
-  font-family: var(--font-primary); 
+  font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
@@ -367,8 +356,8 @@ body {
 
 .screen .form.auth-form .row {
   margin-top: 30px;
-  margin-left: 10px;
   margin-bottom: 100px;
+  margin-left: 10px;
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
@@ -384,10 +373,9 @@ body {
 
 .screen .form.auth-form button {
   display: block;
-  margin: 20px auto;
-  margin-top: 40px;
   width: 150px;
   height: 40px;
+  margin: 40px auto 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
@@ -400,10 +388,9 @@ body {
 
 #btn-login-next {
   display: block;
-  margin: 20px auto;
-  margin-top: -70px;
   width: 80px;
   height: 30px;
+  margin: -70px auto 20px;
   border: 3px solid black;
   border-radius: 20px;
   background-color: var(--c-app);
@@ -413,9 +400,7 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 20px 0;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: var(--fw-small);
@@ -438,7 +423,6 @@ body {
   width: 300px;
   height: 50px;
   margin: 10px 0;
-  margin-bottom: 10px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -466,12 +450,10 @@ body {
 
 .screen .form.auth-form .hint button {
   display: block;
-  text-align: center;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
   width: 300px;
   height: 50px;
+  margin: 20px auto 10px;
+  text-align: center;
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
@@ -483,7 +465,6 @@ body {
   box-shadow: 0 1px 0 #000;
 }
 
-
 /* =========================================================
    11. HOME SCREEN
    ========================================================= */
@@ -494,20 +475,13 @@ body {
 }
 
 .screen .cards.cards-stats .card-sell-expense h2,
-.screen .cards.cards-stats .card-profit h2 {
-  font-family: var(--font-primary);
-  font-size: var(--fs-button-md);
-  font-weight: var(--fw-button-md);
-  line-height: var(--lh-normal);
-  color: #F9FAFB;
-}
-
+.screen .cards.cards-stats .card-profit h2,
 .screen .cards.cards-stats .card-sell-expense h3,
 .screen .cards.cards-stats .card-profit h3 {
   font-family: var(--font-primary);
   font-size: var(--fs-button-md);
   font-weight: var(--fw-button-md);
-  line-height: var(--lh-compact);
+  line-height: var(--lh-normal);
   color: #F9FAFB;
 }
 
@@ -517,15 +491,25 @@ body {
   gap: 20px;
 }
 
-.cards-stats .card-sell-expense {
+.cards-stats .card-sell-expense,
+.cards-stats .card-profit {
   width: 300px;
-  padding: 20px;
   border-radius: 20px;
   color: white;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   margin: 0 auto;
+}
+
+.cards-stats .card-sell-expense {
+  padding: 20px;
   margin-top: -10px;
+}
+
+.cards-stats .card-profit {
+  padding: 35px;
+  margin-top: 10px;
+  background: #15803D;
 }
 
 .card-sell-expense:first-child {
@@ -536,18 +520,6 @@ body {
   background: #c61b1b;
 }
 
-.cards-stats .card-profit {
-  width: 300px;
-  padding: 35px;
-  border-radius: 20px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-  margin-top: 10px;
-  background: #15803D;
-}
-
 .cards-actions #go-cash {
   display: flex;
   flex-direction: column;
@@ -555,40 +527,37 @@ body {
   gap: 20px;
   width: 350px;
   padding: 20px;
+  margin: 50px auto 0;
+  border: 0;
   border-radius: 20px;
   background-color: #2563EB;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-  margin-top: 50px;
-  border: 0px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.cards-actions .actions-row{
+.cards-actions .actions-row {
   display: flex;
   justify-content: center;
   gap: 16px;
   margin-top: 10px;
 }
 
-.cards-actions #go-credit{
+.cards-actions #go-credit,
+.cards-actions #go-expense {
   width: 150px;
   padding: 20px;
-  border: 0px;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  background-color: #0F172A;
   margin: 0;
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.cards-actions #go-expense{
-  width: 150px;
-  padding: 20px;
-  border: 0px;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.cards-actions #go-credit {
+  background-color: #0F172A;
+}
+
+.cards-actions #go-expense {
   background-color: #B91C1C;
-  margin: 0;
 }
 
 .cards-actions button {
@@ -599,7 +568,7 @@ body {
 .cards-actions button:active {
   filter: brightness(1.1);
   transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .screen .cards.cards-stats .card #stat-profit-today {
@@ -626,7 +595,6 @@ body {
   color: white;
 }
 
-
 /* =========================================================
    12. GENERIC FORM ELEMENTS
    ========================================================= */
@@ -646,7 +614,7 @@ body {
 .screen .form button:active {
   filter: brightness(1.1);
   transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .screen .form .summary {
@@ -662,18 +630,29 @@ body {
   justify-content: center;
   width: 365px;
   padding: 12px 20px;
+  margin: 0 auto;
+  border: 0;
   border-radius: 20px;
   background-color: #15803D;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-  border: 0px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
-
 
 /* =========================================================
    13. CASH SCREEN
    ========================================================= */
+.screen #form-cash {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-left: 0;
+}
+
+.article-row .field {
+  margin-left: 0;
+}
+
 .screen .form #btn-cash-add-item,
 .screen .form #btn-cash-save {
   font-family: var(--font-primary);
@@ -683,37 +662,11 @@ body {
   color: white;
 }
 
-.screen #form-cash {
+.screen .form #cash-article-name,
+.screen .form #credit-article-name {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 150px;
-  margin-left: 0px;
-}
-
-.article-row .field {
-  margin-left: 0;
-}
-
-.screen .form #cash-article-name {
-  display: flex;
-  margin: 10px 0;
   width: 180px;
-  padding: 12px 20px;
-  font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-body);
-  line-height: var(--lh-body);
-  color: var(--c-first-body-text);
-  border: 3px solid black;
-  border-radius: 40px;
-  background-color: var(--c-app);
-}
-
-.screen .form #cash-article-price {
-  display: flex;
   margin: 10px 0;
-  width: 90px;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -723,14 +676,13 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-  margin-top: -59px;
-  margin-left: 183px;
 }
 
-.screen .form #cash-article-qty {
+.screen .form #cash-article-price,
+.screen .form #credit-article-price {
   display: flex;
-  margin: 10px 0;
   width: 90px;
+  margin: -59px 0 10px 183px;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -740,10 +692,23 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-  margin-top: -59px;
-  margin-left: 275px;
 }
 
+.screen .form #cash-article-qty,
+.screen .form #credit-article-qty {
+  display: flex;
+  width: 90px;
+  margin: -59px 0 10px 275px;
+  padding: 12px 20px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-body);
+  color: var(--c-first-body-text);
+  border: 3px solid black;
+  border-radius: 40px;
+  background-color: var(--c-app);
+}
 
 /* =========================================================
    14. CREDIT SCREEN
@@ -753,13 +718,13 @@ body {
   justify-content: center;
   flex-direction: column;
   margin-top: 45px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .screen .form #credit-client-search {
   display: flex;
-  margin: 10px 0;
   width: 365px;
+  margin: 10px 0;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -775,56 +740,6 @@ body {
   margin: 20px;
 }
 
-.screen .form #credit-article-name {
-  display: flex;
-  margin: 10px 0;
-  width: 180px;
-  padding: 12px 20px;
-  font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-body);
-  line-height: var(--lh-body);
-  color: var(--c-first-body-text);
-  border: 3px solid black;
-  border-radius: 40px;
-  background-color: var(--c-app);
-}
-
-.screen .form #credit-article-price {
-  display: flex;
-  margin: 10px 0;
-  width: 90px;
-  padding: 12px 20px;
-  font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-body);
-  line-height: var(--lh-body);
-  color: var(--c-first-body-text);
-  border: 3px solid black;
-  border-radius: 40px;
-  background-color: var(--c-app);
-  margin-top: -59px;
-  margin-left: 183px;
-}
-
-.screen .form #credit-article-qty {
-  display: flex;
-  margin: 10px 0;
-  width: 90px;
-  padding: 12px 20px;
-  font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-body);
-  line-height: var(--lh-body);
-  color: var(--c-first-body-text);
-  border: 3px solid black;
-  border-radius: 40px;
-  background-color: var(--c-app);
-  margin-top: -59px;
-  margin-left: 275px;
-}
-
-
 /* =========================================================
    15. EXPENSE SCREEN
    ========================================================= */
@@ -833,13 +748,13 @@ body {
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .screen .form #expense-type {
   display: flex;
-  margin: 10px 0;
   width: 270px;
+  margin: 10px 0;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -853,8 +768,8 @@ body {
 
 .screen .form #expense-amount {
   display: flex;
-  margin: 10px 0;
   width: 90px;
+  margin: -59px 0 10px 276px;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -864,16 +779,13 @@ body {
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
-  margin-top: -59px;
-  margin-left: 276px;
 }
 
 .screen .form #expense-notes {
   display: block;
   width: 366px;
   height: 120px;
-  margin: 10px 0;
-  margin-top: -5px;
+  margin: -5px 0 10px;
   padding: 12px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -897,7 +809,6 @@ body {
   margin-top: 10px;
 }
 
-
 /* =========================================================
    16. CLIENTS SCREEN
    ========================================================= */
@@ -914,8 +825,8 @@ body {
 
 #clients-search {
   display: flex;
-  margin: 10px 0;
   width: 370px;
+  margin: 10px 0;
   padding: 5px 20px;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
@@ -944,10 +855,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid black;
-  border-radius: 25px;
   padding: 6px 12px;
   margin-bottom: 10px;
+  border: 2px solid black;
+  border-radius: 25px;
 }
 
 .client-left {
@@ -1007,12 +918,12 @@ body {
   justify-content: center;
   width: 365px;
   padding: 12px 20px;
+  margin: 0 auto;
+  border: 0;
   border-radius: 20px;
   background-color: #15803D;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  margin: 0 auto;
-  border: 0px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
@@ -1020,13 +931,12 @@ body {
 #screen-clients button:active {
   filter: brightness(1.1);
   transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
-   ADD CLIENT SCREEN
+   17. ADD CLIENT SCREEN
    ========================================================= */
-
 #screen-add-client .topbar {
   position: relative;
   height: 56px;
@@ -1062,7 +972,6 @@ body {
 #screen-add-client .label {
   margin-bottom: 8px;
   margin-left: 10px;
-
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-button-md);
@@ -1077,13 +986,11 @@ body {
   width: 365px;
   margin: 0 auto;
   padding: 12px 20px;
-
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   line-height: var(--lh-body);
   color: var(--c-first-body-text);
-
   border: 3px solid black;
   border-radius: 40px;
   background-color: var(--c-app);
@@ -1104,11 +1011,9 @@ body {
   width: 365px;
   margin: 0 auto;
   padding: 10px 14px;
-
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   color: var(--c-first-body-text);
-
   border: 3px solid black;
   border-radius: 20px;
   background-color: var(--c-app);
@@ -1121,7 +1026,6 @@ body {
   border-radius: 12px;
   background-color: white;
   cursor: pointer;
-
   font-family: var(--font-primary);
   font-size: var(--fs-small);
   font-weight: 600;
@@ -1133,19 +1037,16 @@ body {
   width: 365px;
   padding: 12px 20px;
   margin: 20px auto 0;
-
   border: 0;
   border-radius: 20px;
   background-color: #15803D;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
   line-height: var(--lh-normal);
   color: white;
-
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
@@ -1153,13 +1054,12 @@ body {
 #screen-add-client .save:active {
   filter: brightness(1.1);
   transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
-   REPORTS SCREEN
+   18. REPORTS SCREEN
    ========================================================= */
-
 #screen-reports .topbar {
   position: relative;
   height: 56px;
@@ -1196,29 +1096,27 @@ body {
   padding: 18px;
   border-radius: 24px;
   background-color: #FFFFFF;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
 .report-card h2 {
+  display: flex;
+  justify-content: center;
   margin-bottom: 14px;
   font-family: var(--font-primary);
   font-size: var(--fs-title-2);
   font-weight: var(--fw-title-2);
   line-height: var(--lh-normal);
   color: var(--c-secondary-title);
-
-  display: flex;
-  justify-content: center;
 }
 
 .report-period p {
+  display: flex;
+  justify-content: center;
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
   color: var(--c-secondary-body-text);
-
-  display: flex;
-  justify-content: center;
 }
 
 /* Summary stats */
@@ -1266,7 +1164,7 @@ body {
   background-color: #15803D;
 }
 
-/* Lists */
+/* Reports list */
 .report-list {
   display: flex;
   flex-direction: column;
@@ -1343,14 +1241,12 @@ body {
   border-radius: 20px;
   background-color: #2563EB;
   text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   font-family: var(--font-primary);
   font-size: var(--fs-button-lg);
   font-weight: var(--fw-button-lg);
   line-height: var(--lh-normal);
   color: white;
-
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
@@ -1358,13 +1254,12 @@ body {
 #btn-export-report:active {
   filter: brightness(1.1);
   transform: scale(0.96);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
-   PROFILE SCREEN
+   19. PROFILE SCREEN
    ========================================================= */
-
 #screen-profile {
   background: #F8FAFC;
 }
@@ -1406,7 +1301,7 @@ body {
   border-radius: 28px;
   background: #FFFFFF;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .profile-image-wrap {
@@ -1421,7 +1316,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #F8FAFC;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.10);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.10);
 }
 
 #profile-display-name {
@@ -1458,7 +1353,7 @@ body {
   padding: 6px;
   border-radius: 24px;
   background: #FFFFFF;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 #screen-profile .profile-item {
@@ -1493,15 +1388,10 @@ body {
 
 #screen-profile .profile-item:active {
   transform: scale(0.98);
-  background: rgba(37,99,235,0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
-.profile-item-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+.profile-item-left,
 .profile-item-right {
   display: flex;
   align-items: center;
@@ -1533,15 +1423,15 @@ body {
   color: #B91C1C;
 }
 
-/* =========================================
-   FLOATING PILL NAVBAR - FIXED
-========================================= */
-
+/* =========================================================
+   20. FLOATING PILL NAVBAR
+   ========================================================= */
 .bottom-nav {
   position: absolute;
   left: 18px;
   right: 18px;
   bottom: 14px;
+  z-index: 100;
 
   height: 74px;
   padding: 10px 12px;
@@ -1554,10 +1444,8 @@ body {
   background: #ffffff;
   border-radius: 999px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-  z-index: 100;
 }
 
-/* each nav button */
 .bottom-nav .nav-item {
   flex: 1 1 0;
   min-width: 44px;
@@ -1578,15 +1466,13 @@ body {
   transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
 }
 
-/* active item pill */
 .bottom-nav .nav-item.is-active {
   flex: 0 0 auto;
-  min-width: 104px; /* important: prevents text clipping */
+  min-width: 104px;
   padding: 0 16px;
   background: #000000;
 }
 
-/* icon sizes */
 .bottom-nav .nav-icon {
   width: 22px;
   height: 22px;
@@ -1595,7 +1481,6 @@ body {
   display: block;
 }
 
-/* active/inactive icon visibility */
 .bottom-nav .nav-item .icon-active {
   display: none;
 }
@@ -1608,11 +1493,9 @@ body {
   display: block;
 }
 
-/* label hidden by default */
 .bottom-nav .nav-label {
   display: none;
   white-space: nowrap;
-
   font-family: "Manrope", sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -1620,21 +1503,586 @@ body {
   color: #ffffff;
 }
 
-/* label visible only on active item */
 .bottom-nav .nav-item.is-active .nav-label {
   display: inline-block;
 }
 
-/* inactive icons */
 .bottom-nav .nav-item:not(.is-active) .icon-default {
   opacity: 0.78;
 }
 
-/* interactions */
 .bottom-nav .nav-item:active {
   transform: scale(0.96);
 }
 
 .bottom-nav .nav-item:hover:not(.is-active) .icon-default {
   opacity: 1;
+}
+
+/* =========================================================
+   21. OVERLAY - BASE
+   ========================================================= */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 300;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.30);
+  backdrop-filter: blur(2px);
+}
+
+.overlay-content,
+.overlay-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.overlay-panel.hidden {
+  display: none;
+}
+
+/* =========================================================
+   22. CLIENT INFO CARD
+   ========================================================= */
+.client-info-card {
+  position: relative;
+  width: min(100%, 300px);
+  background: #F8FAFC;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  padding-bottom: 20px;
+}
+
+.client-info-card .card-header {
+  position: relative;
+  height: 132px;
+  margin-bottom: 22px;
+  overflow: visible;
+}
+
+.client-info-card .header-top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 78px;
+  background: #1E3A8A;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+.client-info-card .header-accent {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 66%;
+  height: 116px;
+  background: #3B82F6;
+  border-top-left-radius: 70px;
+  border-bottom-left-radius: 70px;
+}
+
+.client-info-card .avatar {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #F8FAFC;
+  background: #FFFFFF;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.client-info-card .title {
+  margin: 0 20px 18px;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #0F172A;
+  text-transform: uppercase;
+}
+
+.client-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 22px;
+  margin-bottom: 24px;
+}
+
+.client-info-row {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  align-items: start;
+  column-gap: 16px;
+}
+
+.info-label,
+.info-value {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.info-label {
+  font-weight: 800;
+  color: #111827;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #1F2937;
+  text-align: left;
+}
+
+#overlay-client-remaining,
+#overlay-client-remaining.info-value {
+  font-weight: 800;
+  color: #B91C1C;
+}
+
+.client-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.client-info-card .btn-primary,
+.client-info-card .btn-secondary,
+.client-info-card .btn-ghost {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.client-info-card .btn-primary {
+  background: #2563EB;
+  color: #FFFFFF;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+}
+
+.client-info-card .btn-secondary {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.client-info-card .btn-ghost {
+  background: transparent;
+  color: #64748B;
+  border: 2px solid #CBD5E1;
+}
+
+.client-info-card .btn-primary:active,
+.client-info-card .btn-secondary:active,
+.client-info-card .btn-ghost:active {
+  transform: scale(0.98);
+  filter: brightness(1.02);
+}
+
+/* =========================================================
+   23. PAYMENT CARD
+   ========================================================= */
+.payment-card {
+  position: relative;
+  width: min(100%, 360px);
+  background: #F8FAFC;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  padding-bottom: 22px;
+}
+
+.payment-card .card-header {
+  position: relative;
+  height: 132px;
+  margin-bottom: 18px;
+  overflow: visible;
+}
+
+.payment-card .header-top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 78px;
+  background: #1E3A8A;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+.payment-card .header-accent {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 66%;
+  height: 116px;
+  background: #3B82F6;
+  border-top-left-radius: 70px;
+  border-bottom-left-radius: 70px;
+}
+
+.payment-card .avatar {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #F8FAFC;
+  background: #FFFFFF;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.payment-card .title {
+  margin: 0 20px 14px;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #0F172A;
+  text-transform: uppercase;
+}
+
+.payment-summary {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 0 20px;
+}
+
+.payment-caption {
+  margin: 0 0 8px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.payment-amount {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 26px;
+  font-weight: 900;
+  color: #0F172A;
+}
+
+.payment-form-block {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.payment-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.payment-input {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 3px solid #111111;
+  border-radius: 999px;
+  background: #FFFFFF;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F172A;
+  outline: none;
+}
+
+.payment-input::placeholder {
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.payment-input:focus {
+  border-color: #2563EB;
+}
+
+.payment-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.payment-card .btn-primary,
+.payment-card .btn-ghost {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.payment-card .btn-primary {
+  border: none;
+  background: #2563EB;
+  color: #FFFFFF;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+}
+
+.payment-card .btn-ghost {
+  background: transparent;
+  color: #64748B;
+  border: 2px solid #CBD5E1;
+}
+
+.payment-card .btn-primary:active,
+.payment-card .btn-ghost:active {
+  transform: scale(0.98);
+  filter: brightness(1.02);
+}
+
+/* =========================================================
+   24. REPORT OVERLAY CARD
+   NOTE:
+   This still uses .report-card, which may conflict with the
+   reports screen .report-card. Best practice: rename later.
+   ========================================================= */
+.report-card {
+  position: relative;
+  width: min(100%, 340px);
+  background: #F8FAFC;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.15);
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
+
+.report-header {
+  position: relative;
+  height: 130px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.report-avatar {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #F8FAFC;
+  background: #FFFFFF;
+  z-index: 2;
+}
+
+.report-heading {
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 22px;
+}
+
+.report-heading-label {
+  margin: 0 0 6px;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.report-client-name {
+  margin: 0 0 6px;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #111827;
+  text-transform: uppercase;
+}
+
+.report-date {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #64748B;
+}
+
+.report-time {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.report-time #report-time {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.report-items-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 30px;
+}
+
+#report-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.report-item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.report-item-name,
+.report-item-price {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  line-height: 1.25;
+  color: #1F2937;
+}
+
+.report-item-name {
+  font-weight: 500;
+}
+
+.report-item-price {
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.report-total-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 14px;
+  padding-top: 10px;
+  border-top: 3px solid #222222;
+}
+
+.report-total-row strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  color: #000000;
+}
+
+.report-total-row strong:first-child {
+  font-weight: 900;
+}
+
+.report-total-row strong:last-child {
+  font-weight: 600;
+}
+
+.report-pay {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.report-pay p {
+  margin: 0 0 10px;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.report-pay h3 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #000000;
+}
+
+.report-close-btn {
+  display: block;
+  width: 240px;
+  height: 50px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #111827;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.report-title {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.report-date {
+  margin: 4px 0 16px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* =========================================================
+    NAV VISIBILITY
+   ========================================================= */
+.bottom-nav {
+  display: flex !important;
+}
+
+.app.hide-nav .bottom-nav {
+  display: none !important;
+}
+
+body:has(#screen-initial.active) .bottom-nav,
+body:has(#screen-login.active) .bottom-nav,
+body:has(#screen-signup.active) .bottom-nav {
+  display: none !important;
 }
