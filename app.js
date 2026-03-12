@@ -13,6 +13,8 @@ let state = {
   payments: []
 };
 
+let selectedClientId = null;
+
 function initApp() {
   loadData();
   bindEvents();
@@ -59,7 +61,7 @@ function loadData() {
 /* =========================
    SCREEN NAVIGATION
 ========================= */
-function showScreen(screenId) {
+function showScreen(screenId) { 
   const screens = document.querySelectorAll(".screen");
   const target = document.getElementById(screenId);
 
@@ -102,14 +104,10 @@ function updateBottomNavActive(screenId) {
 
   navButtons.forEach((btn) => btn.classList.remove("is-active"));
 
-  // Ordre actuel dans ton HTML :
-  // 0 Home
-  // 1 Notes
-  // 2 Clients
-  // 3 Reports
-  // 4 Profile
-  if (screenId === "screen-home" || screenId === "screen-cash" || screenId === "screen-credit" || screenId === "screen-expense") {
+  if (screenId === "screen-home") {
     navButtons[0]?.classList.add("is-active");
+  } else if (screenId === "screen-cash" || screenId === "screen-credit" || screenId === "screen-expense") {
+    navButtons[1]?.classList.add("is-active");
   } else if (screenId === "screen-clients" || screenId === "screen-add-client") {
     navButtons[2]?.classList.add("is-active");
   } else if (screenId === "screen-reports") {
@@ -228,7 +226,7 @@ function bindBottomNavEvents() {
   });
 
   navButtons[1]?.addEventListener("click", () => {
-    showScreen("screen-home");
+    showScreen("screen-cash");
   });
 
   navButtons[2]?.addEventListener("click", () => {
@@ -246,18 +244,20 @@ function bindBottomNavEvents() {
 
 function bindOverlayEvents() {
   const overlay = document.getElementById("overlay");
-  const overlayCloseArea = document.getElementById("overlay-close-area");
+  if (!overlay) return;
 
+  const overlayCloseArea = document.getElementById("overlay-close-area");
   const close1 = document.getElementById("btn-overlay-close-1");
   const close2 = document.getElementById("btn-overlay-close-2");
   const close3 = document.getElementById("btn-overlay-close-3");
+  const btnOpenPayment = document.getElementById("btn-open-payment");
 
   overlayCloseArea?.addEventListener("click", closeOverlay);
   close1?.addEventListener("click", closeOverlay);
   close2?.addEventListener("click", closeOverlay);
   close3?.addEventListener("click", closeOverlay);
 
-  if (!overlay) return;
+  btnOpenPayment?.addEventListener("click", openPaymentOverlay);
 }
 
 function openOverlay(panelId) {
@@ -283,6 +283,56 @@ function closeOverlay() {
 
   overlay.classList.add("hidden");
   overlay.setAttribute("aria-hidden", "true");
+}
+
+function openClientInfo(clientId) {
+  const client = state.clients.find((item) => item.id === clientId);
+  if (!client) return;
+
+  selectedClientId = clientId;
+
+  const consumed = Number(client.consumed || 0);
+  const paid = Number(client.paid || 0);
+  const remaining = consumed - paid;
+
+  document.getElementById("overlay-client-name").textContent = client.name || "--";
+  document.getElementById("overlay-client-id").textContent = `: ${client.id || "--"}`;
+  document.getElementById("overlay-client-phone").textContent = `: ${client.phone || "--"}`;
+  document.getElementById("overlay-client-limit").textContent = `: ${client.limit || 0} DH`;
+  document.getElementById("overlay-client-consumed").textContent = `: ${consumed} DH`;
+  document.getElementById("overlay-client-paid").textContent = `: ${paid} DH`;
+  document.getElementById("overlay-client-remaining").textContent = `: ${remaining} DH`;
+
+  const img = document.getElementById("overlay-client-img");
+  if (img) {
+    img.src = client.image || "assets/Icons/user.png";
+  }
+
+  openOverlay("overlay-client-info");
+}
+
+function openPaymentOverlay() {
+  if (!selectedClientId) return;
+
+  const client = state.clients.find((item) => item.id === selectedClientId);
+  if (!client) return;
+
+  const remaining = getClientDebt(client.id);
+
+  document.getElementById("payment-client-name").textContent = client.name || "--";
+  document.getElementById("payment-remaining").textContent = formatMoney(remaining);
+
+  const img = document.getElementById("payment-client-img");
+  if (img) {
+    img.src = client.image || "assets/Icons/user.png";
+  }
+
+  const amountInput = document.getElementById("payment-amount");
+  if (amountInput) {
+    amountInput.value = "";
+  }
+
+  openOverlay("overlay-payment");
 }
 
 /* =========================
@@ -318,8 +368,11 @@ function renderClients() {
 
   if (!clientsList || !summary) return;
 
+  clientsList.innerHTML = "";
+
   if (state.clients.length === 0) {
     summary.textContent = "0 client • Dette totale : 0 DH";
+    clientsList.innerHTML = `<p style="text-align:center; margin-top:20px;">Aucun client enregistré</p>`;
     return;
   }
 
@@ -328,6 +381,36 @@ function renderClients() {
   }, 0);
 
   summary.textContent = `${state.clients.length} clients • Dette totale : ${formatMoney(totalDebt)}`;
+
+  state.clients.forEach((client) => {
+    const debt = getClientDebt(client.id);
+
+    const card = document.createElement("div");
+    card.className = "client-card";
+
+    card.innerHTML = `
+      <div class="client-left">
+        <img class="client-avatar" src="${client.image || "assets/Icons/user.png"}" alt="client avatar" />
+      </div>
+
+      <div class="client-center">
+        <div class="client-name">${client.name || "--"} - ${client.phone || "--"}</div>
+        <div class="client-amount ${debt > 0 ? "danger" : "success"}">
+          ${formatMoney(debt)}
+        </div>
+      </div>
+
+      <div class="client-right" aria-label="menu">
+        <span class="client-menu">&#9776;</span>
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      openClientInfo(client.id);
+    });
+
+    clientsList.appendChild(card);
+  });
 }
 
 function renderReports() {
