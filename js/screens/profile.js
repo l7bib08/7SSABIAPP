@@ -43,7 +43,7 @@ export function renderProfile() {
   const role = document.getElementById("profile-role");
 
   if (displayName) {
-    displayName.textContent = state.user?.name || "Omar";
+    displayName.textContent = state.user?.name || "Utilisateur";
   }
 
   if (role) {

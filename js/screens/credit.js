@@ -1,12 +1,13 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
+import { saveCurrentUserAppData } from "../storage.js";
 import {
   generateId,
   getTodayDate,
   getCurrentTime,
   formatMoney,
   escapeHtml,
-  toNumber
+  toNumber,
+  DEFAULT_USER_IMAGE
 } from "../helpers.js";
 import { getClientDebt, renderClients } from "./clients.js";
 import { renderReports } from "./reports.js";
@@ -31,14 +32,18 @@ function handleCreditClientSearch(e) {
 
   const searchTerm = input.value.trim().toLowerCase();
   const suggestionsBox = document.getElementById("credit-client-suggestions");
+
   if (!suggestionsBox) return;
 
-  if (!searchTerm) {
+  if (e?.type === "input") {
     state.selectedCreditClientId = null;
     input.removeAttribute("data-selected-client-id");
+    updateCreditSelectedClientInfo(null);
+  }
+
+  if (!searchTerm) {
     suggestionsBox.innerHTML = "";
     suggestionsBox.classList.add("hidden");
-    updateCreditSelectedClientInfo(null);
     return;
   }
 
@@ -71,30 +76,20 @@ function renderCreditClientSuggestions(clients) {
     return `
       <button
         type="button"
-        class="credit-client-card"
+        class="credit-client-simple"
         data-credit-client-id="${escapeHtml(client.id)}"
       >
-        <div class="credit-client-card-left">
-          <img
-            class="credit-client-card-avatar"
-            src="${client.image || "assets/Icons/user.png"}"
-            alt="client avatar"
-          />
-        </div>
-
-        <div class="credit-client-card-center">
-          <div class="credit-client-card-name">
-            ${escapeHtml(client.name || "Client sans nom")}
+        <div class="credit-client-info">
+          <div class="credit-client-name">
+            ${escapeHtml(client.name || "Client")}
           </div>
-          <div class="credit-client-card-phone">
+          <div class="credit-client-phone">
             ${escapeHtml(client.phone || "--")}
           </div>
         </div>
 
-        <div class="credit-client-card-right">
-          <div class="credit-client-card-debt ${debt > 0 ? "danger" : "success"}">
-            ${formatMoney(debt)}
-          </div>
+        <div class="credit-client-debt ${debt > 0 ? "danger" : "success"}">
+          ${formatMoney(debt)}
         </div>
       </button>
     `;
@@ -121,25 +116,25 @@ function selectCreditClient(client) {
   if (!input || !infoBox) return;
 
   state.selectedCreditClientId = client.id;
-
   const debt = getClientDebt(client.id);
 
   input.value = client.name || "";
+  input.setAttribute("data-selected-client-id", client.id);
 
   infoBox.innerHTML = `
     <div class="selected-client-card">
       <img
-        src="${client.image || "assets/Icons/user.png"}"
+        src="${client.image || DEFAULT_USER_IMAGE}"
         class="selected-client-avatar"
         alt="client avatar"
       />
 
       <div class="selected-client-name">
-        ${client.name || "--"}
+        ${escapeHtml(client.name || "--")}
       </div>
 
       <div class="selected-client-phone">
-        ${client.phone || "--"}
+        ${escapeHtml(client.phone || "--")}
       </div>
 
       <div class="selected-client-debt ${debt > 0 ? "danger" : "success"}">
@@ -154,8 +149,16 @@ function selectCreditClient(client) {
     suggestionsBox.innerHTML = "";
     suggestionsBox.classList.add("hidden");
   }
+}
 
-  input.setAttribute("data-selected-client-id", client.id);
+function updateCreditSelectedClientInfo(client) {
+  const infoBox = document.getElementById("credit-selected-client-info");
+  if (!infoBox) return;
+
+  if (!client) {
+    infoBox.innerHTML = "";
+    infoBox.classList.add("hidden");
+  }
 }
 
 function handleOutsideClick(e) {
@@ -292,7 +295,7 @@ function saveCreditSale() {
 
   updateCreditSelectedClientInfo(null);
 
-  saveData();
+  saveCurrentUserAppData();
   renderClients();
   renderReports();
 

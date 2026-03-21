@@ -1,4 +1,4 @@
-import { loadData } from "./storage.js";
+import { loadCurrentUserIntoState } from "./storage.js";
 import { state } from "./state.js";
 import { showScreen } from "./ui/navigation.js";
 import { bindOverlayEvents } from "./ui/overlay.js";
@@ -15,23 +15,20 @@ import { bindProfileEvents, renderProfile } from "./screens/profile.js";
 document.addEventListener("DOMContentLoaded", initApp);
 
 function initApp() {
-  loadData();
   bindAllEvents();
 
   showScreen("screen-initial");
 
   setTimeout(() => {
-    if (state.user) {
+    const hasSession = loadCurrentUserIntoState();
+
+    if (hasSession && state.user) {
+      renderAllScreens();
       showScreen("screen-home");
     } else {
       showScreen("screen-login");
     }
   }, 3000);
-
-  renderHome();
-  renderClients();
-  renderReports();
-  renderProfile();
 }
 
 function bindAllEvents() {
@@ -55,4 +52,11 @@ function bindBottomNavEvents() {
   navButtons[2]?.addEventListener("click", () => showScreen("screen-clients"));
   navButtons[3]?.addEventListener("click", () => showScreen("screen-reports"));
   navButtons[4]?.addEventListener("click", () => showScreen("screen-profile"));
+}
+
+function renderAllScreens() {
+  renderHome();
+  renderClients();
+  renderReports();
+  renderProfile();
 }

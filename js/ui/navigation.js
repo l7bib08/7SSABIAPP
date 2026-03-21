@@ -1,5 +1,4 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
 import { renderHome } from "../screens/home.js";
 import { renderClients } from "../screens/clients.js";
 import { renderReports } from "../screens/reports.js";
@@ -22,8 +21,6 @@ export function showScreen(screenId) {
   updateNavVisibility(screenId);
   updateBottomNavActive(screenId);
   runScreenRender(screenId);
-
-  saveData();
 }
 
 export function updateNavVisibility(screenId) {
@@ -43,11 +40,17 @@ export function updateBottomNavActive(screenId) {
   const navButtons = document.querySelectorAll(".bottom-nav .nav-item");
   navButtons.forEach((btn) => btn.classList.remove("is-active"));
 
-  if (screenId === "screen-home") navButtons[0]?.classList.add("is-active");
-  else if (["screen-cash", "screen-credit", "screen-expense"].includes(screenId)) navButtons[1]?.classList.add("is-active");
-  else if (["screen-clients", "screen-add-client"].includes(screenId)) navButtons[2]?.classList.add("is-active");
-  else if (screenId === "screen-reports") navButtons[3]?.classList.add("is-active");
-  else if (screenId === "screen-profile") navButtons[4]?.classList.add("is-active");
+  if (screenId === "screen-home") {
+    navButtons[0]?.classList.add("is-active");
+  } else if (["screen-cash", "screen-credit", "screen-expense"].includes(screenId)) {
+    navButtons[1]?.classList.add("is-active");
+  } else if (["screen-clients", "screen-add-client"].includes(screenId)) {
+    navButtons[2]?.classList.add("is-active");
+  } else if (screenId === "screen-reports") {
+    navButtons[3]?.classList.add("is-active");
+  } else if (screenId === "screen-profile") {
+    navButtons[4]?.classList.add("is-active");
+  }
 }
 
 function runScreenRender(screenId) {

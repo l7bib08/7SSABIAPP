@@ -1,6 +1,13 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
-import { formatMoney, generateId, readFileAsDataURL, escapeHtml, toNumber } from "../helpers.js";
+import { saveCurrentUserAppData } from "../storage.js";
+import {
+  formatMoney,
+  generateId,
+  readFileAsDataURL,
+  escapeHtml,
+  toNumber,
+  DEFAULT_USER_IMAGE
+} from "../helpers.js";
 import { openClientInfo } from "../ui/overlay.js";
 
 export function bindClientEvents(showScreen) {
@@ -53,7 +60,7 @@ export function renderClients() {
   const clientsList = document.getElementById("clients-list");
   const summary = document.getElementById("clients-summary");
   const searchInput = document.getElementById("clients-search");
-    
+
   if (!clientsList || !summary) return;
 
   const searchTerm = searchInput?.value.trim().toLowerCase() || "";
@@ -81,7 +88,7 @@ export function renderClients() {
     return `
       <div class="client-card" data-client-id="${escapeHtml(client.id)}">
         <div class="client-left">
-          <img class="client-avatar" src="${client.image || "assets/Icons/user.png"}" alt="client avatar" />
+          <img class="client-avatar" src="${client.image || DEFAULT_USER_IMAGE}" alt="client avatar" />
         </div>
 
         <div class="client-center">
@@ -126,7 +133,7 @@ async function saveClient(showScreen) {
     createdAt: new Date().toISOString()
   });
 
-  saveData();
+  saveCurrentUserAppData();
   renderClients();
   clearAddClientForm();
   showScreen("screen-clients");

@@ -1,7 +1,21 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
-import { formatMoney, formatDisplayDate, getTodayDate, getCurrentTime, generateId, escapeHtml, toNumber } from "../helpers.js";
-import { getClientDebt, getClientCreditConsumed, getClientPaidTotal, renderClients } from "../screens/clients.js";
+import { saveCurrentUserAppData } from "../storage.js";
+import {
+  formatMoney,
+  formatDisplayDate,
+  getTodayDate,
+  getCurrentTime,
+  generateId,
+  escapeHtml,
+  toNumber,
+  DEFAULT_USER_IMAGE
+} from "../helpers.js";
+import {
+  getClientDebt,
+  getClientCreditConsumed,
+  getClientPaidTotal,
+  renderClients
+} from "../screens/clients.js";
 import { renderReports } from "../screens/reports.js";
 import { renderHome } from "../screens/home.js";
 
@@ -74,7 +88,7 @@ export function openClientInfo(clientId) {
   root.querySelector("#overlay-client-remaining").textContent = `: ${formatMoney(remaining)}`;
 
   const img = root.querySelector("#overlay-client-img");
-  if (img) img.src = client.image || "assets/Icons/user.png";
+  if (img) img.src = client.image || DEFAULT_USER_IMAGE;
 
   openOverlay("overlay-client-info");
 }
@@ -93,7 +107,7 @@ export function openPaymentOverlay() {
   root.querySelector("#payment-remaining").textContent = formatMoney(remaining);
 
   const img = root.querySelector("#payment-client-img");
-  if (img) img.src = client.image || "assets/Icons/user.png";
+  if (img) img.src = client.image || DEFAULT_USER_IMAGE;
 
   const amountInput = root.querySelector("#payment-amount");
   if (amountInput) amountInput.value = "";
@@ -127,7 +141,7 @@ export function savePayment() {
     createdAt: new Date().toISOString()
   });
 
-  saveData();
+  saveCurrentUserAppData();
   renderHome();
   renderClients();
   renderReports();
@@ -143,12 +157,11 @@ export function openClientReportOverlay() {
   const root = document.getElementById("overlay-report");
   if (!root) return;
 
-  const clientSalesToday = state.sales
-    .filter((sale) => (
-      sale.type === "credit" &&
-      sale.clientId === client.id &&
-      sale.date === getTodayDate()
-    ));
+  const clientSalesToday = state.sales.filter((sale) => (
+    sale.type === "credit" &&
+    sale.clientId === client.id &&
+    sale.date === getTodayDate()
+  ));
 
   const lastSale = clientSalesToday[clientSalesToday.length - 1];
 
@@ -186,7 +199,7 @@ export function openClientReportOverlay() {
   if (toPayEl) toPayEl.textContent = formatMoney(getClientDebt(client.id));
 
   const img = root.querySelector("#report-client-img");
-  if (img) img.src = client.image || "assets/Icons/user.png";
+  if (img) img.src = client.image || DEFAULT_USER_IMAGE;
 
   openOverlay("overlay-report");
 }

@@ -1,6 +1,13 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
-import { generateId, getTodayDate, getCurrentTime, formatMoney, escapeHtml, toNumber } from "../helpers.js";
+import { saveCurrentUserAppData } from "../storage.js";
+import {
+  generateId,
+  getTodayDate,
+  getCurrentTime,
+  formatMoney,
+  escapeHtml,
+  toNumber
+} from "../helpers.js";
 import { renderHome } from "./home.js";
 import { renderReports } from "./reports.js";
 
@@ -93,7 +100,7 @@ function saveCashSale() {
   state.cashDraftItems = [];
   renderCashDraft();
   clearCashInputs();
-  saveData();
+  saveCurrentUserAppData();
   renderHome();
   renderReports();
 

@@ -1,5 +1,5 @@
 import { state } from "../state.js";
-import { saveData } from "../storage.js";
+import { saveCurrentUserAppData } from "../storage.js";
 import { generateId, getTodayDate, getCurrentTime, toNumber } from "../helpers.js";
 import { renderHome } from "./home.js";
 import { renderReports } from "./reports.js";
@@ -33,7 +33,7 @@ function saveExpense() {
     createdAt: new Date().toISOString()
   });
 
-  saveData();
+  saveCurrentUserAppData();
   renderHome();
   renderReports();
   clearExpenseForm();

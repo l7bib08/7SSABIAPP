@@ -30,10 +30,12 @@ export function renderReports() {
   const creditTotal = creditSalesToday.reduce((sum, sale) => sum + Number(sale.total || 0), 0);
   const expenseTotal = expensesToday.reduce((sum, expense) => sum + Number(expense.amount || 0), 0);
   const totalDebt = state.clients.reduce((sum, client) => sum + getClientDebt(client.id), 0);
-  const totalEncashedToday = cashTotal + state.payments
+
+  const paymentsToday = state.payments
     .filter((payment) => payment.date === today)
     .reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
 
+  const totalEncashedToday = cashTotal + paymentsToday;
   const profit = cashTotal + creditTotal - expenseTotal;
 
   if (reportDateEl) reportDateEl.textContent = `Aujourd'hui - ${formatDisplayDate(new Date())}`;

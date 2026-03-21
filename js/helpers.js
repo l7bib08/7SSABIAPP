@@ -1,3 +1,5 @@
+export const DEFAULT_USER_IMAGE = "assets/Icons/user no click.png";
+
 export function getTodayDate() {
   const now = new Date();
   const year = now.getFullYear();
