@@ -8,6 +8,7 @@ export const state = {
   expenses: [],
   payments: [],
   selectedClientId: null,
+  selectedCreditClientId: null,
   cashDraftItems: [],
   creditDraftItems: []
 };

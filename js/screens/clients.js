@@ -53,7 +53,7 @@ export function renderClients() {
   const clientsList = document.getElementById("clients-list");
   const summary = document.getElementById("clients-summary");
   const searchInput = document.getElementById("clients-search");
-
+    
   if (!clientsList || !summary) return;
 
   const searchTerm = searchInput?.value.trim().toLowerCase() || "";
