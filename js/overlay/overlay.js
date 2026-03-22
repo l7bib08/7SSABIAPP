@@ -1,5 +1,5 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../storage.js";
+import { saveCurrentUserAppData } from "../services/storage.js";
 import {
   formatMoney,
   formatDisplayDate,
@@ -9,7 +9,7 @@ import {
   escapeHtml,
   toNumber,
   DEFAULT_USER_IMAGE
-} from "../helpers.js";
+} from "../utils/helpers.js";
 import {
   getClientDebt,
   getClientCreditConsumed,
@@ -18,6 +18,8 @@ import {
 } from "../screens/clients.js";
 import { renderReports } from "../screens/reports.js";
 import { renderHome } from "../screens/home.js";
+import { validatePaymentAmount } from "../services/validators.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindOverlayEvents() {
   const overlayCloseArea = document.getElementById("overlay-close-area");
@@ -120,15 +122,11 @@ export function savePayment() {
 
   const amountInput = document.getElementById("payment-amount");
   const amount = toNumber(amountInput?.value);
-
-  if (amount <= 0) {
-    alert("Entrer un montant valide.");
-    return;
-  }
-
   const remaining = getClientDebt(state.selectedClientId);
-  if (amount > remaining) {
-    alert("Le montant dépasse la dette restante.");
+
+  const error = validatePaymentAmount({ amount, remaining });
+  if (error) {
+    showToast(error, "error");
     return;
   }
 
@@ -146,6 +144,7 @@ export function savePayment() {
   renderClients();
   renderReports();
   closeOverlay();
+  showToast("Paiement enregistré.", "success");
 }
 
 export function openClientReportOverlay() {
@@ -165,40 +164,40 @@ export function openClientReportOverlay() {
 
   const lastSale = clientSalesToday[clientSalesToday.length - 1];
 
-  root.querySelector("#report-client-name").textContent = client.name || "--";
+  root.querySelector("#overlay-report-client-name").textContent = client.name || "--";
 
-  const dateEl = root.querySelector("#report-date");
+  const dateEl = root.querySelector("#overlay-report-date");
   if (dateEl) dateEl.textContent = formatDisplayDate(new Date());
 
-  const timeEl = root.querySelector("#report-time");
+  const timeEl = root.querySelector("#overlay-report-time");
   if (timeEl) timeEl.textContent = lastSale?.time || "--:--";
 
-  const listEl = root.querySelector("#report-items-list");
+  const listEl = root.querySelector("#overlay-report-items-list");
   if (listEl) {
     if (!lastSale || !Array.isArray(lastSale.items) || lastSale.items.length === 0) {
       listEl.innerHTML = `
-        <div class="report-item-row">
-          <p class="report-item-name">Aucun article aujourd'hui</p>
-          <p class="report-item-price">: 0.00 DH</p>
+        <div class="overlay-report-item-row">
+          <p class="overlay-report-item-name">Aucun article aujourd'hui</p>
+          <p class="overlay-report-item-price">: 0.00 DH</p>
         </div>
       `;
     } else {
       listEl.innerHTML = lastSale.items.map((item) => `
-        <div class="report-item-row">
-          <p class="report-item-name">${escapeHtml(item.name)} x${item.qty}</p>
-          <p class="report-item-price">: ${formatMoney(item.subtotal)}</p>
+        <div class="overlay-report-item-row">
+          <p class="overlay-report-item-name">${escapeHtml(item.name)} x${item.qty}</p>
+          <p class="overlay-report-item-price">: ${formatMoney(item.subtotal)}</p>
         </div>
       `).join("");
     }
   }
 
-  const totalEl = root.querySelector("#report-total");
+  const totalEl = root.querySelector("#overlay-report-total");
   if (totalEl) totalEl.textContent = formatMoney(lastSale?.total || 0);
 
-  const toPayEl = root.querySelector("#report-to-pay");
+  const toPayEl = root.querySelector("#overlay-report-to-pay");
   if (toPayEl) toPayEl.textContent = formatMoney(getClientDebt(client.id));
 
-  const img = root.querySelector("#report-client-img");
+  const img = root.querySelector("#overlay-report-client-img");
   if (img) img.src = client.image || DEFAULT_USER_IMAGE;
 
   openOverlay("overlay-report");

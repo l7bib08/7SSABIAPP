@@ -59,3 +59,7 @@ export function readFileAsDataURL(file) {
     reader.readAsDataURL(file);
   });
 }
+
+export function normalizePhone(phone) {
+  return String(phone ?? "").trim();
+}

@@ -1,8 +1,10 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../storage.js";
-import { generateId, getTodayDate, getCurrentTime, toNumber } from "../helpers.js";
+import { saveCurrentUserAppData } from "../services/storage.js";
+import { generateId, getTodayDate, getCurrentTime, toNumber } from "../utils/helpers.js";
 import { renderHome } from "./home.js";
 import { renderReports } from "./reports.js";
+import { validateExpenseData } from "../services/validators.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindExpenseEvents() {
   document.getElementById("btn-expense-save")?.addEventListener("click", saveExpense);
@@ -18,8 +20,9 @@ function saveExpense() {
   const amount = toNumber(amountInput?.value);
   const note = notesInput?.value.trim() || "";
 
-  if (!label || amount <= 0) {
-    alert("Entrer une dépense valide.");
+  const error = validateExpenseData({ label, amount });
+  if (error) {
+    showToast(error, "error");
     return;
   }
 
@@ -38,7 +41,7 @@ function saveExpense() {
   renderReports();
   clearExpenseForm();
 
-  alert("Dépense enregistrée.");
+  showToast("Dépense enregistrée.", "success");
 }
 
 function clearExpenseForm() {

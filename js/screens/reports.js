@@ -1,6 +1,7 @@
 import { state } from "../state.js";
-import { getTodayDate, formatMoney, formatDisplayDate, escapeHtml } from "../helpers.js";
+import { getTodayDate, formatMoney, formatDisplayDate, escapeHtml } from "../utils/helpers.js";
 import { getClientDebt } from "./clients.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindReportsEvents() {
   document.getElementById("btn-export-report")?.addEventListener("click", exportReport);
@@ -150,4 +151,6 @@ function exportReport() {
   a.download = `jibi-report-${today}.json`;
   a.click();
   URL.revokeObjectURL(url);
+
+  showToast("Rapport exporté.", "success");
 }

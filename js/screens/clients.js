@@ -1,14 +1,17 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../storage.js";
+import { saveCurrentUserAppData } from "../services/storage.js";
 import {
   formatMoney,
   generateId,
   readFileAsDataURL,
   escapeHtml,
   toNumber,
-  DEFAULT_USER_IMAGE
-} from "../helpers.js";
-import { openClientInfo } from "../ui/overlay.js";
+  DEFAULT_USER_IMAGE,
+  normalizePhone
+} from "../utils/helpers.js";
+import { openClientInfo } from "../overlay/overlay.js";
+import { validateClientData } from "../services/validators.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindClientEvents(showScreen) {
   document.getElementById("go-add-client")?.addEventListener("click", () => {
@@ -113,12 +116,23 @@ async function saveClient(showScreen) {
   const imageInput = document.getElementById("client-image");
 
   const name = nameInput?.value.trim();
-  const phone = phoneInput?.value.trim();
-  const limit = toNumber(limitInput?.value);
+  const phone = normalizePhone(phoneInput?.value);
+  const limitRaw = limitInput?.value;
+  const limit = toNumber(limitRaw);
   const file = imageInput?.files?.[0];
 
-  if (!name || !phone) {
-    alert("Le nom et le téléphone sont obligatoires.");
+  const error = validateClientData({ name, phone, limit: limitRaw });
+  if (error) {
+    showToast(error, "error");
+    return;
+  }
+
+  const exists = state.clients.some(
+    (client) => String(client.phone || "").trim() === phone
+  );
+
+  if (exists) {
+    showToast("Un client avec ce téléphone existe déjà.", "error");
     return;
   }
 
@@ -136,6 +150,7 @@ async function saveClient(showScreen) {
   saveCurrentUserAppData();
   renderClients();
   clearAddClientForm();
+  showToast("Client enregistré avec succès.", "success");
   showScreen("screen-clients");
 }
 

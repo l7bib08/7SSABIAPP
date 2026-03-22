@@ -2,7 +2,7 @@ import {
   state,
   USERS_STORAGE_KEY,
   CURRENT_USER_STORAGE_KEY
-} from "./state.js";
+} from "../state.js";
 
 export function getUsers() {
   const raw = localStorage.getItem(USERS_STORAGE_KEY);
@@ -34,9 +34,13 @@ export function clearCurrentUserId() {
 }
 
 export function findUserByEmail(email) {
+  if (!email) return null;
+
+  const normalizedEmail = String(email).trim().toLowerCase();
   const users = getUsers();
+
   return users.find(
-    (user) => (user.email || "").trim().toLowerCase() === email.trim().toLowerCase()
+    (user) => (user.email || "").trim().toLowerCase() === normalizedEmail
   ) || null;
 }
 

@@ -59,7 +59,6 @@ function runScreenRender(screenId) {
       renderHome();
       break;
     case "screen-clients":
-    case "screen-add-client":
       renderClients();
       break;
     case "screen-reports":

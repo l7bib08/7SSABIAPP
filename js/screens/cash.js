@@ -1,5 +1,5 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../storage.js";
+import { saveCurrentUserAppData } from "../services/storage.js";
 import {
   generateId,
   getTodayDate,
@@ -7,9 +7,11 @@ import {
   formatMoney,
   escapeHtml,
   toNumber
-} from "../helpers.js";
+} from "../utils/helpers.js";
 import { renderHome } from "./home.js";
 import { renderReports } from "./reports.js";
+import { validateSaleItem } from "../services/validators.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindCashEvents() {
   document.getElementById("btn-cash-add-item")?.addEventListener("click", addCashItem);
@@ -25,8 +27,9 @@ function addCashItem() {
   const price = toNumber(priceInput?.value);
   const qty = toNumber(qtyInput?.value || 1);
 
-  if (!name || price <= 0 || qty <= 0) {
-    alert("Entrer un article valide.");
+  const error = validateSaleItem({ name, price, qty });
+  if (error) {
+    showToast(error, "error");
     return;
   }
 
@@ -54,14 +57,24 @@ function renderCashDraft() {
   }
 
   listEl.innerHTML = state.cashDraftItems.map((item) => `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0; padding:10px; border:1px solid #ddd; border-radius:12px;">
-      <div>
-        <strong>${escapeHtml(item.name)}</strong><br>
+    <div class="draft-row">
+      <div class="draft-col draft-col-name">
+        <strong>${escapeHtml(item.name)}</strong>
         <small>${item.qty} x ${formatMoney(item.price)}</small>
       </div>
-      <div style="text-align:right;">
-        <strong>${formatMoney(item.subtotal)}</strong><br>
-        <button type="button" data-remove-cash-item="${item.id}" style="margin-top:4px;">Supprimer</button>
+
+      <div class="draft-col draft-col-total">
+        <strong>${formatMoney(item.subtotal)}</strong>
+      </div>
+
+      <div class="draft-col draft-col-action">
+        <button
+          type="button"
+          data-remove-cash-item="${item.id}"
+          class="draft-remove-btn"
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   `).join("");
@@ -80,7 +93,7 @@ function renderCashDraft() {
 
 function saveCashSale() {
   if (state.cashDraftItems.length === 0) {
-    alert("Ajoute au moins un article.");
+    showToast("Ajoute au moins un article.", "error");
     return;
   }
 
@@ -104,7 +117,7 @@ function saveCashSale() {
   renderHome();
   renderReports();
 
-  alert("Vente cash enregistrée.");
+  showToast("Vente cash enregistrée.", "success");
 }
 
 function clearCashInputs() {

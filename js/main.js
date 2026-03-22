@@ -1,7 +1,7 @@
-import { loadCurrentUserIntoState } from "./storage.js";
+import { loadCurrentUserIntoState } from "./services/storage.js";
 import { state } from "./state.js";
 import { showScreen } from "./ui/navigation.js";
-import { bindOverlayEvents } from "./ui/overlay.js";
+import { bindOverlayEvents } from "./overlay/overlay.js";
 
 import { bindAuthEvents } from "./screens/auth.js";
 import { bindHomeEvents, renderHome } from "./screens/home.js";
@@ -28,7 +28,7 @@ function initApp() {
     } else {
       showScreen("screen-login");
     }
-  }, 3000);
+  }, 1500);
 }
 
 function bindAllEvents() {

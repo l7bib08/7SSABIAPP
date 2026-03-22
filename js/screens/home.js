@@ -1,5 +1,5 @@
 import { state } from "../state.js";
-import { getTodayDate, formatMoney, formatDisplayDate } from "../helpers.js";
+import { getTodayDate, formatMoney, formatDisplayDate } from "../utils/helpers.js";
 
 export function bindHomeEvents(showScreen) {
   document.getElementById("go-cash")?.addEventListener("click", () => showScreen("screen-cash"));

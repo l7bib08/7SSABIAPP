@@ -2090,11 +2090,8 @@ body:has(#screen-signup.active) .nav-bar {
 
 /* =========================================================
    24. REPORT OVERLAY CARD
-   NOTE:
-   This still uses .report-card, which may conflict with the
-   reports screen .report-card. Best practice: rename later.
    ========================================================= */
-.report-card {
+.overlay-report-card {
   position: relative;
   width: min(100%, 340px);
   background: #F8FAFC;
@@ -2105,14 +2102,34 @@ body:has(#screen-signup.active) .nav-bar {
   margin: 0 auto;
 }
 
-.report-header {
+.overlay-report-header {
   position: relative;
   height: 130px;
   margin-bottom: 24px;
   overflow: hidden;
 }
 
-.report-avatar {
+.overlay-report-header-top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 78px;
+  background: #1E3A8A;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+.overlay-report-header-accent {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 66%;
+  height: 116px;
+  background: #3B82F6;
+  border-top-left-radius: 70px;
+  border-bottom-left-radius: 70px;
+}
+
+.overlay-report-avatar {
   position: absolute;
   top: 16px;
   left: 50%;
@@ -2126,39 +2143,29 @@ body:has(#screen-signup.active) .nav-bar {
   z-index: 2;
 }
 
-.report-heading {
+.overlay-report-heading {
   text-align: center;
   padding: 0 20px;
   margin-bottom: 22px;
 }
 
-.report-heading-label {
-  margin: 0 0 6px;
-  font-family: "Manrope", sans-serif;
-  font-size: 15px;
+.overlay-report-title {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.overlay-report-date {
+  margin: 4px 0 16px 0;
+  text-align: center;
+  font-size: 14px;
   font-weight: 700;
   color: #475569;
 }
 
-.report-client-name {
-  margin: 0 0 6px;
-  font-family: "Manrope", sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 1.15;
-  color: #111827;
-  text-transform: uppercase;
-}
-
-.report-date {
-  margin: 0;
-  font-family: "Manrope", sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  color: #64748B;
-}
-
-.report-time {
+.overlay-report-time-text {
   margin: 0 0 24px;
   text-align: center;
   font-family: "Manrope", sans-serif;
@@ -2167,36 +2174,28 @@ body:has(#screen-signup.active) .nav-bar {
   color: #111827;
 }
 
-.report-time #report-time {
-  margin: 0 0 24px;
-  text-align: center;
-  font-family: "Manrope", sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.report-items-wrap {
+.overlay-report-items-wrap {
   width: 100%;
   max-width: 320px;
   margin: 0 auto 30px;
 }
 
-#report-items-list {
+#overlay-report-items-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 12px;
 }
 
-.report-item-row {
+.overlay-report-item-row {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   column-gap: 14px;
 }
 
-.report-item-name,
-.report-item-price {
+.overlay-report-item-name,
+.overlay-report-item-price {
   margin: 0;
   font-family: "Manrope", sans-serif;
   font-size: 11px;
@@ -2204,17 +2203,17 @@ body:has(#screen-signup.active) .nav-bar {
   color: #1F2937;
 }
 
-.report-item-name {
+.overlay-report-item-name {
   font-weight: 500;
 }
 
-.report-item-price {
+.overlay-report-item-price {
   font-weight: 500;
   white-space: nowrap;
   text-align: right;
 }
 
-.report-total-row {
+.overlay-report-total-row {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -2223,26 +2222,26 @@ body:has(#screen-signup.active) .nav-bar {
   border-top: 3px solid #222222;
 }
 
-.report-total-row strong {
+.overlay-report-total-row strong {
   font-family: "Manrope", sans-serif;
   font-size: 19px;
   color: #000000;
 }
 
-.report-total-row strong:first-child {
+.overlay-report-total-row strong:first-child {
   font-weight: 900;
 }
 
-.report-total-row strong:last-child {
+.overlay-report-total-row strong:last-child {
   font-weight: 600;
 }
 
-.report-pay {
+.overlay-report-pay {
   text-align: center;
   margin-bottom: 26px;
 }
 
-.report-pay p {
+.overlay-report-pay p {
   margin: 0 0 10px;
   font-family: "Manrope", sans-serif;
   font-size: 15px;
@@ -2250,7 +2249,7 @@ body:has(#screen-signup.active) .nav-bar {
   color: #111827;
 }
 
-.report-pay h3 {
+.overlay-report-pay h3 {
   margin: 0;
   font-family: "Manrope", sans-serif;
   font-size: 22px;
@@ -2258,7 +2257,7 @@ body:has(#screen-signup.active) .nav-bar {
   color: #000000;
 }
 
-.report-close-btn {
+.overlay-report-close-btn {
   display: block;
   width: 240px;
   height: 50px;
@@ -2273,19 +2272,8 @@ body:has(#screen-signup.active) .nav-bar {
   cursor: pointer;
 }
 
-.report-title {
-  margin: 0;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.report-date {
-  margin: 4px 0 16px 0;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 700;
-  color: #475569;
+.overlay-report-footer-shape {
+  display: none;
 }
 
 /* =========================================================
@@ -2303,4 +2291,193 @@ body:has(#screen-initial.active) .bottom-nav,
 body:has(#screen-login.active) .bottom-nav,
 body:has(#screen-signup.active) .bottom-nav {
   display: none !important;
+}
+
+/* =========================================================
+    NOTIFICATIONS
+   ========================================================= */
+
+
+#toast-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast.hide {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.toast-success {
+  background: #15803D;
+}
+
+.toast-error {
+  background: #B91C1C;
+}
+
+.toast-info {
+  background: #2563EB;
+}
+
+
+/* =========================================================
+    DRAFTS
+   ========================================================= */
+
+.items-list {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.draft-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(80px, 0.8fr) minmax(90px, 0.9fr);
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 18px;
+  background: #FFFFFF;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.draft-col {
+  min-width: 0;
+}
+
+.draft-col-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.draft-col-name strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.draft-col-name small {
+  font-size: 13px;
+  color: #6B7280;
+  line-height: 1.2;
+}
+
+.draft-col-total {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 6px;
+}
+
+.draft-col-total strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.draft-col-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.screen .draft-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 90px;
+  height: 36px;
+  padding: 0 12px;
+
+  border: 2px solid #000000;
+  border-radius: 12px;
+
+  background: #FFFFFF;
+
+  color: #B91C1C !important; /* 🔴 FORCE LA COULEUR */
+
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.2s ease;
+}
+
+.draft-remove-btn:hover {
+  background: #FEF2F2;             
+  border-color: #B91C1C;
+
+  transform: translateY(-1px);     /* effet flottant */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.draft-remove-btn:active {
+  transform: scale(0.95);          /* effet press */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 420px) {
+  .draft-row {
+    grid-template-columns: minmax(0, 1.6fr) minmax(72px, 0.7fr) minmax(84px, 0.85fr);
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .draft-col-name strong {
+    font-size: 15px;
+  }
+
+  .draft-col-name small {
+    font-size: 12px;
+  }
+
+  .draft-col-total strong {
+    font-size: 15px;
+  }
+
+  .draft-remove-btn {
+    min-width: 84px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
 }

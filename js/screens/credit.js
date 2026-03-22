@@ -1,5 +1,5 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../storage.js";
+import { saveCurrentUserAppData } from "../services/storage.js";
 import {
   generateId,
   getTodayDate,
@@ -8,9 +8,11 @@ import {
   escapeHtml,
   toNumber,
   DEFAULT_USER_IMAGE
-} from "../helpers.js";
+} from "../utils/helpers.js";
 import { getClientDebt, renderClients } from "./clients.js";
 import { renderReports } from "./reports.js";
+import { validateSaleItem } from "../services/validators.js";
+import { showToast } from "../ui/notifications.js";
 
 export function bindCreditEvents(showScreen) {
   document.getElementById("btn-credit-add-item")?.addEventListener("click", addCreditItem);
@@ -184,8 +186,9 @@ function addCreditItem() {
   const price = toNumber(priceInput?.value);
   const qty = toNumber(qtyInput?.value || 1);
 
-  if (!name || price <= 0 || qty <= 0) {
-    alert("Entrer un article valide.");
+  const error = validateSaleItem({ name, price, qty });
+  if (error) {
+    showToast(error, "error");
     return;
   }
 
@@ -213,14 +216,24 @@ function renderCreditDraft() {
   }
 
   listEl.innerHTML = state.creditDraftItems.map((item) => `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0; padding:10px; border:1px solid #ddd; border-radius:12px;">
-      <div>
-        <strong>${escapeHtml(item.name)}</strong><br>
+    <div class="draft-row">
+      <div class="draft-col draft-col-name">
+        <strong>${escapeHtml(item.name)}</strong>
         <small>${item.qty} x ${formatMoney(item.price)}</small>
       </div>
-      <div style="text-align:right;">
-        <strong>${formatMoney(item.subtotal)}</strong><br>
-        <button type="button" data-remove-credit-item="${item.id}" style="margin-top:4px;">Supprimer</button>
+
+      <div class="draft-col draft-col-total">
+        <strong>${formatMoney(item.subtotal)}</strong>
+      </div>
+
+      <div class="draft-col draft-col-action">
+        <button
+          type="button"
+          data-remove-credit-item="${item.id}"
+          class="draft-remove-btn"
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   `).join("");
@@ -241,18 +254,18 @@ function saveCreditSale() {
   const clientInput = document.getElementById("credit-client-search");
 
   if (!state.selectedCreditClientId) {
-    alert("Sélectionne un client dans la liste.");
+    showToast("Sélectionne un client dans la liste.", "error");
     return;
   }
 
   const client = state.clients.find((c) => c.id === state.selectedCreditClientId);
   if (!client) {
-    alert("Client introuvable.");
+    showToast("Client introuvable.", "error");
     return;
   }
 
   if (state.creditDraftItems.length === 0) {
-    alert("Ajoute au moins un article.");
+    showToast("Ajoute au moins un article.", "error");
     return;
   }
 
@@ -261,7 +274,7 @@ function saveCreditSale() {
   const limit = Number(client.limit || 0);
 
   if (limit > 0 && currentDebt + total > limit) {
-    alert("Cette vente dépasse la limite de crédit du client.");
+    showToast("Cette vente dépasse la limite de crédit du client.", "error");
     return;
   }
 
@@ -299,7 +312,7 @@ function saveCreditSale() {
   renderClients();
   renderReports();
 
-  alert("Vente à crédit enregistrée.");
+  showToast("Vente à crédit enregistrée.", "success");
 }
 
 function clearCreditInputs() {
