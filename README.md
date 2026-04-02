@@ -16,6 +16,8 @@ The project is built using:
 - HTML
 - CSS
 - JavaScript
+- MySQL
+- PHP
 
 ## Status
 
