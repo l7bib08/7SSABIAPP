@@ -5,7 +5,10 @@ $username = "root";
 $password = "";
 $databasename = "gestion_boutique";
 
-
-$conn = new PDO("mysql:host=$host;dbname=$databasename", $username, $password);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$databasename", $username, $password);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
 
 ?>
