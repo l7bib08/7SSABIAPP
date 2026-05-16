@@ -73,7 +73,9 @@ users
 
 ## 📂 Project Structure
 
+```text
 7SSABIAPP/
+│
 ├── index.php              # Main SPA entry point (FR)
 ├── index_ar.php           # Arabic RTL version
 ├── style.css              # Main stylesheet
@@ -84,49 +86,61 @@ users
 ├── jibi_php/
 │   ├── db.php             # PDO connection
 │   ├── login.php          # Authentication
-│   ├── signup.php         # Registration
-│   └── api/
-│       ├── auth/
-│       │   ├── session.php
-│       │   └── logout.php
-│       ├── sales/
-│       │   └── create.php
-│       ├── clients/
-│       │   ├── index.php
-│       │   ├── create.php
-│       │   ├── update.php
-│       │   └── delete.php
-│       ├── expenses/
-│       │   └── create.php
-│       ├── payments/
-│       │   └── create.php
-│       ├── commerce/
-│       │   ├── get.php
-│       │   └── save.php
-│       └── reports/
-│           ├── today.php
-│           └── export.php
+│   └── signup.php         # Registration
 │
-└── js/
-├── main.js
-├── state.js
-├── services/
-│   ├── api.js
-│   └── validators.js
-├── screens/
-│   ├── home.js
-│   ├── cash.js
-│   ├── credit.js
-│   ├── expense.js
-│   ├── clients.js
-│   ├── reports.js
-│   ├── profile.js
-│   └── auth.js
-├── overlay/
-│   └── overlay.js
-└── ui/
-├── navigation.js
-└── notifications.js
+├── api/
+│   ├── auth/
+│   │   ├── session.php
+│   │   └── logout.php
+│   │
+│   ├── sales/
+│   │   └── create.php
+│   │
+│   ├── clients/
+│   │   ├── index.php
+│   │   ├── create.php
+│   │   ├── update.php
+│   │   └── delete.php
+│   │
+│   ├── expenses/
+│   │   └── create.php
+│   │
+│   ├── payments/
+│   │   └── create.php
+│   │
+│   ├── commerce/
+│   │   ├── get.php
+│   │   └── save.php
+│   │
+│   └── reports/
+│       ├── today.php
+│       └── export.php
+│
+├── js/
+│   ├── main.js
+│   ├── state.js
+│   │
+│   ├── services/
+│   │   ├── api.js
+│   │   └── validators.js
+│   │
+│   ├── screens/
+│   │   ├── home.js
+│   │   ├── cash.js
+│   │   ├── credit.js
+│   │   ├── expense.js
+│   │   ├── clients.js
+│   │   ├── reports.js
+│   │   ├── profile.js
+│   │   └── auth.js
+│   │
+│   ├── overlay/
+│   │   └── overlay.js
+│   │
+│   └── ui/
+│       ├── navigation.js
+│       └── notifications.js
+```
 
 ---
 
