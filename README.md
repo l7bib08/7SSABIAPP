@@ -75,7 +75,7 @@ users
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 7SSABIAPP/
@@ -148,7 +148,7 @@ users
 
 ---
 
-## 🚀 Installation (Local)
+## Installation (Local)
 
 **Requirements**
 - XAMPP (Apache + MySQL + PHP 8)
@@ -175,7 +175,7 @@ mv 7ssabi /xampp/htdocs/
 
 ---
 
-## 🗃️ Database Setup
+## Database Setup
 
 Run this SQL to create all tables:
 
