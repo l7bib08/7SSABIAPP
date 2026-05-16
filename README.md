@@ -59,15 +59,19 @@ Small shop owners in Morocco manage:
 
 ## Database Schema
 
+```text
 users
 └── commerce (1 per user)
-└── clients
-└── sales (credit)
-└── sale_items
-└── payments
-└── sales (cash)
-└── sale_items
-└── expenses
+    ├── clients
+    │   └── sales (credit)
+    │       ├── sale_items
+    │       └── payments
+    │
+    ├── sales (cash)
+    │   └── sale_items
+    │
+    └── expenses
+```
 
 ---
 
