@@ -257,8 +257,6 @@ CREATE TABLE payments (
 **Mouad Lahbib Arbaoui**
 Software Engineering Student — System Engineering & Digital Transformation
 
-[LinkedIn](www.linkedin.com/in/mouad-lahbib-arbaoui-698865394) • [GitHub](https://github.com/l7bib08)
-
 ---
 
 ## License
