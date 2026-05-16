@@ -1475,6 +1475,37 @@ body:has(#screen-signup.active) .nav-bar {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.export-section {
+    padding: 20px;
+    margin-top: 20px;
+    background: var(--c-card);
+    border-radius: 16px;
+    margin: 20px 16px;
+    text-align: center;
+}
+
+.export-label {
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-first-body-text);
+    margin-bottom: 12px;
+}
+
+#report-export-date {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border: 2px solid var(--c-primary);
+    border-radius: 40px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    color: var(--c-first-body-text);
+    background: var(--c-app);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
 /* =========================================================
    19. PROFILE SCREEN
    ========================================================= */
@@ -2480,4 +2511,306 @@ body:has(#screen-signup.active) .bottom-nav {
     padding: 8px 10px;
     font-size: 11px;
   }
+}
+
+.client-info-card .btn-danger {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    background: #B91C1C;
+    color: #FFFFFF;
+    box-shadow: 0 8px 18px rgba(185, 28, 28, 0.22);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.client-info-card .btn-danger:active {
+    transform: scale(0.98);
+    filter: brightness(1.02);
+}
+
+#screen-edit-client input[type="text"],
+#screen-edit-client input[type="tel"],
+#screen-edit-client input[type="number"] {
+    display: block;
+    width: 365px;
+    margin: 10px auto 20px;
+    padding: 12px 20px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    line-height: var(--lh-body);
+    color: var(--c-first-body-text);
+    border: 3px solid black;
+    border-radius: 40px;
+    background-color: var(--c-app);
+}
+
+#screen-edit-client input[type="text"]::placeholder,
+#screen-edit-client input[type="tel"]::placeholder,
+#screen-edit-client input[type="number"]::placeholder {
+    font-family: var(--font-primary);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-small);
+    color: var(--c-secondary-body-text);
+}
+
+#screen-edit-client .label {
+    margin-left: 10px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-first-body-text);
+}
+
+/* ── Profile Details ── */
+.profile-details-card {
+    margin: 0 20px;
+    background: var(--c-card);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.profile-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.profile-detail-row:last-child {
+    border-bottom: none;
+}
+
+.profile-detail-label {
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    color: var(--c-secondary-body-text);
+}
+
+.profile-detail-value {
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-first-body-text);
+}
+
+/* ── Back button ── */
+.btn-back {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--c-first-body-text);
+    padding: 0 10px;
+    line-height: 1;
+}
+
+/* ── Lang check ── */
+.lang-check {
+    color: var(--c-primary);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ── Tips ── */
+.tip-card {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--c-card);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.tip-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.tip-title {
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-first-body-text);
+    margin: 0 0 6px 0;
+}
+
+.tip-desc {
+    font-family: var(--font-primary);
+    font-size: var(--fs-small);
+    color: var(--c-secondary-body-text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── FAQ ── */
+.faq-item {
+    background: var(--c-card);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 20px;
+    text-align: left;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-first-body-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-arrow {
+    font-size: 20px;
+    transition: transform 0.2s ease;
+}
+
+.faq-answer {
+    padding: 0 20px 16px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-small);
+    color: var(--c-secondary-body-text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-answer.hidden {
+    display: none;
+}
+
+/* ── Contact ── */
+.contact-card {
+    background: var(--c-card);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.contact-row:last-child {
+    border-bottom: none;
+}
+
+.contact-icon {
+    font-size: 24px;
+}
+
+.contact-label {
+    font-size: var(--fs-small);
+    color: var(--c-secondary-body-text);
+    margin: 0 0 4px 0;
+}
+
+.contact-value {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-button-md);
+    color: var(--c-primary);
+    text-decoration: none;
+}
+
+.contact-note {
+    text-align: center;
+    font-size: var(--fs-small);
+    color: var(--c-secondary-body-text);
+    margin-top: 10px;
+}
+
+/* ── Commerce inputs ── */
+#screen-commerce-details input[type="text"],
+#screen-commerce-details input[type="tel"] {
+    display: block;
+    width: 365px;
+    margin: 10px auto 20px;
+    padding: 12px 20px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    color: var(--c-first-body-text);
+    border: 3px solid black;
+    border-radius: 40px;
+    background-color: var(--c-app);
+}
+
+.report-export-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 16px;
+    background: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    font-family: var(--font-primary);
+    font-size: var(--fs-button-lg);
+    font-weight: var(--fw-button-lg);
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.report-export-btn:active {
+    filter: brightness(1.1);
+    transform: scale(0.96);
+}
+
+.profile-menu-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 14px;
+}
+
+.profile-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #F1F5F9;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: #111827;
+    transition: background 0.15s ease;
+}
+
+.profile-menu-item:last-child {
+    border-bottom: none;
+}
+
+.profile-menu-item:active {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.profile-section-label {
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+    padding-left: 4px;
 }

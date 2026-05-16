@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION["user_id"]);
+
+$user = null;
+
+if ($isLoggedIn) {
+    $user = [
+        "id" => $_SESSION["user_id"],
+        "name" => $_SESSION["user_name"],
+        "email" => $_SESSION["user_email"]
+    ];
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,7 +61,7 @@
 
           <h1>Login</h1>
 
-          <form id="form-login" class="form auth-form" autocomplete="on">
+          <form id="form-login" class="form auth-form" method="POST" action="jibi_php/login.php" autocomplete="on">
             <div class="field">
               <label class="label" for="login-email">Email :</label>
               <input
@@ -76,7 +91,7 @@
               </label>
             </div>
 
-            <button id="btn-login-next" type="button">Next</button>
+            <button id="btn-login-next" type="submit">Next</button>
 
             <div class="divider">
               <span>Or</span>
@@ -116,12 +131,12 @@
 
           <h1>Sign up</h1>
 
-          <form id="form-signup" class="form auth-form" autocomplete="on">
+          <form id="form-signup" class="form auth-form" method="POST" action="jibi_php/signup.php" autocomplete="on">
             <div class="field">
               <label class="label" for="signup-name">Full Name :</label>
               <input
                 id="signup-name"
-                name="name"
+                name="nom"
                 type="text"
                 placeholder="Enter your full name"
                 required
@@ -154,14 +169,14 @@
               <label class="label" for="signup-password2">Confirm password :</label>
               <input
                 id="signup-password2"
-                name="password2"
+                name="confirm_password"
                 type="password"
                 placeholder="Confirm your password"
                 required
               />
             </div>
 
-            <button id="btn-create-account" type="button">Create Account</button>
+            <button id="btn-create-account" type="submit">Create Account</button>
 
             <p class="hint">
               Déjà un compte ?
@@ -556,6 +571,56 @@
         </section>
 
         <!-- ========================================
+        EDIT CLIENT SCREEN
+        ========================================= -->
+        <section id="screen-edit-client" class="screen" aria-label="Modifier client">
+            <header class="topbar">
+                <h1>Modifier le client</h1>
+            </header>
+
+            <form id="form-edit-client" class="form" style="margin-top: 70px;">
+                <div class="field">
+                    <label class="label" for="edit-client-name">Full Name</label>
+                    <input
+                        id="edit-client-name"
+                        type="text"
+                        placeholder="Nom complet du client"
+                        required
+                    />
+                </div>
+
+                <div class="field">
+                    <label class="label" for="edit-client-phone">Phone number</label>
+                    <input
+                        id="edit-client-phone"
+                        type="tel"
+                        placeholder="Numéro de téléphone"
+                        required
+                    />
+                </div>
+
+                <div class="field">
+                    <label class="label" for="edit-client-limit">Credit limit</label>
+                    <input
+                        id="edit-client-limit"
+                        type="number"
+                        inputmode="decimal"
+                        placeholder="Limite de crédit"
+                    />
+                </div>
+
+                <button id="btn-update-client" class="save" type="button">
+                    Enregistrer les modifications
+                </button>
+
+                <button id="btn-cancel-edit-client" class="save" type="button"
+                    style="background-color: #6B7280; margin-top: 10px;">
+                    Annuler
+                </button>
+            </form>
+        </section>
+
+        <!-- ========================================
              REPORTS SCREEN
         ========================================= -->
         <section id="screen-reports" class="screen" aria-label="Rapports">
@@ -677,6 +742,27 @@
               <button id="btn-export-report" type="button">Exporter le rapport</button>
             </div>
           </div>
+
+          <div id="report-export-card" class="report-card report-balance" style="margin-top: 16px;">
+              <h2>Exporter le rapport</h2>
+
+              <div class="balance-line">
+                  <span>Choisir une date</span>
+                  <input type="date" id="report-export-date" style="
+                      border: none;
+                      background: transparent;
+                      font-family: var(--font-primary);
+                      font-size: var(--fs-body);
+                      color: var(--c-first-body-text);
+                      font-weight: var(--fw-button-md);
+                      cursor: pointer;
+                  "/>
+              </div>
+
+              <button id="btn-export-pdf" type="button" class="report-export-btn">
+                  Exporter en PDF
+              </button>
+          </div>
         </section>
 
         <!-- ========================================
@@ -700,8 +786,8 @@
                 />
               </div>
 
-              <h2 id="profile-display-name">Omar</h2>
-              <p id="profile-role">Gérant • JIBI Store</p>
+              <h2 id="profile-display-name"><?php echo htmlspecialchars($user["name"] ?? "Utilisateur", ENT_QUOTES, "UTF-8"); ?></h2>
+              <p id="profile-role">Gérant • <?php echo htmlspecialchars($user["email"] ?? "JIBI Store", ENT_QUOTES, "UTF-8"); ?></p>
             </div>
 
             <!-- Status -->
@@ -802,6 +888,192 @@
               </button>
             </div>
           </div>
+        </section>
+
+        <!-- PERSONAL DETAILS -->
+        <section id="screen-personal-details" class="screen" aria-label="Détails personnels">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-personal">‹</button>
+                <h1>Détails personnels</h1>
+            </header>
+            <div class="profile-details-card" style="margin-top:70px;">
+                <div class="profile-detail-row">
+                    <span class="profile-detail-label">Nom complet</span>
+                    <span class="profile-detail-value" id="personal-name">--</span>
+                </div>
+                <div class="profile-detail-row">
+                    <span class="profile-detail-label">Email</span>
+                    <span class="profile-detail-value" id="personal-email">--</span>
+                </div>
+                <div class="profile-detail-row">
+                    <span class="profile-detail-label">Rôle</span>
+                    <span class="profile-detail-value">Gérant</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMERCE DETAILS -->
+        <section id="screen-commerce-details" class="screen" aria-label="Détails du commerce">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-commerce">‹</button>
+                <h1>Détails du commerce</h1>
+            </header>
+            <div style="margin-top:70px; padding: 0 20px;">
+                <div class="field">
+                    <label class="label" for="commerce-nom">Nom du commerce</label>
+                    <input id="commerce-nom" type="text" placeholder="Ex: Épicerie Al Amal" />
+                </div>
+                <div class="field">
+                    <label class="label" for="commerce-adresse">Adresse</label>
+                    <input id="commerce-adresse" type="text" placeholder="Ex: Rue Hassan II, Rabat" />
+                </div>
+                <div class="field">
+                    <label class="label" for="commerce-telephone">Téléphone</label>
+                    <input id="commerce-telephone" type="tel" placeholder="Ex: 0612345678" />
+                </div>
+                <button id="btn-save-commerce" class="save" type="button">
+                    Sauvegarder
+                </button>
+            </div>
+        </section>
+
+        <!-- PARAMETRES -->
+        <section id="screen-parametres" class="screen" aria-label="Paramètres">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-parametres">‹</button>
+                <h1>Paramètres</h1>
+            </header>
+            <div style="margin-top:70px; padding: 0 20px;">
+                <p class="profile-section-label">LANGUE</p>
+                <div class="profile-menu-card">
+                    <div class="profile-menu-item" id="btn-lang-fr">
+                        <span>🇫🇷 Français</span>
+                        <span class="lang-check" id="check-fr">✓</span>
+                    </div>
+                    <div class="profile-menu-item" id="btn-lang-ar">
+                        <span>🇲🇦 العربية</span>
+                        <span class="lang-check" id="check-ar"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSEILS ET ASTUCES -->
+        <section id="screen-tips" class="screen" aria-label="Conseils et astuces">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-tips">‹</button>
+                <h1>Conseils et astuces</h1>
+            </header>
+            <div style="margin-top:70px; padding: 0 20px;">
+                <div class="tip-card">
+                    <span class="tip-icon">💡</span>
+                    <div>
+                        <p class="tip-title">Enregistre chaque vente immédiatement</p>
+                        <p class="tip-desc">Ne laisse pas s'accumuler les ventes non enregistrées. Saisis chaque transaction dès qu'elle se fait pour avoir un rapport précis.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">👥</span>
+                    <div>
+                        <p class="tip-title">Gère bien tes clients crédit</p>
+                        <p class="tip-desc">Consulte régulièrement la liste des débiteurs dans les rapports. Rappelle tes clients dès que leur dette dépasse leur limite.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">📊</span>
+                    <div>
+                        <p class="tip-title">Consulte ton rapport chaque soir</p>
+                        <p class="tip-desc">Prends l'habitude de vérifier le rapport du jour avant de fermer. Ça te permet de détecter les erreurs et de suivre ta progression.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">💰</span>
+                    <div>
+                        <p class="tip-title">Enregistre toutes tes dépenses</p>
+                        <p class="tip-desc">Même les petites dépenses comptent. En les saisissant toutes, ton bénéfice calculé sera beaucoup plus fiable.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">💾</span>
+                    <div>
+                        <p class="tip-title">Sauvegarde régulièrement</p>
+                        <p class="tip-desc">Exporte tes données CSV une fois par semaine. En cas de problème technique, tu ne perdras rien.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="screen-faq" class="screen" aria-label="Questions fréquentes">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-faq">‹</button>
+                <h1>Questions fréquentes</h1>
+            </header>
+            <div style="margin-top:70px; padding: 0 20px;" id="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment ajouter un client ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Va dans l'écran Clients, appuie sur le bouton + en bas à droite, remplis le nom, le téléphone et la limite de crédit, puis sauvegarde.</p>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment enregistrer une vente à crédit ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Va dans l'écran Crédit, ajoute tes articles, sélectionne le client concerné dans la liste, puis appuie sur Enregistrer. La dette du client sera mise à jour automatiquement.</p>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment enregistrer un paiement client ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Va dans Clients, appuie sur le client concerné, puis appuie sur "Le client veut payer". Saisis le montant payé et confirme.</p>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Où voir mon bénéfice du jour ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Dans l'écran Rapports tu trouveras le bénéfice calculé automatiquement : total ventes moins total dépenses.</p>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment exporter mes données ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Va dans Profil → Données → Sauvegarder les données pour télécharger un fichier CSV, ou Exporter les rapports pour un PDF du jour.</p>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment modifier les infos de mon commerce ? <span class="faq-arrow">›</span>
+                    </button>
+                    <p class="faq-answer hidden">Va dans Profil → Personnaliser → Détails du commerce. Modifie les informations et appuie sur Sauvegarder.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="screen-contact" class="screen" aria-label="Contact">
+            <header class="topbar">
+                <button class="btn-back" id="btn-back-contact">‹</button>
+                <h1>Contact</h1>
+            </header>
+            <div style="margin-top:70px; padding: 0 20px;">
+                <div class="contact-card">
+                    <div class="contact-row">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <p class="contact-label">Email de support</p>
+                            <a class="contact-value" href="mailto:kiom25982@gmail.com">kiom25982@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <p class="contact-label">Téléphone de support</p>
+                            <a class="contact-value" href="tel:0609763680">0609763680</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="contact-note">Disponible du lundi au vendredi, 9h - 18h</p>
+            </div>
         </section>
       </main>
 
@@ -906,15 +1178,21 @@
 
               <div class="client-actions">
                 <button id="btn-open-payment" class="btn-primary" type="button">
-                  Le client veut payer
+                    Le client veut payer
                 </button>
                 <button id="btn-open-report" class="btn-secondary" type="button">
-                  Voir rapport du jour
+                    Voir rapport du jour
+                </button>
+                <button id="btn-edit-client" class="btn-secondary" type="button">
+                    Modifier le client
+                </button>
+                <button id="btn-delete-client" class="btn-danger" type="button">
+                    Supprimer le client
                 </button>
                 <button id="btn-overlay-close-1" class="btn-ghost" type="button">
-                  Fermer
+                    Fermer
                 </button>
-              </div>
+             </div>
             </div>
           </div>
 
@@ -1040,7 +1318,48 @@
 
   <!-- ========================================
        JAVASCRIPT
+       Variables PHP disponibles pour JavaScript.
   ========================================= -->
+  <script>
+    window.JIBI_SESSION = {
+      isLoggedIn: <?php echo $isLoggedIn ? "true" : "false"; ?>,
+      user: <?php echo json_encode($user, JSON_UNESCAPED_UNICODE); ?>
+    };
+  </script>
   <script type="module" src="js/main.js"></script>
+
+  <!-- Sécurité temporaire : si PHP dit que l'utilisateur est connecté,
+       on force l'affichage de l'accueil même si main.js n'est pas encore corrigé. -->
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.JIBI_SESSION || !window.JIBI_SESSION.isLoggedIn) return;
+
+      setTimeout(function () {
+        document.querySelectorAll(".screen").forEach(function (screen) {
+          screen.classList.remove("active");
+        });
+
+        var home = document.getElementById("screen-home");
+        if (home) home.classList.add("active");
+
+        var app = document.querySelector(".app");
+        if (app) app.classList.remove("hide-nav");
+
+        var navButtons = document.querySelectorAll(".bottom-nav .nav-item");
+        navButtons.forEach(function (btn) { btn.classList.remove("is-active"); });
+        if (navButtons[0]) navButtons[0].classList.add("is-active");
+      }, 1700);
+    });
+  </script>
+  <script>
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const arrow  = btn.querySelector(".faq-arrow");
+        answer.classList.toggle("hidden");
+        arrow.style.transform = answer.classList.contains("hidden")
+            ? "rotate(0deg)"
+            : "rotate(90deg)";
+    }
+  </script>
 </body>
 </html>

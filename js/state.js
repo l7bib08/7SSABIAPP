@@ -1,6 +1,3 @@
-export const USERS_STORAGE_KEY = "jibi_users";
-export const CURRENT_USER_STORAGE_KEY = "jibi_current_user_id";
-
 export const state = {
   currentScreen: "screen-initial",
   user: null,
@@ -8,6 +5,7 @@ export const state = {
   sales: [],
   expenses: [],
   payments: [],
+  dashboard: null,
   selectedClientId: null,
   selectedCreditClientId: null,
   cashDraftItems: [],

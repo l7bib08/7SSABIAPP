@@ -1,9 +1,7 @@
 import { state } from "../state.js";
-import { saveCurrentUserAppData } from "../services/storage.js";
+import { api } from "../services/api.js";
 import {
   formatMoney,
-  generateId,
-  readFileAsDataURL,
   escapeHtml,
   toNumber,
   DEFAULT_USER_IMAGE,
@@ -28,35 +26,42 @@ export function bindClientEvents(showScreen) {
     await saveClient(showScreen);
   });
 
-  document.getElementById("clients-search")?.addEventListener("input", () => {
-    renderClients();
-  });
+  document.getElementById("clients-search")?.addEventListener("input", renderClients);
 
   document.getElementById("clients-list")?.addEventListener("click", (e) => {
     const card = e.target.closest(".client-card");
-    if (!card) return;
+    if (card?.dataset.clientId) {
+      openClientInfo(card.dataset.clientId);
+    }
+  });
 
-    const clientId = card.dataset.clientId;
-    if (!clientId) return;
+  document.getElementById("btn-update-client")?.addEventListener("click", async () => {
+    await updateClient(showScreen);
+  });
 
-    openClientInfo(clientId);
+  document.getElementById("btn-cancel-edit-client")?.addEventListener("click", () => {
+      showScreen("screen-clients");
   });
 }
 
-export function getClientCreditConsumed(clientId) {
-  return state.sales
-    .filter((sale) => sale.type === "credit" && sale.clientId === clientId)
-    .reduce((sum, sale) => sum + Number(sale.total || 0), 0);
-}
-
-export function getClientPaidTotal(clientId) {
-  return state.payments
-    .filter((payment) => payment.clientId === clientId)
-    .reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
+export async function loadClients() {
+  const data = await api.getClients();
+  state.clients = data.clients || [];
 }
 
 export function getClientDebt(clientId) {
-  return getClientCreditConsumed(clientId) - getClientPaidTotal(clientId);
+  const client = state.clients.find((c) => String(c.id) === String(clientId));
+  return Number(client?.debt || client?.remaining_debt || 0);
+}
+
+export function getClientCreditConsumed(clientId) {
+  const client = state.clients.find((c) => String(c.id) === String(clientId));
+  return Number(client?.credit_consumed || 0);
+}
+
+export function getClientPaidTotal(clientId) {
+  const client = state.clients.find((c) => String(c.id) === String(clientId));
+  return Number(client?.paid_total || 0);
 }
 
 export function renderClients() {
@@ -73,7 +78,10 @@ export function renderClients() {
     return text.includes(searchTerm);
   });
 
-  const totalDebt = state.clients.reduce((sum, client) => sum + getClientDebt(client.id), 0);
+  const totalDebt = state.clients.reduce((sum, client) => {
+    return sum + getClientDebt(client.id);
+  }, 0);
+
   summary.textContent = `${state.clients.length} clients • Dette totale : ${formatMoney(totalDebt)}`;
 
   if (filteredClients.length === 0) {
@@ -95,7 +103,10 @@ export function renderClients() {
         </div>
 
         <div class="client-center">
-          <div class="client-name">${escapeHtml(client.name || "--")} - ${escapeHtml(client.phone || "--")}</div>
+          <div class="client-name">
+            ${escapeHtml(client.name || "--")} - ${escapeHtml(client.phone || "--")}
+          </div>
+
           <div class="client-amount ${debt > 0 ? "danger" : "success"}">
             ${formatMoney(debt)}
           </div>
@@ -110,16 +121,10 @@ export function renderClients() {
 }
 
 async function saveClient(showScreen) {
-  const nameInput = document.getElementById("client-name");
-  const phoneInput = document.getElementById("client-phone");
-  const limitInput = document.getElementById("client-limit");
-  const imageInput = document.getElementById("client-image");
-
-  const name = nameInput?.value.trim();
-  const phone = normalizePhone(phoneInput?.value);
-  const limitRaw = limitInput?.value;
+  const name = document.getElementById("client-name")?.value.trim();
+  const phone = normalizePhone(document.getElementById("client-phone")?.value);
+  const limitRaw = document.getElementById("client-limit")?.value;
   const limit = toNumber(limitRaw);
-  const file = imageInput?.files?.[0];
 
   const error = validateClientData({ name, phone, limit: limitRaw });
   if (error) {
@@ -127,37 +132,54 @@ async function saveClient(showScreen) {
     return;
   }
 
-  const exists = state.clients.some(
-    (client) => String(client.phone || "").trim() === phone
-  );
+  try {
+    await api.createClient({
+      name,
+      phone,
+      limit
+    });
 
-  if (exists) {
-    showToast("Un client avec ce téléphone existe déjà.", "error");
-    return;
+    await loadClients();
+    renderClients();
+    clearAddClientForm();
+
+    showToast("Client enregistré avec succès.", "success");
+    showScreen("screen-clients");
+  } catch (error) {
+    showToast(error.message, "error");
   }
-
-  const image = await readFileAsDataURL(file);
-
-  state.clients.push({
-    id: generateId("client"),
-    name,
-    phone,
-    limit,
-    image: image || "",
-    createdAt: new Date().toISOString()
-  });
-
-  saveCurrentUserAppData();
-  renderClients();
-  clearAddClientForm();
-  showToast("Client enregistré avec succès.", "success");
-  showScreen("screen-clients");
 }
 
 function clearAddClientForm() {
-  const ids = ["client-name", "client-phone", "client-limit", "client-image"];
-  ids.forEach((id) => {
+  ["client-name", "client-phone", "client-limit", "client-image"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.value = "";
   });
+}
+
+async function updateClient(showScreen) {
+    const name  = document.getElementById("edit-client-name")?.value.trim();
+    const phone = document.getElementById("edit-client-phone")?.value.trim();
+    const limit = document.getElementById("edit-client-limit")?.value;
+
+    const error = validateClientData({ name, phone, limit });
+    if (error) {
+        showToast(error, "error");
+        return;
+    }
+
+    try {
+        await api.updateClient(state.selectedClientId, {
+            name,
+            phone,
+            limit: toNumber(limit)
+        });
+
+        await loadClients();
+        renderClients();
+        showToast("Client modifié avec succès.", "success");
+        showScreen("screen-clients");
+    } catch (error) {
+        showToast(error.message, "error");
+    }
 }
