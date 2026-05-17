@@ -101,7 +101,7 @@ if ($isLoggedIn) {
               </label>
             </div>
 
-            <button id="btn-login-next" type="submit">Connexion</button>
+            <button id="btn-login-next" type="submit">Next</button>
 
             <div class="divider">
               <span>Ou</span>
