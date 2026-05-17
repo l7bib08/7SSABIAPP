@@ -69,7 +69,7 @@ if ($isLoggedIn) {
             <img src="assets/Logo/logo7ssabi.png" alt="Logo 7SSABI" />
           </div>
 
-          <h1>Login</h1>
+          <h1>Connexion</h1>
 
           <form id="form-login" class="form auth-form" method="POST" action="jibi_php/login.php" autocomplete="on">
             <div class="field">
@@ -78,7 +78,7 @@ if ($isLoggedIn) {
                 id="login-email"
                 name="email"
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Entrer votre email"
                 required
               />
             </div>
@@ -89,7 +89,7 @@ if ($isLoggedIn) {
                 id="login-password"
                 name="password"
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Entrer votre mot de passe"
                 required
               />
             </div>
@@ -97,27 +97,27 @@ if ($isLoggedIn) {
             <div class="row">
               <label class="checkbox">
                 <input id="login-remember" type="checkbox" />
-                <span>Remember me</span>
+                <span>Se souvenir de moi</span>
               </label>
             </div>
 
-            <button id="btn-login-next" type="submit">Next</button>
+            <button id="btn-login-next" type="submit">Connexion</button>
 
             <div class="divider">
-              <span>Or</span>
+              <span>Ou</span>
             </div>
 
             <div class="other-way">
               <button id="btn-login-google" type="button">
                 <img src="assets/Icons/google.png" alt="Google icon" width="30" />
-                Login with Google
+                Connexion avec Google
               </button>
             </div>
 
             <div class="other-way">
               <button id="btn-login-facebook" type="button">
                 <img src="assets/Icons/facebook.png" alt="Facebook icon" width="30" />
-                Login with Facebook
+                Connexion avec Facebook
               </button>
             </div>
 
@@ -138,16 +138,16 @@ if ($isLoggedIn) {
             <img src="assets/Logo/logo7ssabi.png" alt="Logo 7SSABI" />
           </div>
 
-          <h1>Sign up</h1>
+          <h1>Inscription</h1>
 
           <form id="form-signup" class="form auth-form" method="POST" action="jibi_php/signup.php" autocomplete="on">
             <div class="field">
-              <label class="label" for="signup-name">Full Name :</label>
+              <label class="label" for="signup-name">Nom complet :</label>
               <input
                 id="signup-name"
                 name="nom"
                 type="text"
-                placeholder="Enter your full name"
+                placeholder="Entrer votre nom complet"
                 required
               />
             </div>
@@ -158,29 +158,29 @@ if ($isLoggedIn) {
                 id="signup-email"
                 name="email"
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Entrer votre email"
                 required
               />
             </div>
 
             <div class="field">
-              <label class="label" for="signup-password">Password :</label>
+              <label class="label" for="signup-password">Mot de passe :</label>
               <input
                 id="signup-password"
                 name="password"
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Entrer votre mot de passe"
                 required
               />
             </div>
 
             <div class="field">
-              <label class="label" for="signup-password2">Confirm password :</label>
+              <label class="label" for="signup-password2">Confirmer mot de passe :</label>
               <input
                 id="signup-password2"
                 name="confirm_password"
                 type="password"
-                placeholder="Confirm your password"
+                placeholder="Confirmer votre mot de passe"
                 required
               />
             </div>
@@ -192,7 +192,7 @@ if ($isLoggedIn) {
                 </div>
             <?php endif; ?>
 
-            <button id="btn-create-account" type="submit">Create Account</button>
+            <button id="btn-create-account" type="submit">Créer un compte</button>
 
             <p class="hint">
               Déjà un compte ?
@@ -546,32 +546,32 @@ if ($isLoggedIn) {
 
           <form id="form-add-client" class="form" enctype="multipart/form-data">
             <div class="field">
-              <label class="label" for="client-name">Full Name</label>
+              <label class="label" for="client-name">Nom complet</label>
               <input
                 id="client-name"
                 type="text"
-                placeholder="Enter the client full name"
+                placeholder="Entrer le nom complet du client"
                 required
               />
             </div>
 
             <div class="field">
-              <label class="label" for="client-phone">Number phone</label>
+              <label class="label" for="client-phone">Numéro de téléphone</label>
               <input
                 id="client-phone"
                 type="tel"
-                placeholder="Enter le numero de telephone du client"
+                placeholder="Entrer le numéro de téléphone du client"
                 required
               />
             </div>
 
             <div class="field">
-              <label class="label" for="client-limit">Credit limit</label>
+              <label class="label" for="client-limit">Limite de crédit</label>
               <input
                 id="client-limit"
                 type="number"
                 inputmode="decimal"
-                placeholder="Enter the client credit limit"
+                placeholder="Entrer la limite de crédit"
               />
             </div>
 
@@ -596,7 +596,7 @@ if ($isLoggedIn) {
 
             <form id="form-edit-client" class="form" style="margin-top: 70px;">
                 <div class="field">
-                    <label class="label" for="edit-client-name">Full Name</label>
+                    <label class="label" for="edit-client-name">Nom complet</label>
                     <input
                         id="edit-client-name"
                         type="text"
@@ -606,7 +606,7 @@ if ($isLoggedIn) {
                 </div>
 
                 <div class="field">
-                    <label class="label" for="edit-client-phone">Phone number</label>
+                    <label class="label" for="edit-client-phone">Numéro de téléphone</label>
                     <input
                         id="edit-client-phone"
                         type="tel"
@@ -616,7 +616,7 @@ if ($isLoggedIn) {
                 </div>
 
                 <div class="field">
-                    <label class="label" for="edit-client-limit">Credit limit</label>
+                    <label class="label" for="edit-client-limit">Limite de crédit</label>
                     <input
                         id="edit-client-limit"
                         type="number"
@@ -1100,13 +1100,13 @@ if ($isLoggedIn) {
         <button class="nav-item is-active" type="button" aria-label="Home">
           <img class="nav-icon icon-default" src="assets/Icons/home no click.png" alt="Home icon inactive" />
           <img class="nav-icon icon-active" src="assets/Icons/home click.png" alt="Home icon active" />
-          <span class="nav-label">Home</span>
+          <span class="nav-label">Accueil</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Search">
           <img class="nav-icon icon-default" src="assets/Icons/bloc-notes no click.png" alt="Search icon inactive" />
           <img class="nav-icon icon-active" src="assets/Icons/bloc-notes click.png" alt="Search icon active" />
-          <span class="nav-label">Notes</span>
+          <span class="nav-label">Ventes</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Offers">
@@ -1118,13 +1118,13 @@ if ($isLoggedIn) {
         <button class="nav-item" type="button" aria-label="Cart">
           <img class="nav-icon icon-default" src="assets/Icons/rapport no click.png" alt="Cart icon inactive" />
           <img class="nav-icon icon-active" src="assets/Icons/rapport click.png" alt="Cart icon active" />
-          <span class="nav-label">Repports</span>
+          <span class="nav-label">Rapports</span>
         </button>
 
         <button class="nav-item" type="button" aria-label="Profile">
           <img class="nav-icon icon-default" src="assets/Icons/user no click.png" alt="Profile icon inactive" />
           <img class="nav-icon icon-active" src="assets/Icons/user click.png" alt="Profile icon active" />
-          <span class="nav-label">Profile</span>
+          <span class="nav-label">Profil</span>
         </button>
       </nav>
 
@@ -1167,27 +1167,27 @@ if ($isLoggedIn) {
                 </div>
 
                 <div class="client-info-row">
-                  <p class="info-label">Phone number</p>
+                  <p class="info-label">Téléphone</p>
                   <p id="overlay-client-phone" class="info-value">: --</p>
                 </div>
 
                 <div class="client-info-row">
-                  <p class="info-label">Credit Limit</p>
+                  <p class="info-label">Limite de crédit</p>
                   <p id="overlay-client-limit" class="info-value">: --</p>
                 </div>
 
                 <div class="client-info-row">
-                  <p class="info-label">Consumed this month</p>
+                  <p class="info-label">Consommé ce mois</p>
                   <p id="overlay-client-consumed" class="info-value">: --</p>
                 </div>
 
                 <div class="client-info-row">
-                  <p class="info-label">Paid</p>
+                  <p class="info-label">Payé</p>
                   <p id="overlay-client-paid" class="info-value">: --</p>
                 </div>
 
                 <div class="client-info-row">
-                  <p class="info-label">Remaining</p>
+                  <p class="info-label">Restant</p>
                   <p id="overlay-client-remaining" class="info-value">: --</p>
                 </div>
               </div>
