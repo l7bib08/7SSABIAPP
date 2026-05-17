@@ -121,33 +121,30 @@ export function renderClients() {
 }
 
 async function saveClient(showScreen) {
-  const name = document.getElementById("client-name")?.value.trim();
-  const phone = normalizePhone(document.getElementById("client-phone")?.value);
-  const limitRaw = document.getElementById("client-limit")?.value;
-  const limit = toNumber(limitRaw);
+    const name     = document.getElementById("client-name")?.value.trim();
+    const phone    = normalizePhone(document.getElementById("client-phone")?.value);
+    const limitRaw = document.getElementById("client-limit")?.value;
+    const limit    = toNumber(limitRaw);
+    const imageFile = document.getElementById("client-image")?.files[0] || null;
 
-  const error = validateClientData({ name, phone, limit: limitRaw });
-  if (error) {
-    showToast(error, "error");
-    return;
-  }
+    const error = validateClientData({ name, phone, limit: limitRaw });
+    if (error) {
+        showToast(error, "error");
+        return;
+    }
 
-  try {
-    await api.createClient({
-      name,
-      phone,
-      limit
-    });
+    try {
+        await api.createClient({ name, phone, limit }, imageFile);
 
-    await loadClients();
-    renderClients();
-    clearAddClientForm();
+        await loadClients();
+        renderClients();
+        clearAddClientForm();
 
-    showToast("Client enregistré avec succès.", "success");
-    showScreen("screen-clients");
-  } catch (error) {
-    showToast(error.message, "error");
-  }
+        showToast("Client enregistré avec succès.", "success");
+        showScreen("screen-clients");
+    } catch (error) {
+        showToast(error.message, "error");
+    }
 }
 
 function clearAddClientForm() {

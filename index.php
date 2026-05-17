@@ -2,16 +2,19 @@
 session_start();
 
 $isLoggedIn = isset($_SESSION["user_id"]);
+$signupErrors = $_SESSION["signup_errors"] ?? [];
+unset($_SESSION["signup_errors"]);
 
 $user = null;
 
 if ($isLoggedIn) {
     $user = [
-        "id" => $_SESSION["user_id"],
-        "name" => $_SESSION["user_name"],
+        "id"    => $_SESSION["user_id"],
+        "name"  => $_SESSION["user_name"],
         "email" => $_SESSION["user_email"]
     ];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +25,7 @@ if ($isLoggedIn) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>MOBILE APP JIBI</title>
+  <title>7SSABI APP</title>
 
   <!-- Google Font -->
   <link
@@ -32,6 +35,15 @@ if ($isLoggedIn) {
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2563EB" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="7SSABI" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
 </head>
 
 <body>
@@ -46,8 +58,7 @@ if ($isLoggedIn) {
              SPLASH / INITIAL SCREEN
         ========================================= -->
         <section id="screen-initial" class="screen active" aria-label="Écran initial">
-          <img src="assets/Logo/JIBI LOGO.png" alt="Logo App JIBI" />
-          <img src="assets/LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+          <img src="assets/Logo/logo7ssabi.png" alt="Logo 7SSABI" />
         </section>
 
         <!-- ========================================
@@ -55,8 +66,7 @@ if ($isLoggedIn) {
         ========================================= -->
         <section id="screen-login" class="screen" aria-label="Connexion">
           <div class="logo">
-            <img src="assets/Logo/JIBI LOGO.png" alt="Logo App JIBI" />
-            <img src="assets/LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+            <img src="assets/Logo/logo7ssabi.png" alt="Logo 7SSABI" />
           </div>
 
           <h1>Login</h1>
@@ -125,8 +135,7 @@ if ($isLoggedIn) {
         ========================================= -->
         <section id="screen-signup" class="screen" aria-label="Inscription">
           <div class="logo">
-            <img src="assets/Logo/JIBI LOGO.png" alt="Logo App JIBI" />
-            <img src="assets/LOGO/LOGO Calcul.png" alt="Logo Calcul" />
+            <img src="assets/Logo/logo7ssabi.png" alt="Logo 7SSABI" />
           </div>
 
           <h1>Sign up</h1>
@@ -175,6 +184,13 @@ if ($isLoggedIn) {
                 required
               />
             </div>
+            <?php if (!empty($signupErrors)): ?>
+                <div id="signup-errors" class="signup-errors">
+                    <?php foreach ($signupErrors as $error): ?>
+                        <p class="signup-error-item">⚠ <?php echo htmlspecialchars($error); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
             <button id="btn-create-account" type="submit">Create Account</button>
 
@@ -1323,34 +1339,15 @@ if ($isLoggedIn) {
   <script>
     window.JIBI_SESSION = {
       isLoggedIn: <?php echo $isLoggedIn ? "true" : "false"; ?>,
-      user: <?php echo json_encode($user, JSON_UNESCAPED_UNICODE); ?>
+      user: <?php echo json_encode($user, JSON_UNESCAPED_UNICODE); ?>,
+      signupErrors: <?php echo json_encode($signupErrors, JSON_UNESCAPED_UNICODE); ?>
     };
   </script>
   <script type="module" src="js/main.js"></script>
 
   <!-- Sécurité temporaire : si PHP dit que l'utilisateur est connecté,
        on force l'affichage de l'accueil même si main.js n'est pas encore corrigé. -->
-  <script>
-    window.addEventListener("load", function () {
-      if (!window.JIBI_SESSION || !window.JIBI_SESSION.isLoggedIn) return;
-
-      setTimeout(function () {
-        document.querySelectorAll(".screen").forEach(function (screen) {
-          screen.classList.remove("active");
-        });
-
-        var home = document.getElementById("screen-home");
-        if (home) home.classList.add("active");
-
-        var app = document.querySelector(".app");
-        if (app) app.classList.remove("hide-nav");
-
-        var navButtons = document.querySelectorAll(".bottom-nav .nav-item");
-        navButtons.forEach(function (btn) { btn.classList.remove("is-active"); });
-        if (navButtons[0]) navButtons[0].classList.add("is-active");
-      }, 1700);
-    });
-  </script>
+  
   <script>
     function toggleFaq(btn) {
         const answer = btn.nextElementSibling;
@@ -1360,6 +1357,17 @@ if ($isLoggedIn) {
             ? "rotate(0deg)"
             : "rotate(90deg)";
     }
+  </script>
+
+  <script>
+      if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+              navigator.serviceWorker
+                  .register("/Jibi_app_test_version/sw.js")
+                  .then(() => console.log("Service Worker enregistré."))
+                  .catch((err) => console.error("SW erreur:", err));
+          });
+      }
   </script>
 </body>
 </html>

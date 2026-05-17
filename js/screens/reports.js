@@ -113,7 +113,7 @@ function buildPDFHTML(data) {
 <body>
 
 <div class="header">
-    <div class="logo">JIBI</div>
+    <div class="logo">7SSABI</div>
     <div class="commerce-name">${data.commerce.nom || "Mon Commerce"}</div>
     <div class="commerce-info">${data.commerce.adresse || ""} ${data.commerce.telephone ? "· " + data.commerce.telephone : ""}</div>
     <div class="date-label">Rapport du ${data.date}</div>
@@ -150,7 +150,7 @@ function buildPDFHTML(data) {
     <tbody>${debtors || "<tr><td colspan='2' style='text-align:center;color:#aaa'>Aucun débiteur</td></tr>"}</tbody>
 </table>
 
-<div class="footer">Généré par JIBI App · ${new Date().toLocaleString("fr-FR")}</div>
+<div class="footer">Généré par 7SSABI App · ${new Date().toLocaleString("fr-FR")}</div>
 </body>
 </html>`;
 }

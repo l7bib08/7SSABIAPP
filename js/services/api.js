@@ -48,11 +48,19 @@ export const api = {
         return apiFetch(BASE_URL + "clients/index.php");
     },
 
-    createClient(payload) {
+    createClient(payload, imageFile = null) {
+        const formData = new FormData();
+        formData.append("name",  payload.name);
+        formData.append("phone", payload.phone);
+        formData.append("limit", payload.limit || 0);
+
+        if (imageFile) {
+            formData.append("image", imageFile);
+        }
+
         return apiFetch(BASE_URL + "clients/create.php", {
             method: "POST",
-            headers: JSON_HEADERS,
-            body: JSON.stringify(payload)
+            body: formData
         });
     },
 

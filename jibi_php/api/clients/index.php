@@ -18,7 +18,8 @@ $sql = "SELECT
             nom_complet AS name,
             telephone AS phone,
             credit_limit,
-            dette AS debt
+            dette AS debt,
+            image
         FROM clients
         WHERE user_id = :user_id
         ORDER BY id DESC";
